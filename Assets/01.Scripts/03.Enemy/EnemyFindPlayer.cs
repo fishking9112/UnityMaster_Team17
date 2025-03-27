@@ -7,7 +7,6 @@ public class EnemyFindPlayer : MonoBehaviour
     public GameObject RaycastPosition;
     public float checkRate;
     public float maxCheckDistance;
-    public LayerMask layerMask;
     private float lastCheckTime = 0;
 
     //임시용
