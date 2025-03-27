@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerLB_BaseState : IState
+public class PlayerLB_GroundedState : PlayerLB_BaseState
 {
     public virtual void Enter()
     {
