@@ -12,39 +12,43 @@ using UnityEngine;
 
 public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
 {
-    protected static T _instance;
+    protected static T _instance = null;
 
     //public static T Instance => _instance;
-    public static T Instance
+    public static T Instance //{ get { return _instance; } }
     {
         get
         {
-            if(_instance == null)
+            if (_instance == null)
             {
                 string ObjName = typeof(T).Name;
                 _instance = new GameObject(ObjName).AddComponent<T>();
+                Debug.Log($"Singleton {ObjName} 싱글톤 생성 !.");
             }
             return _instance;
         }
     }
 
-    [SerializeField] protected bool isDontDestroyOnLoad = false;
+    [SerializeField] 
+    protected bool isDontDestroyOnLoad = false;
 
     protected virtual void Awake()
     {
-        if(_instance == null)
-        {
-            _instance = this.gameObject.AddComponent<T>();
-
-            if(isDontDestroyOnLoad)
-            {
-                DontDestroyOnLoad(this.gameObject);
-            }
-        }
-        else
+        if(_instance != null && _instance != this)
         {
             Debug.LogWarning($"Singleton {this.name} 은 중복 생성시도 되었습니다.");
             Destroy(this.gameObject);
+
+            return;
+        }
+        else
+        {
+            _instance = this.gameObject.GetComponent<T>();
+
+            if (isDontDestroyOnLoad)
+            {
+                DontDestroyOnLoad(this.gameObject);
+            }
         }
     }
     protected virtual void OnDestroy()
