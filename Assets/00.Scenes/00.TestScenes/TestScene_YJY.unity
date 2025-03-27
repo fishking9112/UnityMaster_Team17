@@ -494,6 +494,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1696377597
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1696377598}
+  m_Layer: 0
+  m_Name: EnemySight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1696377598
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696377597}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.35, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1963537420}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1842908896
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,6 +640,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1963537420}
+  - component: {fileID: 1963537421}
+  - component: {fileID: 1963537422}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -630,8 +663,43 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 82254839}
+  - {fileID: 1696377598}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1963537421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963537419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3e2a20ae5f706b4fb52ddc034e773d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NowState: 0
+  FindPlayerSight: 120
+  enemyFindPlayer: {fileID: 0}
+--- !u!114 &1963537422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963537419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a60c1ba9cbad5e45850d9aa87acd4d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RaycastPosition: {fileID: 1696377597}
+  checkRate: 0.1
+  maxCheckDistance: 100
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  Player: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
