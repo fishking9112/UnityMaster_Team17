@@ -1,12 +1,5 @@
 using UnityEngine;
 
-public enum QuestType
-{
-    PLAUER_MOVE,
-    USE_ITEM,
-    KILL_ENEMY,
-}
-
 public enum QuestState
 {
     BEFORE,
@@ -16,13 +9,7 @@ public enum QuestState
 
 public abstract class QuestBase : MonoBehaviour
 {
-
-    [Header("공통 퀘스트 정보")]
-    public int questId;
-    public string questName;
-    public string questDescription;
-    public QuestType questType;
-
+    public QuestInfo questInfo;
 
     public QuestState questState = QuestState.BEFORE;
     protected QuestManager questManager;
@@ -61,7 +48,7 @@ public abstract class QuestBase : MonoBehaviour
             if (other.CompareTag("Player"))
             {
                 QuestInit();
-                questManager.QuestStart(questId);
+                questManager.QuestStart(questInfo.id);
             }
         }
     }

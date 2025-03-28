@@ -2,10 +2,6 @@ using UnityEngine;
 
 public class QuestMove : QuestBase
 {
-    [Space(10)]
-    [Header("이동 퀘스트 정보")]
-    public float requiredDistance;
-
     private float _curMovedDistance;
 
     private Vector3 _startPlayerPosition;
@@ -48,9 +44,9 @@ public class QuestMove : QuestBase
     {
         if (questState == QuestState.ONGOING)
         {
-            if (_curMovedDistance >= requiredDistance)
+            if (_curMovedDistance >= questInfo.requiredDistance)
             {
-                questManager.QuestClear(questId);
+                questManager.QuestClear(questInfo.id);
             }
         }
     }

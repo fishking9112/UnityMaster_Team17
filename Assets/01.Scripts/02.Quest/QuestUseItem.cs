@@ -32,7 +32,7 @@ public class QuestUseItem : QuestBase
         {
             if (_isuUseItem)
             {
-                questManager.QuestClear(questId);
+                questManager.QuestClear(questInfo.id);
                 // GameManager.Instance.Player.OnItemUsed -= QuestGoal;
 
                 test.OnItemUsed -= UseItemCheck;
