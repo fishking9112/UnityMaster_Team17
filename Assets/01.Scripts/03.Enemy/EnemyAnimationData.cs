@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAnimationData : MonoBehaviour
+[Serializable]
+public class EnemyAnimationData
 {
     [SerializeField] private string ChasingParameterName = "Chasing";
     [SerializeField] private string ShootParameterName = "Shoot";

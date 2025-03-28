@@ -76,7 +76,7 @@ public class EnemyBaseState : IState
     }
     protected float IsInChasingRange()
     {
-        Vector3 directionToPlayer = stateMachine.Player.transform.position - stateMachine.Enemy.transform.position;
+        Vector3 directionToPlayer = stateMachine.Target.transform.position - stateMachine.Enemy.transform.position;
         float angle = Vector3.Angle(stateMachine.Enemy.transform.forward, directionToPlayer);
 
         return angle / 2;
@@ -88,12 +88,12 @@ public class EnemyBaseState : IState
         {
             lastCheckTime = Time.time;
 
-            Ray ray = new Ray(stateMachine.Enemy.EnemyRayPosition.transform.position, stateMachine.Player.transform.position - stateMachine.Enemy.EnemyRayPosition.transform.position);
+            Ray ray = new Ray(stateMachine.Enemy.EnemyRayPosition.transform.position, stateMachine.Target.transform.position - stateMachine.Enemy.EnemyRayPosition.transform.position);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, stateMachine.Enemy.Data.PlayerChasingRange))
             {
-                if (hit.collider.gameObject == stateMachine.Player)
+                if (hit.collider.gameObject == stateMachine.Target)
                 {
                     return true;
                 }

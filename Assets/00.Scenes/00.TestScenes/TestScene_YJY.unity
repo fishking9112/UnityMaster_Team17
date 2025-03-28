@@ -969,8 +969,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Data>k__BackingField: {fileID: 11400000, guid: c616542d372a43e439a0a79b2c957fc3,
     type: 2}
-  animator: {fileID: 0}
-  EnemyRayPosition: {fileID: 1696377597}
 --- !u!143 &1963537423
 CharacterController:
   m_ObjectHideFlags: 0
