@@ -89,13 +89,18 @@ public class EnemyBaseState : IState
         return -1;
     }
 
+    protected float IsInChasingDistance()
+    {
+        return (stateMachine.Player.transform.position - stateMachine.Enemy.transform.position).sqrMagnitude;
+    }
+
     protected bool IsPlayerInSight()
     {
         if (Time.time - lastCheckTime > 0.1f)
         {
             lastCheckTime = Time.time;
 
-            Ray[] ray = new Ray[]
+            Ray[] ray = new Ray[9]
             {
                 new Ray(stateMachine.Enemy.EnemyRayPosition.transform.position, (stateMachine.Player.transform.position + new Vector3(0,1,0)) - stateMachine.Enemy.EnemyRayPosition.transform.position),
                 new Ray(stateMachine.Enemy.EnemyRayPosition.transform.position, (stateMachine.Player.transform.position + new Vector3(0.3f,1,0)) - stateMachine.Enemy.EnemyRayPosition.transform.position),
@@ -113,7 +118,7 @@ public class EnemyBaseState : IState
             {
                 if (Physics.Raycast(ray[i], out hit, stateMachine.Enemy.Data.PlayerChasingRange))
                 {
-                    if (hit.collider.gameObject.layer == LayerMask.GetMask("Player"))
+                    if (hit.collider.gameObject == stateMachine.Player)
                     {
                         return true;
                     }

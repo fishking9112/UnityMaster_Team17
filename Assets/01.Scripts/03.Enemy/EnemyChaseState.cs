@@ -25,15 +25,15 @@ public class EnemyChaseState : EnemyBaseState
     {
         base.Update();
 
-        if (IsInChasingRange() == -1)
+        if(IsInChasingDistance() > stateMachine.Enemy.Data.PlayerChasingRange)
         {
             stateMachine.ChangeState(stateMachine.IdleState);
         }
-        else if (IsInChasingRange() <= stateMachine.Enemy.Data.AttackRange)
+        else if(IsInChasingRange() <= stateMachine.Enemy.Data.AttackRange)
         {
             if (IsPlayerInSight())
             {
-                stateMachine.ChangeState(stateMachine.IdleState);
+                stateMachine.ChangeState(stateMachine.AttackState);
             }
         }
     }

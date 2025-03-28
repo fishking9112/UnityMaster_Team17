@@ -14,9 +14,11 @@ public class Enemy : MonoBehaviour
     public CharacterController Controller { get; private set; }
     public ForceReceiver ForceReceiver { get; private set; }
 
-    public GameObject EnemyRayPosition { get; private set; }
+    [field: SerializeField] public GameObject EnemyRayPosition { get; private set; }
 
     private EnemyStateMachine stateMachine;
+
+    public GameObject Player;
 
     private void Awake()
     {
@@ -25,7 +27,7 @@ public class Enemy : MonoBehaviour
         Controller = GetComponent<CharacterController>();
         ForceReceiver = GetComponent<ForceReceiver>();
 
-        stateMachine = new EnemyStateMachine(this);
+        stateMachine = new EnemyStateMachine(this, Player);
     }
 
     private void Start()

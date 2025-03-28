@@ -14,10 +14,10 @@ public class EnemyStateMachine : StateMachine
     public EnemyChaseState ChaseState { get; }
     public EnemyAttackState AttackState { get; }
 
-    public EnemyStateMachine(Enemy enemy)
+    public EnemyStateMachine(Enemy enemy, GameObject _player)
     {
         Enemy = enemy;
-        //Player = GameManager.Instance.player;
+        Player = _player;
 
         IdleState = new EnemyIdleState(this);
         ChaseState = new EnemyChaseState(this);
