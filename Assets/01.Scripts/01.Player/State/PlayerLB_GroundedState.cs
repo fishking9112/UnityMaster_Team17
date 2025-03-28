@@ -4,28 +4,9 @@ using UnityEngine;
 
 public class PlayerLB_GroundedState : PlayerLB_BaseState
 {
-    public virtual void Enter()
+    public PlayerLB_GroundedState(PlayerLBStateMachine stateMachine, PlayerUBStateMachine UBStateMachine) : base(stateMachine, UBStateMachine)
     {
-        throw new System.NotImplementedException();
     }
 
-    public virtual void Exit()
-    {
-        throw new System.NotImplementedException();
-    }
 
-    public virtual void HandleInput()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public virtual void PhysicsUpdate()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public virtual void Update()
-    {
-        throw new System.NotImplementedException();
-    }
 }

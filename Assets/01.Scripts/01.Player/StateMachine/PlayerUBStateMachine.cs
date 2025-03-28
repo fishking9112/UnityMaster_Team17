@@ -1,26 +1,16 @@
-public class PlayerUBStateMachine : StateMachine
+public class PlayerUBStateMachine : PlayerStateMachine
 {
     protected IState currentState; // IState 클래스를 넣을 칸(카세트 오디오를 넣을 공간)
 
-    public void ChangeState(IState state)
+    protected Player player;
+    protected PlayerLBStateMachine LBStateMachine;
+    public PlayerUBStateMachine(Player player) : base(player)
     {
-        currentState?.Exit();
-        currentState = state; // 카세트 오디오 넣기
-        currentState?.Enter();
     }
 
-    public void HanldeInput()
+    public void Initialize(PlayerLBStateMachine LBStateMachine)
     {
-        currentState.HandleInput();
-    }
+        this.LBStateMachine = LBStateMachine;
 
-    public void Update()
-    {
-        currentState.Update();
-    }
-
-    public void PhysicsUpdate()
-    {
-        currentState.PhysicsUpdate();
     }
 }
