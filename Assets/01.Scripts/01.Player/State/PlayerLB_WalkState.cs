@@ -13,7 +13,7 @@ public class PlayerLB_WalkState : PlayerLB_GroundedState
         name = "Walk";
         LBStateMachine.MovementSpeedModifier = LBStateMachine.player.playerSO.GroundData.WalkSpeed;
         animationSpeedModifier = 4f;
-        Debug.Log($"Enter:{animationSpeedModifier}");
+        //Debug.Log($"Enter:{animationSpeedModifier}");
         base.Enter();
         StartAnimation(LBStateMachine.player.AnimationData.LB_WalkParameterHash);
     }
