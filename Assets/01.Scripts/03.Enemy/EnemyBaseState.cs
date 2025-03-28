@@ -96,12 +96,8 @@ public class EnemyBaseState : IState
 
     protected bool IsPlayerInSight()
     {
-        if (Time.time - lastCheckTime > 0.1f)
+        Ray[] ray = new Ray[9]
         {
-            lastCheckTime = Time.time;
-
-            Ray[] ray = new Ray[9]
-            {
                 new Ray(stateMachine.Enemy.EnemyRayPosition.transform.position, (stateMachine.Player.transform.position + new Vector3(0,1,0)) - stateMachine.Enemy.EnemyRayPosition.transform.position),
                 new Ray(stateMachine.Enemy.EnemyRayPosition.transform.position, (stateMachine.Player.transform.position + new Vector3(0.3f,1,0)) - stateMachine.Enemy.EnemyRayPosition.transform.position),
                 new Ray(stateMachine.Enemy.EnemyRayPosition.transform.position, (stateMachine.Player.transform.position + new Vector3(-0.3f,1,0)) - stateMachine.Enemy.EnemyRayPosition.transform.position),
@@ -111,20 +107,21 @@ public class EnemyBaseState : IState
                 new Ray(stateMachine.Enemy.EnemyRayPosition.transform.position, (stateMachine.Player.transform.position + new Vector3(0.3f,0.7f,0)) - stateMachine.Enemy.EnemyRayPosition.transform.position),
                 new Ray(stateMachine.Enemy.EnemyRayPosition.transform.position, (stateMachine.Player.transform.position + new Vector3(-0.3f,1.3f,0)) - stateMachine.Enemy.EnemyRayPosition.transform.position),
                 new Ray(stateMachine.Enemy.EnemyRayPosition.transform.position, (stateMachine.Player.transform.position + new Vector3(-0.3f,0.7f,0)) - stateMachine.Enemy.EnemyRayPosition.transform.position)
-            };
-            RaycastHit hit;
+        };
+        RaycastHit hit;
 
-            for(int i = 0; i<ray.Length; i++)
+        for (int i = 0; i < ray.Length; i++)
+        {
+            if (Physics.Raycast(ray[i], out hit, stateMachine.Enemy.Data.PlayerChasingRange))
             {
-                if (Physics.Raycast(ray[i], out hit, stateMachine.Enemy.Data.PlayerChasingRange))
+                if (hit.collider.gameObject == stateMachine.Player)
                 {
-                    if (hit.collider.gameObject == stateMachine.Player)
-                    {
-                        return true;
-                    }
+                    Debug.Log("true");
+                    return true;
                 }
             }
         }
+        Debug.Log("false");
         return false;
     }
 }
