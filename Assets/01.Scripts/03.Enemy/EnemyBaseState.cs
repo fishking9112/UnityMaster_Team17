@@ -12,23 +12,23 @@ public class EnemyBaseState : IState
         this.stateMachine = stateMachine;
     }
 
-    public void Enter()
+    public virtual void Enter()
     {
     }
 
-    public void Exit()
+    public virtual void Exit()
     {
     }
 
-    public void HandleInput()
+    public virtual void HandleInput()
     {
     }
 
-    public void PhysicsUpdate()
+    public virtual void PhysicsUpdate()
     {
     }
 
-    public void Update()
+    public virtual void Update()
     {
         Move();
     }
@@ -52,7 +52,7 @@ public class EnemyBaseState : IState
     }
     private Vector3 GetMovementDirection()
     {
-        Vector3 dir = (stateMachine.Target.transform.position - stateMachine.Enemy.transform.position).normalized;
+        Vector3 dir = (stateMachine.Player.transform.position - stateMachine.Enemy.transform.position).normalized;
         return dir;
     }
     private void Move(Vector3 direction)
@@ -76,10 +76,17 @@ public class EnemyBaseState : IState
     }
     protected float IsInChasingRange()
     {
-        Vector3 directionToPlayer = stateMachine.Target.transform.position - stateMachine.Enemy.transform.position;
-        float angle = Vector3.Angle(stateMachine.Enemy.transform.forward, directionToPlayer);
-
-        return angle / 2;
+        Vector3 directionToPlayer = stateMachine.Player.transform.position - stateMachine.Enemy.transform.position;
+        float playerDistanceSqr = directionToPlayer.sqrMagnitude;
+        if(playerDistanceSqr <= stateMachine.Enemy.Data.PlayerChasingRange)
+        {
+            float angle = Vector3.Angle(stateMachine.Enemy.transform.forward, directionToPlayer);
+            if(angle <= stateMachine.Enemy.Data.EnemySightAngle)
+            {
+                return playerDistanceSqr;
+            }
+        }
+        return -1;
     }
 
     protected bool IsPlayerInSight()
@@ -88,14 +95,28 @@ public class EnemyBaseState : IState
         {
             lastCheckTime = Time.time;
 
-            Ray ray = new Ray(stateMachine.Enemy.EnemyRayPosition.transform.position, stateMachine.Target.transform.position - stateMachine.Enemy.EnemyRayPosition.transform.position);
+            Ray[] ray = new Ray[]
+            {
+                new Ray(stateMachine.Enemy.EnemyRayPosition.transform.position, (stateMachine.Player.transform.position + new Vector3(0,1,0)) - stateMachine.Enemy.EnemyRayPosition.transform.position),
+                new Ray(stateMachine.Enemy.EnemyRayPosition.transform.position, (stateMachine.Player.transform.position + new Vector3(0.3f,1,0)) - stateMachine.Enemy.EnemyRayPosition.transform.position),
+                new Ray(stateMachine.Enemy.EnemyRayPosition.transform.position, (stateMachine.Player.transform.position + new Vector3(-0.3f,1,0)) - stateMachine.Enemy.EnemyRayPosition.transform.position),
+                new Ray(stateMachine.Enemy.EnemyRayPosition.transform.position, (stateMachine.Player.transform.position + new Vector3(0,1.3f,0)) - stateMachine.Enemy.EnemyRayPosition.transform.position),
+                new Ray(stateMachine.Enemy.EnemyRayPosition.transform.position, (stateMachine.Player.transform.position + new Vector3(0,0.7f,0)) - stateMachine.Enemy.EnemyRayPosition.transform.position),
+                new Ray(stateMachine.Enemy.EnemyRayPosition.transform.position, (stateMachine.Player.transform.position + new Vector3(0.3f,1.3f,0)) - stateMachine.Enemy.EnemyRayPosition.transform.position),
+                new Ray(stateMachine.Enemy.EnemyRayPosition.transform.position, (stateMachine.Player.transform.position + new Vector3(0.3f,0.7f,0)) - stateMachine.Enemy.EnemyRayPosition.transform.position),
+                new Ray(stateMachine.Enemy.EnemyRayPosition.transform.position, (stateMachine.Player.transform.position + new Vector3(-0.3f,1.3f,0)) - stateMachine.Enemy.EnemyRayPosition.transform.position),
+                new Ray(stateMachine.Enemy.EnemyRayPosition.transform.position, (stateMachine.Player.transform.position + new Vector3(-0.3f,0.7f,0)) - stateMachine.Enemy.EnemyRayPosition.transform.position)
+            };
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, stateMachine.Enemy.Data.PlayerChasingRange))
+            for(int i = 0; i<ray.Length; i++)
             {
-                if (hit.collider.gameObject == stateMachine.Target)
+                if (Physics.Raycast(ray[i], out hit, stateMachine.Enemy.Data.PlayerChasingRange))
                 {
-                    return true;
+                    if (hit.collider.gameObject.layer == LayerMask.GetMask("Player"))
+                    {
+                        return true;
+                    }
                 }
             }
         }

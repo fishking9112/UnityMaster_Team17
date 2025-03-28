@@ -15,3 +15,9 @@ MonoBehaviour:
   NormalSpeed: 1
   RunSpeed: 1.5
   RotationDamping: 1
+  EnemySightAngle: 60
+  PlayerChasingRange: 100
+  AttackRange: 50
+  RemainAttackRange: 80
+  Damage: 1
+  AttackRate: 1

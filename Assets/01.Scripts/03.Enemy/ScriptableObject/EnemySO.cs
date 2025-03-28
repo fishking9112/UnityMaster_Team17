@@ -9,10 +9,11 @@ public class EnemySO : ScriptableObject
     public float RunSpeed = 1.5f;
     public float RotationDamping = 1f;
 
+    public float EnemySightAngle = 60f;
 
-    public float PlayerChasingRange { get; private set; }
-    public float AttackRange { get; private set; }
-    public float RemainAttackRange { get; private set; }
-    public float Damage { get; private set; }
-    public float AttackRate { get; private set; }
+    public float PlayerChasingRange;
+    public float AttackRange;
+    public float RemainAttackRange;
+    public float Damage;
+    public float AttackRate;
 }
