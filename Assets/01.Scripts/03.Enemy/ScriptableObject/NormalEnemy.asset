@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69d041b2c1c35d84f89619d80987286e, type: 3}
   m_Name: NormalEnemy
   m_EditorClassIdentifier: 
-  NormalSpeed: 1
+  NormalSpeed: 3
   RunSpeed: 1.5
   RotationDamping: 1
   EnemySightAngle: 60

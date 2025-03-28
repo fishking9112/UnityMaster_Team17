@@ -16,6 +16,8 @@ public class Enemy : MonoBehaviour
     public ForceReceiver ForceReceiver { get; private set; }
 
     [field: SerializeField] public GameObject EnemyRayPosition { get; private set; }
+    [field: SerializeField] public GameObject EnemyShootPosition { get; private set; }
+    [field: SerializeField] public GameObject Bullet { get; private set; }
 
     private EnemyStateMachine stateMachine;
 
