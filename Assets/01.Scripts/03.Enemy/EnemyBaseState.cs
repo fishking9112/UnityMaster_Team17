@@ -48,7 +48,11 @@ public class EnemyBaseState : IState
 
         Move(movementDirection);
 
-        Rotate(movementDirection);
+        if(stateMachine.Enemy.animator.GetBool(stateMachine.Enemy.AnimationData.ShootParameterHash) ||
+            stateMachine.Enemy.animator.GetBool(stateMachine.Enemy.AnimationData.ChasingParameterHash))
+        {
+            Rotate(movementDirection);
+        }
     }
     private Vector3 GetMovementDirection()
     {
@@ -121,7 +125,6 @@ public class EnemyBaseState : IState
                 }
             }
         }
-        Debug.Log("false");
         return false;
     }
 }
