@@ -47,4 +47,12 @@ public class Enemy : MonoBehaviour
     {
         stateMachine.PhysicsUpdate();
     }
+
+    public void ShootRiffle()
+    {
+        GameObject bullet = Instantiate(Bullet);
+        bullet.transform.position = EnemyShootPosition.transform.position;
+        bullet.transform.eulerAngles = gameObject.transform.eulerAngles;
+        bullet.GetComponent<Bullet>().SettingDamage(Data.Damage);
+    }
 }

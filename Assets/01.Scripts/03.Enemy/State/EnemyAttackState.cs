@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyAttackState : EnemyBaseState
 {
+    private float lastattacktime;
+
     public EnemyAttackState(EnemyStateMachine stateMachine) : base(stateMachine)
     {
     }
@@ -14,6 +16,7 @@ public class EnemyAttackState : EnemyBaseState
         stateMachine.Enemy.agent.stoppingDistance = stateMachine.Enemy.Data.RemainAttackRange;
 
         base.Enter();
+        stateMachine.Enemy.animator.SetFloat(stateMachine.Enemy.AnimationData.SpeedParameterHash, stateMachine.Enemy.Data.AttackRate);
         StartAnimation(stateMachine.Enemy.AnimationData.ShootParameterHash);
     }
 
@@ -31,6 +34,12 @@ public class EnemyAttackState : EnemyBaseState
         Transform playerTransform = stateMachine.Enemy.transform;
         Quaternion targetRotation = Quaternion.LookRotation((stateMachine.Player.transform.position - stateMachine.Enemy.transform.position).normalized);
         playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, stateMachine.RotationDamping * 2 * Time.deltaTime);
+
+        if(Time.time - lastattacktime >= 1 / stateMachine.Enemy.Data.AttackRate)
+        {
+            lastattacktime = Time.time;
+            stateMachine.Enemy.ShootRiffle();
+        }
 
         if (!IsPlayerInSight() || IsInChasingDistance() > stateMachine.Enemy.Data.RemainAttackRange)
         {
