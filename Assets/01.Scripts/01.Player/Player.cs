@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public PlayerController Input { get; private set; }
     public CharacterController Controller { get; private set; }
     [field: SerializeField] public PlayerSO playerSO { get; private set; }
+    public ForceReceiver ForceReceiver { get; private set; }
 
     public PlayerLBStateMachine LBStateMachine;
     public PlayerUBStateMachine UBStateMachine;
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour
         Animator = GetComponentInChildren<Animator>();
         Input = GetComponent<PlayerController>();
         Controller = GetComponent<CharacterController>();
+        ForceReceiver = GetComponent<ForceReceiver>();
     }
 
     private void Start()
