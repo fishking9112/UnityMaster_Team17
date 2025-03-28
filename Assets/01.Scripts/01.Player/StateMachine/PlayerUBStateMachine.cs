@@ -1,9 +1,9 @@
 public class PlayerUBStateMachine : PlayerStateMachine
 {
-    protected IState currentState; // IState 클래스를 넣을 칸(카세트 오디오를 넣을 공간)
-
-    protected Player player;
     protected PlayerLBStateMachine LBStateMachine;
+
+    public PlayerUB_UnArmedState ub_UnArmedState;
+
     public PlayerUBStateMachine(Player player) : base(player)
     {
     }
@@ -12,5 +12,6 @@ public class PlayerUBStateMachine : PlayerStateMachine
     {
         this.LBStateMachine = LBStateMachine;
 
+        ub_UnArmedState = new PlayerUB_UnArmedState(LBStateMachine, this);
     }
 }

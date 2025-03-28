@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerLB_IdleState : PlayerLB_GroundedState
+public class PlayerUB_UnArmedState : PlayerUB_BaseState
 {
-    public PlayerLB_IdleState(PlayerLBStateMachine LBstateMachine, PlayerUBStateMachine UBStateMachine) : base(LBstateMachine, UBStateMachine)
+    public PlayerUB_UnArmedState(PlayerLBStateMachine LBstateMachine, PlayerUBStateMachine UBStateMachine) : base(LBstateMachine, UBStateMachine)
     {
     }
 
@@ -23,10 +23,6 @@ public class PlayerLB_IdleState : PlayerLB_GroundedState
 
     public override void Update()
     {
-        base.Update();
-        if(LBStateMachine.MovementInput != Vector2.zero)
-        {
-            LBStateMachine.ChangeState(LBStateMachine.lb_WalkState);
-        }
+
     }
 }

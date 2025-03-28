@@ -6,19 +6,20 @@ using UnityEngine;
 [Serializable]
 public class PlayerAnimationData
 {
-    [SerializeField] private string groundedParameterName = "@Grounded";
-    [SerializeField] private string idleParameterName = "Idle";
-    [SerializeField] private string walkParameterName = "Walk";
+    [Header("LowerBody")]
+    [SerializeField] private string lb_GroundedParameterName = "@Grounded";
+    [SerializeField] private string lb_IdleParameterName = "Idle";
+    [SerializeField] private string lb_WalkParameterName = "Walk";
 
-    public int GroundedParameterHash { get; private set; }
-    public int IdleParameterHash {  get; private set; }
-    public int WalkParameterHash {  get; private set; }
+    public int LB_GroundedParameterHash { get; private set; }
+    public int LB_IdleParameterHash {  get; private set; }
+    public int LB_WalkParameterHash {  get; private set; }
 
     public void Initialize() 
     {
-        GroundedParameterHash = Animator.StringToHash(groundedParameterName);
-        IdleParameterHash = Animator.StringToHash(idleParameterName);
-        WalkParameterHash = Animator.StringToHash(walkParameterName);
+        LB_GroundedParameterHash = Animator.StringToHash(lb_GroundedParameterName);
+        LB_IdleParameterHash = Animator.StringToHash(lb_IdleParameterName);
+        LB_WalkParameterHash = Animator.StringToHash(lb_WalkParameterName);
     }
 
 

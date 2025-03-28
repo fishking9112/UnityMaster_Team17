@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class PlayerLB_GroundedState : PlayerLB_BaseState
 {
-    public PlayerLB_GroundedState(PlayerLBStateMachine stateMachine, PlayerUBStateMachine UBStateMachine) : base(stateMachine, UBStateMachine)
+    public PlayerLB_GroundedState(PlayerLBStateMachine LBstateMachine, PlayerUBStateMachine UBStateMachine) : base(LBstateMachine, UBStateMachine)
     {
     }
-
-
 }

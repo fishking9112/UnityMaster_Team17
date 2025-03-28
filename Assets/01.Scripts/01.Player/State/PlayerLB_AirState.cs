@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class PlayerLB_AirState : PlayerLB_BaseState
 {
-    public PlayerLB_AirState(PlayerLBStateMachine stateMachine, PlayerUBStateMachine UBStateMachine) : base(stateMachine, UBStateMachine)
+    public PlayerLB_AirState(PlayerLBStateMachine LBstateMachine, PlayerUBStateMachine UBStateMachine) : base(LBstateMachine, UBStateMachine)
     {
     }
-
-
 }
