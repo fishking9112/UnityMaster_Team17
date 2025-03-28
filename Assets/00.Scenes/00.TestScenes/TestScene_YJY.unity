@@ -641,7 +641,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1963537420}
   - component: {fileID: 1963537421}
-  - component: {fileID: 1963537422}
+  - component: {fileID: 1963537424}
+  - component: {fileID: 1963537423}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -678,10 +679,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3e2a20ae5f706b4fb52ddc034e773d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NowState: 0
-  FindPlayerSight: 120
-  enemyFindPlayer: {fileID: 0}
---- !u!114 &1963537422
+  animator: {fileID: 0}
+  EnemyRayPosition: {fileID: 1696377597}
+--- !u!143 &1963537423
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963537419}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2.5
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1.25, z: 0}
+--- !u!114 &1963537424
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -690,16 +716,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1963537419}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a60c1ba9cbad5e45850d9aa87acd4d5, type: 3}
+  m_Script: {fileID: 11500000, guid: f73953a83bc6ec046ac6c41300042b05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RaycastPosition: {fileID: 1696377597}
-  checkRate: 0.1
-  maxCheckDistance: 100
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  Player: {fileID: 0}
+  controller: {fileID: 0}
+  drag: 0.3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

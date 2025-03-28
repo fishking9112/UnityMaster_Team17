@@ -12,7 +12,6 @@ public class EnemyFindPlayer : MonoBehaviour
     //임시용
     public GameObject Player;
 
-
     public bool IsPlayerInFieldOfView(float fieldOfView)
     {
         //Vector3 directionToPlayer = CharacterManager.Instance.Player.transform.position - transform.position;
