@@ -13,7 +13,7 @@ public class QuestManager : MonoSingleton<QuestManager>
 
         for(int i = 0; i < questArr.Length; i++)
         {
-            questDictionary[i] = questArr[i];
+            questDictionary[questArr[i].questId] = questArr[i];
         }
 
     }
