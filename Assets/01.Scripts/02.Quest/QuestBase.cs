@@ -1,5 +1,12 @@
 using UnityEngine;
 
+public enum QuestType
+{
+    PLAUER_MOVE,
+    USE_ITEM,
+    KILL_ENEMY,
+}
+
 public enum QuestState
 {
     BEFORE,
@@ -9,12 +16,15 @@ public enum QuestState
 
 public abstract class QuestBase : MonoBehaviour
 {
+
     [Header("공통 퀘스트 정보")]
     public int questId;
     public string questName;
     public string questDescription;
-    public QuestState questState = QuestState.BEFORE;
+    public QuestType questType;
 
+
+    public QuestState questState = QuestState.BEFORE;
     protected QuestManager questManager;
 
     protected virtual void Start()
