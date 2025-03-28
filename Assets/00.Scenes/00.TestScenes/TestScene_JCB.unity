@@ -439,7 +439,7 @@ GameObject:
   - component: {fileID: 1314547347}
   - component: {fileID: 1314547346}
   m_Layer: 0
-  m_Name: MoveQuest
+  m_Name: QuestMove
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -457,9 +457,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56aedaa72efd1b4e95d17017f88c409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  questId: 0
   questName: "\uC774\uB3D9 \uD29C\uD1A0\uB9AC\uC5BC"
   questDescription: "wasd\uB97C \uC774\uC6A9\uD574\uC11C \uC6C0\uC9C1\uC5EC\uC11C
     \uC55E\uC73C\uB85C \uD5A5\uD558\uC138\uC694."
+  questState: 0
   requiredDistance: 10
 --- !u!65 &1314547347
 BoxCollider:
@@ -491,11 +493,11 @@ Transform:
   m_GameObject: {fileID: 1314547345}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.222, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2141651836}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2113717476
 GameObject:
@@ -746,6 +748,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2141651836}
   - component: {fileID: 2141651835}
+  - component: {fileID: 2141651837}
   m_Layer: 0
   m_Name: QuestManager
   m_TagString: Untagged
@@ -765,8 +768,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03394336b84304540afcb3f2005b9e75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questList:
-  - {fileID: 1314547346}
+  isDontDestroyOnLoad: 0
+  questArr: []
 --- !u!4 &2141651836
 Transform:
   m_ObjectHideFlags: 0
@@ -776,12 +779,27 @@ Transform:
   m_GameObject: {fileID: 2141651834}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.3639615, y: 4.307828, z: 3.865005}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1314547348}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2141651837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141651834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03394336b84304540afcb3f2005b9e75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDontDestroyOnLoad: 0
+  questArr: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -789,7 +807,6 @@ SceneRoots:
   - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 832575519}
-  - {fileID: 1314547348}
   - {fileID: 2113717480}
   - {fileID: 2137362480}
   - {fileID: 2141651836}

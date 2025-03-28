@@ -45,9 +45,12 @@ public class QuestMove : QuestBase
     /// </summary>
     protected override void QuestGoal()
     {
-        if(_curMovedDistance >= requiredDistance)
+        if (questState == QuestState.ONGOING)
         {
-            questManager.QuestClear(questId);
+            if (_curMovedDistance >= requiredDistance)
+            {
+                questManager.QuestClear(questId);
+            }
         }
     }
 }
