@@ -55,7 +55,7 @@ public class Player_BaseState : IState
     public virtual void Update()
     {
         Move();
-        Debug.Log($"이름:{name},애니메이션:{animationSpeedModifier}");
+        //Debug.Log($"이름:{name},애니메이션:{animationSpeedModifier}");
     }
 
     protected void StartAnimation(int animationHash)
@@ -82,7 +82,7 @@ public class Player_BaseState : IState
         Rotate(movementDirection);
 
         LBStateMachine.player.Animator.SetFloat("MoveSpeed", LBStateMachine.MovementSpeedModifier * animationSpeedModifier); // 테스트용
-        Debug.Log($"Move하는 상태 이름:{name}");
+        //Debug.Log($"Move하는 상태 이름:{name}");
     }
 
     private Vector3 GetMovementDirection()
