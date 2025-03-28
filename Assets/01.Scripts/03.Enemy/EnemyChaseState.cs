@@ -10,6 +10,7 @@ public class EnemyChaseState : EnemyBaseState
     public override void Enter()
     {
         stateMachine.MovementSpeedModifier = 1f;
+        stateMachine.Enemy.agent.speed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
 
         base.Enter();
         StartAnimation(stateMachine.Enemy.AnimationData.ChasingParameterHash);
@@ -25,7 +26,9 @@ public class EnemyChaseState : EnemyBaseState
     {
         base.Update();
 
-        if(IsInChasingDistance() > stateMachine.Enemy.Data.PlayerChasingRange)
+        stateMachine.Enemy.agent.SetDestination(stateMachine.Player.transform.position);
+
+        if (IsInChasingDistance() > stateMachine.Enemy.Data.PlayerChasingRange)
         {
             stateMachine.ChangeState(stateMachine.IdleState);
         }
