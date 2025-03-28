@@ -30,7 +30,7 @@ public class EnemyBaseState : IState
 
     public virtual void Update()
     {
-        Move();
+
     }
     protected void StartAnimation(int animatorHash)
     {
@@ -42,42 +42,6 @@ public class EnemyBaseState : IState
         stateMachine.Enemy.animator.SetBool(animatorHash, false);
     }
 
-    private void Move()
-    {
-        Vector3 movementDirection = GetMovementDirection();
-
-        Move(movementDirection);
-
-        if(stateMachine.Enemy.animator.GetBool(stateMachine.Enemy.AnimationData.ShootParameterHash) ||
-            stateMachine.Enemy.animator.GetBool(stateMachine.Enemy.AnimationData.ChasingParameterHash))
-        {
-            Rotate(movementDirection);
-        }
-    }
-    private Vector3 GetMovementDirection()
-    {
-        Vector3 dir = (stateMachine.Player.transform.position - stateMachine.Enemy.transform.position).normalized;
-        return dir;
-    }
-    private void Move(Vector3 direction)
-    {
-        float movementSpeed = GetMovementSpeed();
-        stateMachine.Enemy.Controller.Move(((direction * movementSpeed) + stateMachine.Enemy.ForceReceiver.Movement) * Time.deltaTime);
-    }
-    private float GetMovementSpeed()
-    {
-        float moveSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
-        return moveSpeed;
-    }
-    private void Rotate(Vector3 direction)
-    {
-        if (direction != Vector3.zero)
-        {
-            Transform playerTransform = stateMachine.Enemy.transform;
-            Quaternion targetRotation = Quaternion.LookRotation(direction);
-            playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
-        }
-    }
     protected float IsInChasingRange()
     {
         Vector3 directionToPlayer = stateMachine.Player.transform.position - stateMachine.Enemy.transform.position;
@@ -120,7 +84,6 @@ public class EnemyBaseState : IState
             {
                 if (hit.collider.gameObject == stateMachine.Player)
                 {
-                    Debug.Log("true");
                     return true;
                 }
             }

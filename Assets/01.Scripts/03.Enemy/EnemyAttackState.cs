@@ -9,7 +9,9 @@ public class EnemyAttackState : EnemyBaseState
     }
     public override void Enter()
     {
-        stateMachine.MovementSpeedModifier = 0f;
+        stateMachine.MovementSpeedModifier = 1f;
+        stateMachine.Enemy.agent.speed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
+        stateMachine.Enemy.agent.stoppingDistance = stateMachine.Enemy.Data.RemainAttackRange;
 
         base.Enter();
         StartAnimation(stateMachine.Enemy.AnimationData.ShootParameterHash);
@@ -19,11 +21,16 @@ public class EnemyAttackState : EnemyBaseState
     {
         base.Exit();
         StopAnimation(stateMachine.Enemy.AnimationData.ShootParameterHash);
+        stateMachine.Enemy.agent.stoppingDistance = 0;
     }
 
     public override void Update()
     {
         base.Update();
+        
+        Transform playerTransform = stateMachine.Enemy.transform;
+        Quaternion targetRotation = Quaternion.LookRotation((stateMachine.Player.transform.position - stateMachine.Enemy.transform.position).normalized);
+        playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, stateMachine.RotationDamping * 2 * Time.deltaTime);
 
         if (!IsPlayerInSight() || IsInChasingDistance() > stateMachine.Enemy.Data.RemainAttackRange)
         {
