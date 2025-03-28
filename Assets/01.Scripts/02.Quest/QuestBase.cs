@@ -20,7 +20,6 @@ public abstract class QuestBase : MonoBehaviour
     protected virtual void Start()
     {
         questManager = QuestManager.Instance;
-        QuestInit();
     }
 
     protected virtual void Update()
@@ -52,6 +51,7 @@ public abstract class QuestBase : MonoBehaviour
             if (other.CompareTag("Player"))
             {
                 questManager.QuestStart(questId);
+                QuestInit();
             }
         }
     }
