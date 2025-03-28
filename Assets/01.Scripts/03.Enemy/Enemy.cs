@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public EnemySO Data { get; private set; }
+    [field : SerializeField] public EnemySO Data { get; private set; }
     public EnemyAnimationData AnimationData { get; private set; }
     public Animator animator;
     public CharacterController Controller { get; private set; }
