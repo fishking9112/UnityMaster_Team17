@@ -11,19 +11,21 @@ public class QuestMove : QuestBase
     private Vector3 _startPlayerPosition;
     private Transform _curPlayerTransform;
 
-    private void Start()
+    protected override void Update()
     {
-        _curPlayerTransform = GameObject.Find("Player").transform;
+        base.Update();
+
+        UpdatePlayerMovement();
     }
 
-    private void Update()
+    /// <summary>
+    /// 플레이어의 퀘스트 시작 위치와 현재 위치를 받아옴
+    /// </summary>
+    protected override void QuestInit()
     {
-        UpdatePlayerMovement();
-
-        if(questState == QuestState.ONGOING)
-        {
-            QuestGoal();
-        }
+        // player는 이후에 게임 매니저에서 받아오도록 수정 예정
+        _startPlayerPosition = GameObject.Find("Player").transform.position;
+        _curPlayerTransform = GameObject.Find("Player").transform;
     }
 
     /// <summary>
@@ -41,21 +43,11 @@ public class QuestMove : QuestBase
     /// <summary>
     /// 플레이어의 위치가 퀘스트를 시작했을 때 부터 일정거리 이상 멀어지면 퀘스트 클리어
     /// </summary>
-    public override void QuestGoal()
+    protected override void QuestGoal()
     {
         if(_curMovedDistance >= requiredDistance)
         {
-            QuestClear();
+            questManager.QuestClear(questId);
         }
-    }
-
-    /// <summary>
-    /// 퀘스트 시작 시 플레이어의 위치를 받아옴
-    /// </summary>
-    protected override void OnTriggerEnter(Collider other)
-    {
-        base.OnTriggerEnter(other);
-
-        _startPlayerPosition = other.transform.position;
     }
 }
