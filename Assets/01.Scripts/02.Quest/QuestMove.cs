@@ -24,6 +24,7 @@ public class QuestMove : QuestBase
     protected override void QuestInit()
     {
         // player는 이후에 게임 매니저에서 받아오도록 수정 예정
+        _curMovedDistance = 0f;
         _startPlayerPosition = GameObject.Find("Player").transform.position;
         _curPlayerTransform = GameObject.Find("Player").transform;
     }

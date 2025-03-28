@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TestScript : MonoBehaviour
@@ -16,6 +17,11 @@ public class TestScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S))
         {
             Die();
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            QuestManager.Instance.QuestReset();
         }
     }
 

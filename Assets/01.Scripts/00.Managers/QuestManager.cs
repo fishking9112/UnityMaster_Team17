@@ -49,6 +49,7 @@ public class QuestManager : MonoSingleton<QuestManager>
     /// </summary>
     public void QuestReset()
     {
+        Debug.Log("퀘스트 리셋");
         for(int i = 0; i < questDictionary.Count; i++)
         {
             questDictionary[i].questState = QuestState.BEFORE;

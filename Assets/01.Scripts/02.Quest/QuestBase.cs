@@ -50,8 +50,8 @@ public abstract class QuestBase : MonoBehaviour
         {
             if (other.CompareTag("Player"))
             {
-                questManager.QuestStart(questId);
                 QuestInit();
+                questManager.QuestStart(questId);
             }
         }
     }
