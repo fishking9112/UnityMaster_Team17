@@ -13,6 +13,7 @@ public class EnemyIdleState : EnemyBaseState
     public override void Enter()
     {
         stateMachine.MovementSpeedModifier = 0f;
+        stateMachine.Enemy.agent.speed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
 
         base.Enter();
     }
@@ -25,6 +26,8 @@ public class EnemyIdleState : EnemyBaseState
     public override void Update()
     {
         base.Update();
+
+        stateMachine.Enemy.agent.SetDestination(stateMachine.Enemy.transform.position);
 
         if (IsInChasingRange() == -1) return;
         else if (IsInChasingRange() <= stateMachine.Enemy.Data.AttackRange)
@@ -45,6 +48,7 @@ public class EnemyIdleState : EnemyBaseState
         {
             if(IsPlayerInSight())
             {
+                Debug.Log(PlayerSeenTime);
                 PlayerSeenTime += Time.deltaTime;
             }
             else
