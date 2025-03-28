@@ -13,7 +13,7 @@ public class QuestUseItem : QuestBase
     public TestScript test;
 
     /// <summary>
-    /// Player에 존재하는 아이템 사용 이벤트에 클리어 목표 구독
+    /// 퀘스트 요구사항 초기화 및 이벤트 구독
     /// </summary>
     protected override void QuestInit()
     {
