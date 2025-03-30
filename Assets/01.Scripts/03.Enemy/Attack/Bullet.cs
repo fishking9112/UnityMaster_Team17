@@ -1,25 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Bullet : MonoBehaviour
 {
     public float Damage;
     float Speed = 10;
 
-    public void SettingDamage(float damage)
-    {
-        Damage = damage;
-    }   
+    Vector3 targetToPlayer = new Vector3();
+    GameObject Player;
+
 
     private void Start()
     {
         Invoke("DestroyThisObject", 10f);
     }
 
+    public void SettingDamage(float damage, Transform ene)
+    {
+        Damage = damage;
+
+        targetToPlayer = Player.transform.position - ene.position + new Vector3(Random.Range(-3f,3f), Random.Range(-3f, 3f) + 1, 0);
+    }
+
     private void Update()
     {
-        transform.localPosition += gameObject.transform.rotation * Vector3.forward * Speed * Time.deltaTime;
+        transform.localPosition += targetToPlayer.normalized * Speed * Time.deltaTime;
     }
 
     void DestroyThisObject()

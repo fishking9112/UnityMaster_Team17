@@ -52,7 +52,6 @@ public class Enemy : MonoBehaviour
     {
         GameObject bullet = Instantiate(Bullet);
         bullet.transform.position = EnemyShootPosition.transform.position;
-        bullet.transform.eulerAngles = gameObject.transform.eulerAngles;
-        bullet.GetComponent<Bullet>().SettingDamage(Data.Damage);
+        bullet.GetComponent<Bullet>().SettingDamage(Data.Damage, gameObject.transform);
     }
 }
