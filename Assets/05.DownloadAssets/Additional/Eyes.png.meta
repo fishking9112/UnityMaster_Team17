@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 672a98003aa6876429180736cbcb2281
+guid: ee549160750d84c4087061f89ef80fad
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -121,106 +121,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Emotion_0
-      rect:
-        serializedVersion: 2
-        x: 368
-        y: 345
-        width: 110
-        height: 70
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 31118e9192cfc9c4c867c5d705c223ae
-      internalID: -1013961838
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Emotion_1
-      rect:
-        serializedVersion: 2
-        x: 28
-        y: 340
-        width: 110
-        height: 70
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 50aad33ceefdd3f4085f9d31bb20361e
-      internalID: 2097689148
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Emotion_2
-      rect:
-        serializedVersion: 2
-        x: 193
-        y: 18
-        width: 110
-        height: 70
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 52fec301ba131114fa9c9a910aabff49
-      internalID: -1677999063
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Emotion_3
-      rect:
-        serializedVersion: 2
-        x: 194
-        y: 102
-        width: 110
-        height: 70
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cdffd9cd451b7eb4081915ca79189a4c
-      internalID: 1834147887
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 893c8bd40a83c9f4c8a7b49502a0312b
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Emotion_0: -1013961838
-      Emotion_1: 2097689148
-      Emotion_2: -1677999063
-      Emotion_3: 1834147887
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

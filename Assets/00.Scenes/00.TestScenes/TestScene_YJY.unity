@@ -1321,6 +1321,8 @@ MonoBehaviour:
   <Bullet>k__BackingField: {fileID: 941617230123092236, guid: 4633de1b178fe554b96952af19c3d143,
     type: 3}
   Player: {fileID: 1891724843}
+  HP: 0
+  MaxHP: 0
 --- !u!143 &1963537423
 CharacterController:
   m_ObjectHideFlags: 0
