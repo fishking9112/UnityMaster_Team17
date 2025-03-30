@@ -23,6 +23,9 @@ public class Enemy : MonoBehaviour
 
     public GameObject Player;
 
+    public float HP;
+    public float MaxHP;
+
     private void Awake()
     {
         AnimationData.Initialize();
@@ -36,6 +39,9 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         stateMachine.ChangeState(stateMachine.IdleState);
+
+        HP = Data.Hp;
+        MaxHP = Data.Hp;
     }
     private void Update()
     {
@@ -53,5 +59,16 @@ public class Enemy : MonoBehaviour
         GameObject bullet = Instantiate(Bullet);
         bullet.transform.position = EnemyShootPosition.transform.position;
         bullet.GetComponent<Bullet>().SettingDamage(Data.Damage, gameObject.transform);
+    }
+
+    public void GetDamage(float amount)
+    {
+        HP -= amount;
+
+        if (HP < 0)
+        {
+            HP = 0;
+            stateMachine.ChangeState(stateMachine.DeadState);
+        }
     }
 }

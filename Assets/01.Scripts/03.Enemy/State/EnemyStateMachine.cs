@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 using UnityEngine;
 
 public class EnemyStateMachine : StateMachine
@@ -13,6 +14,7 @@ public class EnemyStateMachine : StateMachine
     public EnemyIdleState IdleState { get; }
     public EnemyChaseState ChaseState { get; }
     public EnemyAttackState AttackState { get; }
+    public EnemyDeadState DeadState { get; }
 
     public EnemyStateMachine(Enemy enemy, GameObject _player)
     {
@@ -22,6 +24,7 @@ public class EnemyStateMachine : StateMachine
         IdleState = new EnemyIdleState(this);
         ChaseState = new EnemyChaseState(this);
         AttackState = new EnemyAttackState(this);
+        DeadState = new EnemyDeadState(this);
 
         MovementSpeed = Enemy.Data.NormalSpeed;
         RotationDamping = Enemy.Data.RotationDamping;
