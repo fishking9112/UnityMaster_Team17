@@ -11,6 +11,8 @@ public class EnemyDeadState : EnemyBaseState
     public override void Enter()
     {
         base.Enter();
+
+        //사망시 애니메이션 정지
         stateMachine.Enemy.animator.enabled = false;
     }
 }

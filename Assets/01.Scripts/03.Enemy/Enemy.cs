@@ -40,6 +40,7 @@ public class Enemy : MonoBehaviour
     {
         stateMachine.ChangeState(stateMachine.IdleState);
 
+        //체력값 받아오기
         HP = Data.Hp;
         MaxHP = Data.Hp;
     }
@@ -56,6 +57,7 @@ public class Enemy : MonoBehaviour
 
     public void ShootRiffle()
     {
+        //총을 총구에서 쏘도록 제작
         GameObject bullet = Instantiate(Bullet);
         bullet.transform.position = EnemyShootPosition.transform.position;
         bullet.GetComponent<Bullet>().SettingDamage(Data.Damage, EnemyShootPosition.transform);
