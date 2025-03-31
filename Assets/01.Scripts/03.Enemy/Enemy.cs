@@ -39,6 +39,11 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        Init();
+    }
+
+    public void Init()
+    {
         stateMachine = new EnemyStateMachine(this, GameManager.Instance.player.gameObject);
 
         stateMachine.ChangeState(stateMachine.IdleState);
@@ -46,7 +51,8 @@ public class Enemy : MonoBehaviour
         //체력값 받아오기
         HP = Data.Hp;
         MaxHP = Data.Hp;
-        Debug.Log(HP);
+
+        OffColliders();
     }
     private void Update()
     {
@@ -85,21 +91,13 @@ public class Enemy : MonoBehaviour
     public void GetDamage(float amount)
     {
         HP -= amount;
-        Debug.Log(HP);
 
         if (HP <= 0)
         {
             //맞고 죽을 경우
             HP = 0;
             stateMachine.ChangeState(stateMachine.DeadState);
-
-            //사망 시 정지하는 것을 구현
-            foreach (Collider col in Partscollider)
-            {
-                col.isTrigger = false;
-            }
-            agent.enabled = false;
-            gameObject.AddComponent<Rigidbody>();
+            Invoke("DisSpawnEnemy", 1);
         }
         else
         {
@@ -107,5 +105,10 @@ public class Enemy : MonoBehaviour
             Invoke("OffColliders", 0.01f);
             stateMachine.ChangeState(stateMachine.ChaseState);
         }
+    }
+
+    void DisSpawnEnemy()
+    {
+        gameObject.SetActive(false);
     }
 }
