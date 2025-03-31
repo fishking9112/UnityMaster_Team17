@@ -34,8 +34,8 @@ public class UIManager : MonoSingleton<UIManager>
     }
 
 
-    public void AddQuest()
+    public void AddQuest(QuestInfo questinfo)
     {
-        uiQuest_Canvas.GetComponent<QuestController>().AddQuest();
+        uiQuest_Canvas.GetComponent<QuestController>().AddQuest(questinfo);
     }
 }
