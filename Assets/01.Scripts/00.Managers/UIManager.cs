@@ -6,7 +6,7 @@ using UnityEngine;
 /// UI 관리하는 스크립트
 /// </summary>
 
-public class UIManager : MonoBehaviour
+public class UIManager : MonoSingleton<UIManager>
 {
     [SerializeField]
     public Canvas uiState_Canvas;
@@ -20,6 +20,10 @@ public class UIManager : MonoBehaviour
     {
         GameManager gameManager = GameManager.Instance;
 
+        uiState_Canvas = GameObject.Find("Canvas_StateUI").GetComponent<Canvas>();
+        uiQuest_Canvas = GameObject.Find("Canvas_Quest").GetComponent<Canvas>();
+        uiMinimap_Canvas = GameObject.Find("Canvas_MiniMap").GetComponent<Canvas>();
+
         //UI 기본 Set
         uiState_Canvas.gameObject.SetActive(true);
         uiMinimap_Canvas.gameObject.SetActive(true);
@@ -29,8 +33,9 @@ public class UIManager : MonoBehaviour
         uiQuest_Canvas.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void AddQuest()
     {
+        uiQuest_Canvas.GetComponent<QuestController>().AddQuest();
     }
 }
