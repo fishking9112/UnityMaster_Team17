@@ -46,6 +46,7 @@ public class Enemy : MonoBehaviour
         //체력값 받아오기
         HP = Data.Hp;
         MaxHP = Data.Hp;
+        Debug.Log(HP);
     }
     private void Update()
     {
@@ -58,17 +59,7 @@ public class Enemy : MonoBehaviour
         stateMachine.PhysicsUpdate();
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        //처음 총알이 입력되는 시점은 총을 맞을 때, 총을 쏠 때
-        if (other.GetComponent<Bullet>())
-        {
-            OnColliders();
-            gameObject.GetComponent<Collider>().enabled = false;
-        }
-    }
-
-    void OnColliders()
+    public void OnColliders()
     {
         foreach(Collider col in Partscollider)
         {
@@ -87,6 +78,7 @@ public class Enemy : MonoBehaviour
     public void GetDamage(float amount)
     {
         HP -= amount;
+        Debug.Log(HP);
 
         if (HP <= 0)
         {

@@ -24,7 +24,7 @@ public class PartDamage : MonoBehaviour
         {
             //총 데미지를 계산하고 삭제
             GetComponentInParent<Enemy>().GetDamage(other.GetComponent<Bullet>().Damage * MultToDamage);
-            Destroy(other);
+            Destroy(other.gameObject);
         }
     }
 }
