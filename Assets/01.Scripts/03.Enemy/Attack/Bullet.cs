@@ -7,15 +7,10 @@ public class Bullet : MonoBehaviour
 {
     public float Damage;
     float Speed = 10;
+    Coroutine coroutine;
 
     Vector3 targetToPlayer = new Vector3();
     public GameObject Particle;
-
-    private void Start()
-    {
-        //일정 시간이 지나면 자동으로 삭제
-        Invoke("DestroyThisObject", 10f);
-    }
 
     public void SettingDamage(float damage, Transform ene)
     {
@@ -23,17 +18,26 @@ public class Bullet : MonoBehaviour
         Damage = damage;
 
         targetToPlayer = GameManager.Instance.player.transform.position - ene.position + new Vector3(Random.Range(-2f,2f), Random.Range(-2f, 2f) + 1, Random.Range(-2f, 2f));
+
+        coroutine = StartCoroutine(ShootToTarget());
+        Invoke("DestroyThisObject", 5f);
     }
 
-    private void Update()
+
+    IEnumerator ShootToTarget()
     {
-        //계산된 범위로 날아간다
-        transform.localPosition += targetToPlayer.normalized * Speed * Time.deltaTime;
+        while (true)
+        {
+            transform.localPosition += targetToPlayer.normalized * Speed * Time.deltaTime;
+            yield return null;
+        }
     }
 
-    void DestroyThisObject()
+    public void DestroyThisObject()
     {
-        Destroy(gameObject);
+        StopCoroutine(coroutine);
+
+        gameObject.SetActive(false);
     }
 
     private void OnCollisionEnter(Collision collision)

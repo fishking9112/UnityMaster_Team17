@@ -83,7 +83,7 @@ public class Enemy : MonoBehaviour
     public void ShootRiffle()
     {
         //총을 총구에서 쏘도록 제작
-        GameObject bullet = Instantiate(Bullet);
+        GameObject bullet = BulletManager.Instance.SpawnBullet();
         bullet.transform.position = EnemyShootPosition.transform.position;
         bullet.GetComponent<Bullet>().SettingDamage(Data.Damage, EnemyShootPosition.transform);
     }
