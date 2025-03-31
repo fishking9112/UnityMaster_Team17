@@ -14,27 +14,6 @@ public class QuestManager : MonoSingleton<QuestManager>
     }
 
     /// <summary>
-    /// 타입에 따라 다른 컴포넌트를 추가함
-    /// </summary>
-    /// <param name="questObject"></param>
-    /// <param name="info"></param>
-    private void TypeAddComponent(GameObject questObject, QuestInfo info)
-    {
-        switch (info.type)
-        {
-            case QuestType.PLAYER_MOVE:
-                questObject.AddComponent<QuestMove>();
-                break;
-            case QuestType.USE_ITEM:
-                questObject.AddComponent<QuestUseItem>();
-                break;
-            case QuestType.KILL_ENEMY:
-                questObject.AddComponent<QuestKillEnemy>();
-                break;
-        }
-    }
-
-    /// <summary>
     /// 게임이 실행되면 QuestData를 토대로 맵에 퀘스트 생성
     /// </summary>
     private void InitSpawnQuest()
@@ -56,6 +35,27 @@ public class QuestManager : MonoSingleton<QuestManager>
             questObject.transform.localScale = info.scale;
             questObject.AddComponent<BoxCollider>();
             questObject.GetComponent<BoxCollider>().isTrigger = true;
+        }
+    }
+
+    /// <summary>
+    /// 타입에 따라 다른 컴포넌트를 추가함
+    /// </summary>
+    /// <param name="questObject"></param>
+    /// <param name="info"></param>
+    private void TypeAddComponent(GameObject questObject, QuestInfo info)
+    {
+        switch (info.type)
+        {
+            case QuestType.PLAYER_MOVE:
+                questObject.AddComponent<QuestMove>();
+                break;
+            case QuestType.USE_ITEM:
+                questObject.AddComponent<QuestUseItem>();
+                break;
+            case QuestType.KILL_ENEMY:
+                questObject.AddComponent<QuestKillEnemy>();
+                break;
         }
     }
 

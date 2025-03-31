@@ -36,6 +36,10 @@ public class QuestData : SheetDataReaderBase
 
     QuestInfo questInfo;
 
+    /// <summary>
+    /// 행의 키워드를 토대로 열의 값들을 가져와서 가공하는 함수
+    /// </summary>
+    /// <param name="list"> 구글 시트의 열 </param>
     public void UpdateStats(List<GSTU_Cell> list)
     {
         questInfo = new QuestInfo();
@@ -102,6 +106,9 @@ public class QuestData : SheetDataReaderBase
             data = (QuestData)target;
         }
 
+        /// <summary>
+        /// 커스텀 에디터 버튼. 누르면 데이터를 읽어옴
+        /// </summary>
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
@@ -115,11 +122,20 @@ public class QuestData : SheetDataReaderBase
             }
         }
 
+        /// <summary>
+        /// 구글 시트의 데이터를 읽어옴
+        /// </summary>
+        /// <param name="callback"> 데이터를 읽어오는 함수 </param>
+        /// <param name="mergedcells"> 병합된 셀을 고려할 것인지 </param>
         private void ReadSheet(UnityAction<GstuSpreadSheet> callback, bool mergedcells = false)
         {
             SpreadsheetManager.Read(new GSTU_Search(data.sheetURL, data.sheetName), callback, mergedcells);
         }
 
+        /// <summary>
+        /// 지정한 시작열부터 끝열까지의 데이터를 전부 가져옴
+        /// </summary>
+        /// <param name="sheet"> 구글 시트의 데이터 </param>
         private void UpdateData(GstuSpreadSheet sheet)
         {
             for (int i = data.startRowIndex; i <= data.endRowIndex; ++i)
