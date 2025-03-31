@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class Bullet : MonoBehaviour
 {
     public float Damage;
-    float Speed = 10;
+    float Speed = 20;
     Coroutine coroutine;
 
     Vector3 targetToPlayer = new Vector3();

@@ -19,7 +19,6 @@ public class Enemy : MonoBehaviour
     [field: Header("Seight")]
     [field: SerializeField] public GameObject EnemyRayPosition { get; private set; }
     [field: SerializeField] public GameObject EnemyShootPosition { get; private set; }
-    [field: SerializeField] public GameObject Bullet { get; private set; }
 
     [field: Header("GetDamage")]
     public List<Collider> Partscollider; //모든 부위의 collider들
