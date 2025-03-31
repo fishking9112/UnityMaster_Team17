@@ -1,3 +1,4 @@
+using Google.GData.Extensions;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,14 +16,18 @@ public class Enemy : MonoBehaviour
     public NavMeshAgent agent { get; private set; }
     public ForceReceiver ForceReceiver { get; private set; }
 
+    [field: Header("Seight")]
     [field: SerializeField] public GameObject EnemyRayPosition { get; private set; }
     [field: SerializeField] public GameObject EnemyShootPosition { get; private set; }
     [field: SerializeField] public GameObject Bullet { get; private set; }
 
+    [field: Header("GetDamage")]
+    public List<Collider> Partscollider; //모든 부위의 collider들
+
     private EnemyStateMachine stateMachine;
 
-    public float HP;
-    public float MaxHP;
+    private float HP;
+    private float MaxHP;
 
     private void Awake()
     {
@@ -53,6 +58,24 @@ public class Enemy : MonoBehaviour
         stateMachine.PhysicsUpdate();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        //처음 총알이 입력되는 시점은 총을 맞을 때, 총을 쏠 때
+        if (other.GetComponent<Bullet>())
+        {
+            OnColliders();
+            gameObject.GetComponent<Collider>().enabled = false;
+        }
+    }
+
+    void OnColliders()
+    {
+        foreach(Collider col in Partscollider)
+        {
+            col.enabled = true;
+        }
+    }
+
     public void ShootRiffle()
     {
         //총을 총구에서 쏘도록 제작
@@ -65,11 +88,20 @@ public class Enemy : MonoBehaviour
     {
         HP -= amount;
 
-        if (HP < 0)
+        if (HP <= 0)
         {
             //맞고 죽을 경우
             HP = 0;
             stateMachine.ChangeState(stateMachine.DeadState);
+
+            //사망 시 정지하는 것을 구현
+            OnColliders();
+            foreach (Collider col in Partscollider)
+            {
+                col.isTrigger = false;
+            }
+            agent.enabled = false;
+            gameObject.AddComponent<Rigidbody>();
         }
         else
         {
