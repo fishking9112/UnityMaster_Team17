@@ -36,7 +36,6 @@ public class Door : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player is in the trigger");
             anim.Play("open");
         }
     }
