@@ -15,7 +15,8 @@ public class Player : MonoBehaviour
     public CharacterController Controller { get; private set; }
     [field: SerializeField] public PlayerSO playerSO { get; private set; }
     public ForceReceiver ForceReceiver { get; private set; }
-    public PlayerBoundHandler boundHandler { get; private set; }
+    public Rigidbody Rigidbody { get; private set; }
+    public PlayerBoundHandler BoundHandler { get; private set; }
 
     public Coroutine controllerSizingCoroutine { get; private set; }
 
@@ -35,7 +36,8 @@ public class Player : MonoBehaviour
         Input = GetComponent<PlayerController>();
         Controller = GetComponent<CharacterController>();
         ForceReceiver = GetComponent<ForceReceiver>();
-        boundHandler = GetComponent<PlayerBoundHandler>();
+        Rigidbody = GetComponent<Rigidbody>();
+        BoundHandler = GetComponent<PlayerBoundHandler>();
     }
 
     private void Start()
@@ -91,8 +93,8 @@ public class Player : MonoBehaviour
         while (elapsedTime < time)
         {
             //float t = elapsedTime / time; // 선형 보간
-            //float t = 1f - Mathf.Pow(1f - (elapsedTime / time), 2); // ease_out // 처음엔 완만하게 나중에 빠르게
-            //float t = Mathf.Pow(elapsedTime / time, 2); //ease-in // 처음에 빠르게 나중엔 느리게
+            //float t = 1f - Mathf.Pow(1f - (elapsedTime / time), 2); // ease_out // 처음엔 빠르게 나중에 느리게
+            //float t = Mathf.Pow(elapsedTime / time, 2); //ease-in // 처음에 느리게 나중엔 빠르게
 
             float t = (elapsedTime / time);
             t = t * t * (3f - 2f * t);

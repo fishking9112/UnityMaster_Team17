@@ -17,6 +17,8 @@ public class PlayerLBStateMachine : PlayerStateMachine
     public PlayerLB_LandingState lb_LandingState;
     public PlayerLB_AscendState lb_AscendState;
 
+    public PlayerLB_DashState lb_DashState;
+
     public float MovementSpeed { get; private set; }
     public float MovementSpeedModifier { get; set; } = 1f;
 
@@ -38,6 +40,8 @@ public class PlayerLBStateMachine : PlayerStateMachine
         lb_FallState = new PlayerLB_FallState(this, UBStateMachine);
         lb_LandingState = new PlayerLB_LandingState(this, UBStateMachine);
         lb_AscendState = new PlayerLB_AscendState(this, UBStateMachine);
+
+        lb_DashState = new PlayerLB_DashState(this, UBStateMachine);
 
         MovementSpeed = player.playerSO.GroundData.BaseSpeed;
     }

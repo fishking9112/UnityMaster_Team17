@@ -18,6 +18,8 @@ public class PlayerAnimationData
     [SerializeField] private string lb_LandingParameterName = "Landing";
     [SerializeField] private string lb_AscendParameterName = "Ascend";
 
+    [SerializeField] private string lb_DashParameterName = "Dash";
+
     public int LB_GroundedParameterHash { get; private set; }
     public int LB_IdleParameterHash {  get; private set; }
     public int LB_WalkParameterHash {  get; private set; }
@@ -28,6 +30,8 @@ public class PlayerAnimationData
     public int LB_FallParameterHash {  get; private set; }
     public int LB_LandingParameterHash {  get; private set; }
     public int LB_AscendParameterHash {  get; private set; }
+
+    public int LB_DashParameterHash {  get; private set; }
 
     public void Initialize() 
     {
@@ -41,5 +45,7 @@ public class PlayerAnimationData
         LB_FallParameterHash = Animator.StringToHash(lb_FallParameterName);
         LB_LandingParameterHash = Animator.StringToHash(lb_LandingParameterName);
         LB_AscendParameterHash = Animator.StringToHash(lb_AscendParameterName);
+
+        LB_DashParameterHash = Animator.StringToHash(lb_DashParameterName);
     }
 }

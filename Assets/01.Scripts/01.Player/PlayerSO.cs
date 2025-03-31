@@ -26,4 +26,6 @@ public class PlayerSO : ScriptableObject
 {
     [field: SerializeField] public PlayerGroundData GroundData { get; private set; }
     [field: SerializeField] public PlayerAirData AirData { get; private set; }
+    [field: Header("DashData")]
+    [field: SerializeField, Range(10f, 50f)] public float DashSpeed { get; private set; } = 30;
 }
