@@ -9,12 +9,9 @@ public enum QuestState
 
 public abstract class QuestBase : MonoBehaviour
 {
-    [Header("공통 퀘스트 정보")]
-    public int questId;
-    public string questName;
-    public string questDescription;
-    public QuestState questState = QuestState.BEFORE;
+    public QuestInfo questInfo;
 
+    public QuestState questState = QuestState.BEFORE;
     protected QuestManager questManager;
 
     protected virtual void Start()
@@ -50,8 +47,8 @@ public abstract class QuestBase : MonoBehaviour
         {
             if (other.CompareTag("Player"))
             {
-                questManager.QuestStart(questId);
                 QuestInit();
+                questManager.QuestStart(questInfo.id);
             }
         }
     }
