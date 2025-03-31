@@ -58,7 +58,7 @@ public class Enemy : MonoBehaviour
     {
         GameObject bullet = Instantiate(Bullet);
         bullet.transform.position = EnemyShootPosition.transform.position;
-        bullet.GetComponent<Bullet>().SettingDamage(Data.Damage, gameObject.transform);
+        bullet.GetComponent<Bullet>().SettingDamage(Data.Damage, EnemyShootPosition.transform);
     }
 
     public void GetDamage(float amount)

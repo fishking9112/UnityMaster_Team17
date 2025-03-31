@@ -9,8 +9,9 @@ public class Bullet : MonoBehaviour
     float Speed = 10;
 
     Vector3 targetToPlayer = new Vector3();
-    GameObject Player;
+    public GameObject Particle;
 
+    GameObject Player;
 
     private void Start()
     {
@@ -21,7 +22,7 @@ public class Bullet : MonoBehaviour
     {
         Damage = damage;
 
-        targetToPlayer = Player.transform.position - ene.position + new Vector3(Random.Range(-3f,3f), Random.Range(-3f, 3f) + 1, 0);
+        targetToPlayer = Player.transform.position - ene.position + new Vector3(Random.Range(-3f,3f), Random.Range(-3f, 3f) + 1, Random.Range(-3f, 3f));
     }
 
     private void Update()
@@ -39,6 +40,11 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.GetComponent<Player>())
         {
             //데미지를 준다
+        }
+        else
+        {
+            GameObject par = Instantiate(Particle);
+            par.transform.position = transform.position;
         }
         DestroyThisObject();
     }
