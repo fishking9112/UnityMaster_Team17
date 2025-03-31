@@ -34,6 +34,10 @@ public class PlayerLB_DashState : PlayerLB_BaseState
 
     protected void StartDash()
     {
+        if (DashCoroutine != null)
+        {
+            LBStateMachine.player.StopCoroutine(DashCoroutine);
+        }
         DashCoroutine = LBStateMachine.player.StartCoroutine(Dash()); // 코루틴 실행을 위해 아무 모노비해비어 가져옴.
     }
 
@@ -44,7 +48,7 @@ public class PlayerLB_DashState : PlayerLB_BaseState
 
         while (elapsedTime < accelerationDuration)
         {
-            float t = 1f - Mathf.Pow(1f -(elapsedTime / accelerationDuration), 3);
+            float t = 1f - Mathf.Pow(1f - (elapsedTime / accelerationDuration), 3);
             bonusSpeed = Mathf.Lerp(0, peakDashSpeed, t);
 
             elapsedTime += Time.deltaTime;

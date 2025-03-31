@@ -3,6 +3,7 @@ using System.Collections;
 using System.Linq.Expressions;
 using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.PlayerLoop;
 
 public class Player : MonoBehaviour
@@ -45,7 +46,6 @@ public class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         LBStateMachine.ChangeState(LBStateMachine.lb_IdleState);
         UBStateMachine.ChangeState(UBStateMachine.ub_UnArmedState);
-
     }
 
     private void Update()
@@ -61,12 +61,6 @@ public class Player : MonoBehaviour
         LBStateMachine.PhysicsUpdate();
         UBStateMachine.PhysicsUpdate();
     }
-
-    //public void SetControllerBox(Bounds bounds)
-    //{
-    //    Controller.center = new Vector3(0, bounds.center.y, 0);
-    //    Controller.targetHeight = bounds.extents.y;
-    //}
 
     public void StartControllerSizing(float time = 0, float centerY = 1, float height = 2)
     {
