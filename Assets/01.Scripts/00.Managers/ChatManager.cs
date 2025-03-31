@@ -7,7 +7,7 @@ public class ChatManager : MonoSingleton<ChatManager>
     public ChatData chatData;
     private string[] _chat;
 
-    public TextMeshProUGUI _chatText;
+    private TextMeshProUGUI _chatText;
 
     public float typingSpeed;
     public float clearSpeed;
