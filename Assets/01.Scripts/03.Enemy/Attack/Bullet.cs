@@ -43,7 +43,7 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         //무언가에 맞았을 때
-        if(collision.gameObject.GetComponentInParent<Player>() || collision.gameObject.GetComponentInParent<Enemy>() || collision.gameObject.GetComponent<Enemy>())
+        if(!(collision.gameObject.GetComponentInParent<Player>() || collision.gameObject.GetComponentInParent<Enemy>() || collision.gameObject.GetComponent<Enemy>()))
         {
             //적,플레이어가 아닌 이상 튀기는 파티클과 함께 삭제
             GameObject par = Instantiate(Particle);
