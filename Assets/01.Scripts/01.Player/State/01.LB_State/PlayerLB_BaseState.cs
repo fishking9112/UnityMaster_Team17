@@ -13,7 +13,7 @@ public class PlayerLB_BaseState : Player_BaseState
     public override void Update()
     {
         base.Update();
-        LBStateMachine.player.Animator.SetFloat("MoveSpeed", LBStateMachine.MovementSpeedModifier * animationSpeedModifier); // 테스트용
+        //LBStateMachine.player.Animator.SetFloat("MoveSpeed", LBStateMachine.MovementSpeedModifier * animationSpeedModifier); // 테스트용
     }
 
     protected override void AddInputActionCallbacks()

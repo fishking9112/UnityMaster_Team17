@@ -34,7 +34,7 @@ public class PlayerLB_LandingState : PlayerLB_AirState
         { 
             LBStateMachine.ChangeState(LBStateMachine.lb_IdleState);
         }
-        if (next.IsTag("Landing") && next.normalizedTime >= 0.9) // 랜딩 애니메이션이 전부 재생되면 idle로 전환
+        else if (next.IsTag("Landing") && next.normalizedTime >= 0.9) // 랜딩 애니메이션이 전부 재생되면 idle로 전환
         {
             LBStateMachine.ChangeState(LBStateMachine.lb_IdleState);
         }

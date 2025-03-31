@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     public PlayerBoundHandler BoundHandler { get; private set; }
 
     public Coroutine controllerSizingCoroutine { get; private set; }
-    [field: SerializeField] public CinemachineVirtualCamera VirtualCamera { get; private set; } 
+    [field: SerializeField] public CinemachineVirtualCamera AimVCam { get; private set; } 
 
     public PlayerLBStateMachine LBStateMachine;
     public PlayerUBStateMachine UBStateMachine;

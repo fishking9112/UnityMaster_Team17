@@ -13,34 +13,44 @@ public class PlayerUB_AimState : PlayerUB_AttackState
     {
         base.Enter();
 
-        UBStateMachine.player.VirtualCamera.Priority = 20;
-        StartAnimation(LBStateMachine.player.AnimationData.LB_WalkParameterHash); // 수정해야함
+        UBStateMachine.player.AimVCam.Priority = 20;
+        StartAnimation(LBStateMachine.player.AnimationData.UB_AimParameterHash); // 수정해야함
     }
 
     public override void Exit()
     {
         base.Exit();
 
-        UBStateMachine.player.VirtualCamera.Priority = 0;
-        StopAnimation(LBStateMachine.player.AnimationData.LB_WalkParameterHash);
+        UBStateMachine.player.AimVCam.Priority = 0;
+        StopAnimation(LBStateMachine.player.AnimationData.UB_AimParameterHash);
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        if (!UBStateMachine.player.Input.playerActions.Aim.IsPressed())
+        {
+            UBStateMachine.ChangeState(UBStateMachine.ub_ArmedState);
+        }
     }
 
     protected override void AddInputActionCallbacks()
     {
         base.AddInputActionCallbacks();
 
-        UBStateMachine.player.Input.playerActions.Aim.canceled += OnAimCanceled;
+        UBStateMachine.player.Input.playerActions.Shoot.started += OnShoot;
+
     }
 
     protected override void RemoveInputActionCallbacks()
     {
         base.RemoveInputActionCallbacks();
 
-        UBStateMachine.player.Input.playerActions.Aim.canceled += OnAimCanceled;
+        UBStateMachine.player.Input.playerActions.Shoot.started -= OnShoot;
     }
 
-    private void OnAimCanceled(InputAction.CallbackContext context)
+    private void OnShoot(InputAction.CallbackContext context)
     {
-
+        UBStateMachine.ChangeState(UBStateMachine.ub_ShootState);
     }
 }

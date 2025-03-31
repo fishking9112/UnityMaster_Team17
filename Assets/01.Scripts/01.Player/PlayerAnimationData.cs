@@ -21,20 +21,37 @@ public class PlayerAnimationData
     [SerializeField] private string lb_DashParameterName = "Dash";
 
     public int LB_GroundedParameterHash { get; private set; }
-    public int LB_IdleParameterHash {  get; private set; }
-    public int LB_WalkParameterHash {  get; private set; }
-    public int LB_RunParameterHash {  get; private set; }
+    public int LB_IdleParameterHash { get; private set; }
+    public int LB_WalkParameterHash { get; private set; }
+    public int LB_RunParameterHash { get; private set; }
 
-    public int LB_AirParameterHash {  get; private set; }
-    public int LB_JumpParameterHash {  get; private set; }
-    public int LB_FallParameterHash {  get; private set; }
-    public int LB_LandingParameterHash {  get; private set; }
-    public int LB_AscendParameterHash {  get; private set; }
+    public int LB_AirParameterHash { get; private set; }
+    public int LB_JumpParameterHash { get; private set; }
+    public int LB_FallParameterHash { get; private set; }
+    public int LB_LandingParameterHash { get; private set; }
+    public int LB_AscendParameterHash { get; private set; }
 
-    public int LB_DashParameterHash {  get; private set; }
+    public int LB_DashParameterHash { get; private set; }
 
-    public void Initialize() 
+    [Header("UpperBody")]
+    [SerializeField] private string ub_ArmedParameterName = "@Armed";
+    [SerializeField] private string ub_UnArmedParameterName = "@UnArmed";
+    [SerializeField] private string ub_AttackParameterName = "@Attack";
+    [SerializeField] private string ub_AimParameterName = "Aim";
+    [SerializeField] private string ub_ShootParameterName = "Shoot";
+    [SerializeField] private string ub_ReloadParameterName = "Reload";
+
+
+    public int UB_ArmedParameterHash { get; private set; }
+    public int UB_UnArmedParameterHash { get; private set; }
+    public int UB_AttackParameterHash { get; private set; }
+    public int UB_AimParameterHash { get; private set; }
+    public int UB_ShootParameterHash { get; private set; }
+    public int UB_ReloadParameterHash { get; private set; }
+
+    public void Initialize()
     {
+        //LB
         LB_GroundedParameterHash = Animator.StringToHash(lb_GroundedParameterName);
         LB_IdleParameterHash = Animator.StringToHash(lb_IdleParameterName);
         LB_WalkParameterHash = Animator.StringToHash(lb_WalkParameterName);
@@ -47,5 +64,13 @@ public class PlayerAnimationData
         LB_AscendParameterHash = Animator.StringToHash(lb_AscendParameterName);
 
         LB_DashParameterHash = Animator.StringToHash(lb_DashParameterName);
+
+        //UB
+        UB_ArmedParameterHash = Animator.StringToHash(ub_ArmedParameterName);
+        UB_UnArmedParameterHash = Animator.StringToHash(ub_UnArmedParameterName);
+        UB_AttackParameterHash = Animator.StringToHash(ub_AttackParameterName);
+        UB_AimParameterHash = Animator.StringToHash(ub_AimParameterName);
+        UB_ShootParameterHash = Animator.StringToHash(ub_ShootParameterName);
+        UB_ReloadParameterHash = Animator.StringToHash(ub_ReloadParameterName);
     }
 }

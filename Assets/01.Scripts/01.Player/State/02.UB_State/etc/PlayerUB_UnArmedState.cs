@@ -12,18 +12,13 @@ public class PlayerUB_UnArmedState : PlayerUB_BaseState
     public override void Enter()
     {
         base.Enter();
-        StartAnimation(LBStateMachine.player.AnimationData.LB_IdleParameterHash); // 수정해야함.
+        StartAnimation(LBStateMachine.player.AnimationData.UB_UnArmedParameterHash); // 수정해야함.
     }
 
     public override void Exit()
     {
         base.Exit();
-        StopAnimation(LBStateMachine.player.AnimationData.LB_IdleParameterHash);
-    }
-
-    public override void Update()
-    {
-
+        StopAnimation(LBStateMachine.player.AnimationData.UB_UnArmedParameterHash);
     }
 
     protected override void AddInputActionCallbacks()
@@ -31,6 +26,7 @@ public class PlayerUB_UnArmedState : PlayerUB_BaseState
         base.AddInputActionCallbacks();
 
         UBStateMachine.player.Input.playerActions.Aim.started += OnAimStarted;
+        UBStateMachine.player.Input.playerActions.Arm.started += OnArmedStarted;
     }
 
     protected override void RemoveInputActionCallbacks()
@@ -38,10 +34,16 @@ public class PlayerUB_UnArmedState : PlayerUB_BaseState
         base.RemoveInputActionCallbacks();
 
         UBStateMachine.player.Input.playerActions.Aim.started -= OnAimStarted;
+        UBStateMachine.player.Input.playerActions.Arm.started -= OnArmedStarted;
     }
 
     private void OnAimStarted(InputAction.CallbackContext context)
     {
         UBStateMachine.ChangeState(UBStateMachine.ub_AimState);
+    }
+
+    private void OnArmedStarted(InputAction.CallbackContext context)
+    {
+        UBStateMachine.ChangeState(UBStateMachine.ub_ArmedState);
     }
 }
