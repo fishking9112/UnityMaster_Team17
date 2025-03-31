@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class TestScript : MonoBehaviour
@@ -11,17 +10,15 @@ public class TestScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            UseItem();
+            ChatManager.Instance.UpdateChatText(0);
         }
-
         if (Input.GetKeyDown(KeyCode.X))
         {
-            Die();
+            ChatManager.Instance.UpdateChatText(1);
         }
-
         if (Input.GetKeyDown(KeyCode.C))
         {
-            QuestManager.Instance.QuestReset();
+            ChatManager.Instance.UpdateChatText(2);
         }
     }
 
@@ -32,7 +29,7 @@ public class TestScript : MonoBehaviour
         OnItemUsed?.Invoke();
     }
 
-    public void Die()
+    public void EnemyDie()
     {
         Debug.Log("몬스터 사망");
 

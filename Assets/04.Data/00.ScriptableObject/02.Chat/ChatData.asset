@@ -18,8 +18,8 @@ MonoBehaviour:
   endRowIndex: 4
   chatInfoList:
   - id: 0
-    content: "\uAC00\uB098\uB2E4\uB77C"
+    content: "\uAC00\uB098\uB2E4\uB77C\uB9C8\uBC14\uC0AC\uC544\uC790\uCC28\uCE74\uD0C0\uD30C\uD5581@ABCDEFGHIJKLMNOPQRSTUVWXYZ2@abcdefghijklmnopqrstuvwxyz3@"
   - id: 1
-    content: ABCD
+    content: ABCDEFGHIJKLMNOPQRSTUVWXYZ
   - id: 2
-    content: abcd
+    content: abcdefghijklmnopqrstuvwxyz
