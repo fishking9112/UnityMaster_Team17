@@ -21,7 +21,8 @@ public class Enemy : MonoBehaviour
 
     private EnemyStateMachine stateMachine;
 
-    public GameObject Player;
+    public float HP;
+    public float MaxHP;
 
     private void Awake()
     {
@@ -29,13 +30,17 @@ public class Enemy : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         agent = GetComponent<NavMeshAgent>();
         ForceReceiver = GetComponent<ForceReceiver>();
-
-        stateMachine = new EnemyStateMachine(this, Player);
     }
 
     private void Start()
     {
+        stateMachine = new EnemyStateMachine(this, GameManager.Instance.player.gameObject);
+
         stateMachine.ChangeState(stateMachine.IdleState);
+
+        //체력값 받아오기
+        HP = Data.Hp;
+        MaxHP = Data.Hp;
     }
     private void Update()
     {
@@ -50,9 +55,26 @@ public class Enemy : MonoBehaviour
 
     public void ShootRiffle()
     {
+        //총을 총구에서 쏘도록 제작
         GameObject bullet = Instantiate(Bullet);
         bullet.transform.position = EnemyShootPosition.transform.position;
-        bullet.transform.eulerAngles = gameObject.transform.eulerAngles;
-        bullet.GetComponent<Bullet>().SettingDamage(Data.Damage);
+        bullet.GetComponent<Bullet>().SettingDamage(Data.Damage, EnemyShootPosition.transform);
+    }
+
+    public void GetDamage(float amount)
+    {
+        HP -= amount;
+
+        if (HP < 0)
+        {
+            //맞고 죽을 경우
+            HP = 0;
+            stateMachine.ChangeState(stateMachine.DeadState);
+        }
+        else
+        {
+            //맞고 살았을 경우
+            stateMachine.ChangeState(stateMachine.ChaseState);
+        }
     }
 }

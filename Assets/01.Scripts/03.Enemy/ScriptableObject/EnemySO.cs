@@ -14,6 +14,9 @@ public class EnemySO : ScriptableObject
     public float PlayerChasingRange;
     public float AttackRange;
     public float RemainAttackRange;
+
+    [Header("State")]
+    public float Hp;
     public float Damage;
     public float AttackRate;
 }
