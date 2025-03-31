@@ -1,3 +1,4 @@
+using Google.GData.Extensions;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,13 +16,18 @@ public class Enemy : MonoBehaviour
     public NavMeshAgent agent { get; private set; }
     public ForceReceiver ForceReceiver { get; private set; }
 
+    [field: Header("Seight")]
     [field: SerializeField] public GameObject EnemyRayPosition { get; private set; }
     [field: SerializeField] public GameObject EnemyShootPosition { get; private set; }
     [field: SerializeField] public GameObject Bullet { get; private set; }
 
+    [field: Header("GetDamage")]
+    public List<Collider> Partscollider; //모든 부위의 collider들
+
     private EnemyStateMachine stateMachine;
 
-    public GameObject Player;
+    private float HP;
+    private float MaxHP;
 
     private void Awake()
     {
@@ -29,13 +35,18 @@ public class Enemy : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         agent = GetComponent<NavMeshAgent>();
         ForceReceiver = GetComponent<ForceReceiver>();
-
-        stateMachine = new EnemyStateMachine(this, Player);
     }
 
     private void Start()
     {
+        stateMachine = new EnemyStateMachine(this, GameManager.Instance.player.gameObject);
+
         stateMachine.ChangeState(stateMachine.IdleState);
+
+        //체력값 받아오기
+        HP = Data.Hp;
+        MaxHP = Data.Hp;
+        Debug.Log(HP);
     }
     private void Update()
     {
@@ -48,11 +59,53 @@ public class Enemy : MonoBehaviour
         stateMachine.PhysicsUpdate();
     }
 
+    public void OnColliders()
+    {
+        foreach (Collider col in Partscollider)
+        {
+            col.enabled = true;
+        }
+    }
+    public void OffColliders()
+    {
+        foreach (Collider col in Partscollider)
+        {
+            col.enabled = false;
+        }
+    }
+
     public void ShootRiffle()
     {
+        //총을 총구에서 쏘도록 제작
         GameObject bullet = Instantiate(Bullet);
         bullet.transform.position = EnemyShootPosition.transform.position;
-        bullet.transform.eulerAngles = gameObject.transform.eulerAngles;
-        bullet.GetComponent<Bullet>().SettingDamage(Data.Damage);
+        bullet.GetComponent<Bullet>().SettingDamage(Data.Damage, EnemyShootPosition.transform);
+    }
+
+    public void GetDamage(float amount)
+    {
+        HP -= amount;
+        Debug.Log(HP);
+
+        if (HP <= 0)
+        {
+            //맞고 죽을 경우
+            HP = 0;
+            stateMachine.ChangeState(stateMachine.DeadState);
+
+            //사망 시 정지하는 것을 구현
+            foreach (Collider col in Partscollider)
+            {
+                col.isTrigger = false;
+            }
+            agent.enabled = false;
+            gameObject.AddComponent<Rigidbody>();
+        }
+        else
+        {
+            //맞고 살았을 경우
+            Invoke("OffColliders", 0.01f);
+            stateMachine.ChangeState(stateMachine.ChaseState);
+        }
     }
 }

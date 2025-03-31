@@ -2,12 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// UI 관리하는 스크립트
+/// </summary>
+
 public class UIManager : MonoBehaviour
 {
+    [SerializeField]
+    public Canvas uiState_Canvas;
+    [SerializeField]
+    public Canvas uiQuest_Canvas;
+    [SerializeField]
+    public Canvas uiMinimap_Canvas;
+    
     // Start is called before the first frame update
     void Start()
     {
         GameManager gameManager = GameManager.Instance;
+
+        //UI 기본 Set
+        uiState_Canvas.gameObject.SetActive(true);
+        uiMinimap_Canvas.gameObject.SetActive(true);
+
+
+        //Quest 기본값을 꺼놓고 , 특수 상황에만 켜준다.
+        uiQuest_Canvas.gameObject.SetActive(false);
     }
 
     // Update is called once per frame

@@ -19,5 +19,6 @@ MonoBehaviour:
   PlayerChasingRange: 700
   AttackRange: 300
   RemainAttackRange: 500
+  Hp: 50
   Damage: 1
   AttackRate: 1

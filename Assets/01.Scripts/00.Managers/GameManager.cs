@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
 {
-    public int a;
+    public Player player;
+
     protected override void Awake()
     {
         base.Awake();
@@ -13,7 +14,8 @@ public class GameManager : MonoSingleton<GameManager>
     // Start is called before the first frame update
     void Start()
     {
-
+        //Find
+        player = GameObject.Find("Player").GetComponent<Player>();
     }
 
     // Update is called once per frame

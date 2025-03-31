@@ -4,13 +4,38 @@ using UnityEngine;
 public class QuestManager : MonoSingleton<QuestManager>
 {
     public QuestData questData;
-    private Dictionary<int, QuestBase> questDictionary;
+    private Dictionary<int, QuestBase> _questDictionary;
 
     protected override void Awake()
     {
         base.Awake();
 
         InitSpawnQuest();
+    }
+
+    /// <summary>
+    /// 게임이 실행되면 QuestData를 토대로 맵에 퀘스트 생성
+    /// </summary>
+    private void InitSpawnQuest()
+    {
+        _questDictionary = new Dictionary<int, QuestBase>();
+
+        for (int i = 0; i < questData.questInfoList.Count; i++)
+        {
+            QuestInfo info = questData.questInfoList[i];
+
+            GameObject questObject = new GameObject($"Quest{i}");
+            TypeAddComponent(questObject, info);
+            QuestBase quest = questObject.GetComponent<QuestBase>();
+            quest.questInfo = info;
+            _questDictionary[info.id] = quest;
+
+            questObject.transform.SetParent(this.transform);
+            questObject.transform.localPosition = info.position;
+            questObject.transform.localScale = info.scale;
+            questObject.AddComponent<BoxCollider>();
+            questObject.GetComponent<BoxCollider>().isTrigger = true;
+        }
     }
 
     /// <summary>
@@ -35,41 +60,16 @@ public class QuestManager : MonoSingleton<QuestManager>
     }
 
     /// <summary>
-    /// 게임이 실행되면 QuestData를 토대로 맵에 퀘스트 생성
-    /// </summary>
-    private void InitSpawnQuest()
-    {
-        questDictionary = new Dictionary<int, QuestBase>();
-
-        for (int i = 0; i < questData.questInfoList.Count; i++)
-        {
-            QuestInfo info = questData.questInfoList[i];
-
-            GameObject questObject = new GameObject($"Quest{i}");
-            TypeAddComponent(questObject, info);
-            QuestBase quest = questObject.GetComponent<QuestBase>();
-            quest.questInfo = info;
-            questDictionary[info.id] = quest;
-
-            questObject.transform.SetParent(this.transform);
-            questObject.transform.localPosition = info.position;
-            questObject.transform.localScale = info.scale;
-            questObject.AddComponent<BoxCollider>();
-            questObject.GetComponent<BoxCollider>().isTrigger = true;
-        }
-    }
-
-    /// <summary>
     /// 퀘스트 시작 시 text를 UI에 출력
     /// </summary>
     public void QuestStart(int id)
     {
-        QuestBase quest = questDictionary[id];
+        QuestBase quest = _questDictionary[id];
 
         quest.questState = QuestState.ONGOING;
 
-        Debug.Log($"{questDictionary[id].questInfo.name}");
-        Debug.Log($"{questDictionary[id].questInfo.description}");
+        Debug.Log($"{_questDictionary[id].questInfo.name}");
+        Debug.Log($"{_questDictionary[id].questInfo.description}");
         Debug.Log("퀘스트 시작");
     }
 
@@ -78,7 +78,7 @@ public class QuestManager : MonoSingleton<QuestManager>
     /// </summary>
     public void QuestClear(int id)
     {
-        QuestBase quest = questDictionary[id];
+        QuestBase quest = _questDictionary[id];
 
         quest.questState = QuestState.CLEAR;
 
@@ -91,9 +91,9 @@ public class QuestManager : MonoSingleton<QuestManager>
     public void QuestReset()
     {
         Debug.Log("퀘스트 리셋");
-        for(int i = 0; i < questDictionary.Count; i++)
+        for(int i = 0; i < _questDictionary.Count; i++)
         {
-            questDictionary[i].questState = QuestState.BEFORE;
+            _questDictionary[i].questState = QuestState.BEFORE;
         }
     }
 }
