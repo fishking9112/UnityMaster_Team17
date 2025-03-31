@@ -1,4 +1,5 @@
 
+using Cinemachine;
 using System.Collections;
 using System.Linq.Expressions;
 using Unity.PlasticSCM.Editor.WebApi;
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
     public PlayerBoundHandler BoundHandler { get; private set; }
 
     public Coroutine controllerSizingCoroutine { get; private set; }
+    [field: SerializeField] public CinemachineVirtualCamera VirtualCamera { get; private set; } 
 
     public PlayerLBStateMachine LBStateMachine;
     public PlayerUBStateMachine UBStateMachine;

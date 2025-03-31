@@ -3,6 +3,7 @@ public class PlayerUBStateMachine : PlayerStateMachine
     protected PlayerLBStateMachine LBStateMachine;
 
     public PlayerUB_UnArmedState ub_UnArmedState;
+    public PlayerUB_AimState ub_AimState;
 
     public PlayerUBStateMachine(Player player) : base(player)
     {
@@ -13,5 +14,6 @@ public class PlayerUBStateMachine : PlayerStateMachine
         this.LBStateMachine = LBStateMachine;
 
         ub_UnArmedState = new PlayerUB_UnArmedState(LBStateMachine, this);
+        ub_AimState = new PlayerUB_AimState(LBStateMachine, this);
     }
 }
