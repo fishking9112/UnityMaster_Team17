@@ -61,9 +61,16 @@ public class Enemy : MonoBehaviour
 
     public void OnColliders()
     {
-        foreach(Collider col in Partscollider)
+        foreach (Collider col in Partscollider)
         {
             col.enabled = true;
+        }
+    }
+    public void OffColliders()
+    {
+        foreach (Collider col in Partscollider)
+        {
+            col.enabled = false;
         }
     }
 
@@ -87,7 +94,6 @@ public class Enemy : MonoBehaviour
             stateMachine.ChangeState(stateMachine.DeadState);
 
             //사망 시 정지하는 것을 구현
-            OnColliders();
             foreach (Collider col in Partscollider)
             {
                 col.isTrigger = false;
@@ -98,6 +104,7 @@ public class Enemy : MonoBehaviour
         else
         {
             //맞고 살았을 경우
+            Invoke("OffColliders", 0.01f);
             stateMachine.ChangeState(stateMachine.ChaseState);
         }
     }
