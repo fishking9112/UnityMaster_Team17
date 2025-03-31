@@ -11,8 +11,6 @@ public class Bullet : MonoBehaviour
     Vector3 targetToPlayer = new Vector3();
     public GameObject Particle;
 
-    GameObject Player;
-
     private void Start()
     {
         //일정 시간이 지나면 자동으로 삭제
@@ -24,7 +22,7 @@ public class Bullet : MonoBehaviour
         //처음 세팅 데미지와 방향
         Damage = damage;
 
-        targetToPlayer = Player.transform.position - ene.position + new Vector3(Random.Range(-3f,3f), Random.Range(-3f, 3f) + 1, Random.Range(-3f, 3f));
+        targetToPlayer = GameManager.Instance.player.transform.position - ene.position + new Vector3(Random.Range(-2f,2f), Random.Range(-2f, 2f) + 1, Random.Range(-2f, 2f));
     }
 
     private void Update()
@@ -42,8 +40,9 @@ public class Bullet : MonoBehaviour
     {
         //무언가에 맞았을 때
 
-        if (collision.gameObject.GetComponent<Player>())
+        if (collision.gameObject.GetComponentInParent<Player>())
         {
+            Debug.Log("Hit");
             //데미지를 준다
         }
         else

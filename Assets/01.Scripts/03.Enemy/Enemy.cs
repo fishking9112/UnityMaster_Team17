@@ -21,8 +21,6 @@ public class Enemy : MonoBehaviour
 
     private EnemyStateMachine stateMachine;
 
-    public GameObject Player;
-
     public float HP;
     public float MaxHP;
 
@@ -32,12 +30,12 @@ public class Enemy : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         agent = GetComponent<NavMeshAgent>();
         ForceReceiver = GetComponent<ForceReceiver>();
-
-        stateMachine = new EnemyStateMachine(this, Player);
     }
 
     private void Start()
     {
+        stateMachine = new EnemyStateMachine(this, GameManager.Instance.player.gameObject);
+
         stateMachine.ChangeState(stateMachine.IdleState);
 
         //체력값 받아오기
@@ -69,8 +67,14 @@ public class Enemy : MonoBehaviour
 
         if (HP < 0)
         {
+            //맞고 죽을 경우
             HP = 0;
             stateMachine.ChangeState(stateMachine.DeadState);
+        }
+        else
+        {
+            //맞고 살았을 경우
+            stateMachine.ChangeState(stateMachine.ChaseState);
         }
     }
 }

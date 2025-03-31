@@ -85,7 +85,7 @@ public class EnemyBaseState : IState
         {
             if (Physics.Raycast(ray[i], out hit, stateMachine.Enemy.Data.PlayerChasingRange))
             {
-                if (hit.collider.gameObject == stateMachine.Player)
+                if (hit.collider.gameObject.GetComponentInParent<Player>())
                 {
                     return true;
                 }
