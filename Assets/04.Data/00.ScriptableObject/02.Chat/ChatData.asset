@@ -16,4 +16,10 @@ MonoBehaviour:
   sheetName: Chat
   startRowIndex: 2
   endRowIndex: 4
-  chatInfoList: []
+  chatInfoList:
+  - id: 0
+    content: "\uAC00\uB098\uB2E4\uB77C"
+  - id: 1
+    content: ABCD
+  - id: 2
+    content: abcd

@@ -9,13 +9,13 @@ public abstract class InteractableObject : MonoBehaviour
     /// <summary>
     /// 상호작용 가능한 오브젝트의 이름을 반환하는 함수(UI에 띄울 때 사용)
     /// </summary>
-    /// <returns> 아이템의 이름 </returns>
+    /// <returns> 아이템 이름 </returns>
     public abstract string GetNameText();
 
     /// <summary>
     /// 상호작용 가능한 오브젝트의 설명을 반환하는 함수(UI에 띄울 때 사용)
     /// </summary>
-    /// <returns></returns>
+    /// <returns> 아이템 설명 </returns>
     public abstract string GetDescriptionText();
 
     /// <summary>
