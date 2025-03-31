@@ -16,4 +16,29 @@ MonoBehaviour:
   sheetName: Quest
   startRowIndex: 2
   endRowIndex: 4
-  questInfoList: []
+  questInfoList:
+  - id: 0
+    name: "\uC774\uB3D9 \uD29C\uD1A0\uB9AC\uC5BC"
+    description: "wasd\uB97C \uB20C\uB7EC \uC774\uB3D9\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4.
+      \uB2E4\uC74C \uC9C0\uC5ED\uC73C\uB85C \uC774\uB3D9 \uD574\uBCF4\uC138\uC694."
+    position: {x: 0, y: 0, z: 0}
+    scale: {x: 2, y: 1, z: 2}
+    type: 0
+    requiredDistance: 10
+    requiredKillEnemyCount: 0
+  - id: 1
+    name: "\uC544\uC774\uD15C \uC0AC\uC6A9 \uD29C\uD1A0\uB9AC\uC5BC"
+    description: "\uC544\uC774\uD15C\uC744 \uC0AC\uC6A9\uD574\uBCF4\uC138\uC694."
+    position: {x: 5, y: 0, z: 0}
+    scale: {x: 2, y: 1, z: 2}
+    type: 1
+    requiredDistance: 0
+    requiredKillEnemyCount: 0
+  - id: 2
+    name: "\uC801 \uCC98\uCE58 \uD29C\uD1A0\uB9AC\uC5BC"
+    description: "\uC801\uC744 3\uB9C8\uB9AC \uCC98\uCE58\uD558\uC138\uC694."
+    position: {x: 10, y: 0, z: 0}
+    scale: {x: 2, y: 1, z: 2}
+    type: 2
+    requiredDistance: 0
+    requiredKillEnemyCount: 3

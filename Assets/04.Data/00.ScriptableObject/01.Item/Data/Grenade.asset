@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2636c1197c99a4418be55ea36fd65c9, type: 3}
   m_Name: Grenade
   m_EditorClassIdentifier: 
-  itemName: 
-  itemDescription: 
-  itemPrefab: {fileID: 0}
+  itemType: 0
+  itemName: "\uC218\uB958\uD0C4"
+  itemDescription: "\uC218\uB958\uD0C4 1\uAC1C"
+  value: 1
+  itemPrefab: {fileID: 4115623917576503007, guid: 2a856f4448aac1546b78c0fb6bb4abc7,
+    type: 3}

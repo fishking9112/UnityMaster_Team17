@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2636c1197c99a4418be55ea36fd65c9, type: 3}
   m_Name: RepairKit
   m_EditorClassIdentifier: 
-  itemName: 
-  itemDescription: 
-  itemPrefab: {fileID: 0}
+  itemType: 2
+  itemName: "\uC218\uB9AC\uD0A4\uD2B8"
+  itemDescription: "\uC218\uB9AC\uD0A4\uD2B8 1\uAC1C"
+  value: 1
+  itemPrefab: {fileID: 3322421306394141516, guid: 8b12c38b19ad424488c22bd79d8c64c3,
+    type: 3}
