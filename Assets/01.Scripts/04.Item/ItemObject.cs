@@ -26,7 +26,6 @@ public class ItemObject : InteractableObject
                 // player의 수리키트 수 증가
                 break;
         }
-
         Destroy(this.gameObject);
     }
 }

@@ -8,8 +8,8 @@ public class PlayerInteraction : MonoBehaviour
     public float boxDistance;
     public LayerMask interactableObjectLayerMask;
 
-    private GameObject curInteractGameObject;
-    private InteractableObject curInteractableObject;
+    private GameObject _curInteractGameObject;
+    private InteractableObject _curInteractableObject;
 
     private void Start()
     {
@@ -27,16 +27,26 @@ public class PlayerInteraction : MonoBehaviour
     /// </summary>
     private void BoxInteraction()
     {
-        RaycastHit hit;
-        if (Physics.BoxCast(interactionPos.position, boxSize / 2, interactionPos.forward, out hit, Quaternion.identity, boxDistance, interactableObjectLayerMask))
+        RaycastHit[] hits = Physics.BoxCastAll(interactionPos.position, boxSize / 2, interactionPos.forward, Quaternion.identity, boxDistance, interactableObjectLayerMask);
+        if (hits.Length > 0)
         {
-            if (hit.collider.gameObject != curInteractGameObject)
+            RaycastHit hit = hits[0];
+
+            if (hit.collider.gameObject != _curInteractGameObject)
             {
-                curInteractGameObject = hit.collider.gameObject;
-                curInteractableObject = hit.collider.GetComponent<InteractableObject>();
-                SetNameText();
-                SetDescriptionText();
+                _curInteractGameObject = hit.collider.gameObject;
             }
+
+            if (_curInteractableObject != null)
+            {
+                _curInteractableObject.OffOutline();
+            }
+
+            _curInteractableObject = hit.collider.GetComponent<InteractableObject>();
+            _curInteractableObject.OnOutline();
+
+            SetNameText();
+            SetDescriptionText();
         }
         else
         {
@@ -49,8 +59,13 @@ public class PlayerInteraction : MonoBehaviour
     /// </summary>
     private void ClearInteraction()
     {
-        curInteractGameObject = null;
-        curInteractableObject = null;
+        if (_curInteractableObject != null)
+        {
+            _curInteractableObject.OffOutline();
+        }
+
+        _curInteractGameObject = null;
+        _curInteractableObject = null;
     }
 
     /// <summary>
@@ -58,7 +73,7 @@ public class PlayerInteraction : MonoBehaviour
     /// </summary>
     private void SetNameText()
     {
-        Debug.Log(curInteractableObject.GetNameText());
+        Debug.Log(_curInteractableObject.GetNameText());
     }
 
     /// <summary>
@@ -66,7 +81,7 @@ public class PlayerInteraction : MonoBehaviour
     /// </summary>
     private void SetDescriptionText()
     {
-        Debug.Log(curInteractableObject.GetDescriptionText());
+        Debug.Log(_curInteractableObject.GetDescriptionText());
     }
 
     /// <summary>
@@ -75,11 +90,11 @@ public class PlayerInteraction : MonoBehaviour
     /// <param name="context"> 상호작용 할 키 </param>
     public void OnInteractInput(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started && curInteractableObject != null)
+        if (context.phase == InputActionPhase.Started && _curInteractableObject != null)
         {
-            curInteractableObject.OnInteract();
-            curInteractGameObject = null;
-            curInteractableObject = null;
+            _curInteractableObject.OnInteract();
+            _curInteractGameObject = null;
+            _curInteractableObject = null;
         }
     }
 
