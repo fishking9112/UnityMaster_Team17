@@ -9,19 +9,42 @@ public class PlayerLB_GroundedState : PlayerLB_BaseState
     {
     }
 
+    public override void Enter()
+    {
+        base.Enter();
+        StartAnimation(LBStateMachine.player.AnimationData.LB_GroundedParameterHash);
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        StopAnimation(LBStateMachine.player.AnimationData.LB_GroundedParameterHash);
+    }
+
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+
+        if (!LBStateMachine.player.Controller.isGrounded)
+        {
+            LBStateMachine.ChangeState(LBStateMachine.lb_FallState);
+        }
+    }
+
     protected override void AddInputActionCallbacks()
     {
-        LBStateMachine.player.Input.playerActions.Movement.canceled += OnMovementCanceled;
+        base.AddInputActionCallbacks();
 
-        LBStateMachine.player.Input.playerActions.Jump.started += OnJumpStarted;
+        LBStateMachine.player.Input.playerActions.Movement.canceled += OnMovementCanceled;
 
     }
 
     protected override void RemoveInputActionCallbacks()
     {
+        base.RemoveInputActionCallbacks();
+
         LBStateMachine.player.Input.playerActions.Movement.canceled -= OnMovementCanceled;
 
-        LBStateMachine.player.Input.playerActions.Jump.started -= OnJumpStarted;
     }
 
     protected override void OnMovementCanceled(InputAction.CallbackContext context)
@@ -39,5 +62,12 @@ public class PlayerLB_GroundedState : PlayerLB_BaseState
         //LBStateMachine.ChangeState(LBStateMachine.jumpStatww)
 
         base.OnJumpStarted(context);
+
+        LBStateMachine.ChangeState(LBStateMachine.lb_JumpState);
     }
+
+    //protected void OnSwitchingWalkMode(InputAction.CallbackContext context)
+    //{
+    //    WalkMode = !WalkMode;
+    //}
 }

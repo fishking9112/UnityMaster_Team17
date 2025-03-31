@@ -11,9 +11,9 @@ public class Player_BaseState : IState
     Camera cam = Camera.main;
 
     protected float animationSpeedModifier =1f;
+    public bool WalkMode;
 
 
-    protected string name;
 
     public Player_BaseState(PlayerLBStateMachine LBStateMachine, PlayerUBStateMachine UBStateMachine)
     {
@@ -130,9 +130,8 @@ public class Player_BaseState : IState
     {
     }
 
-  
-
     //protected virtual void OnMovementStarted(InputAction.CallbackContext context) // 이거 안한 이유 = 입력있을때마다 changestate하는 문제.
     //{
     //}
+
 }

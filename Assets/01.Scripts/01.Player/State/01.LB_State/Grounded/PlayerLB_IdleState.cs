@@ -10,7 +10,6 @@ public class PlayerLB_IdleState : PlayerLB_GroundedState
 
     public override void Enter()
     {
-        name = "Idle";
         base.Enter();
         StartAnimation(LBStateMachine.player.AnimationData.LB_IdleParameterHash);
     }

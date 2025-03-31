@@ -10,7 +10,6 @@ public class PlayerUB_UnArmedState : PlayerUB_BaseState
 
     public override void Enter()
     {
-        name = "Idle";
         base.Enter();
         StartAnimation(LBStateMachine.player.AnimationData.LB_IdleParameterHash);
     }

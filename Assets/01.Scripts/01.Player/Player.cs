@@ -1,5 +1,7 @@
 
+using System.Collections;
 using System.Linq.Expressions;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
@@ -13,6 +15,9 @@ public class Player : MonoBehaviour
     public CharacterController Controller { get; private set; }
     [field: SerializeField] public PlayerSO playerSO { get; private set; }
     public ForceReceiver ForceReceiver { get; private set; }
+    public PlayerBoundHandler boundHandler { get; private set; }
+
+    public Coroutine controllerSizingCoroutine { get; private set; }
 
     public PlayerLBStateMachine LBStateMachine;
     public PlayerUBStateMachine UBStateMachine;
@@ -30,6 +35,7 @@ public class Player : MonoBehaviour
         Input = GetComponent<PlayerController>();
         Controller = GetComponent<CharacterController>();
         ForceReceiver = GetComponent<ForceReceiver>();
+        boundHandler = GetComponent<PlayerBoundHandler>();
     }
 
     private void Start()
@@ -52,5 +58,54 @@ public class Player : MonoBehaviour
     {
         LBStateMachine.PhysicsUpdate();
         UBStateMachine.PhysicsUpdate();
+    }
+
+    //public void SetControllerBox(Bounds bounds)
+    //{
+    //    Controller.center = new Vector3(0, bounds.center.y, 0);
+    //    Controller.targetHeight = bounds.extents.y;
+    //}
+
+    public void StartControllerSizing(float time = 0, float centerY = 1, float height = 2)
+    {
+        if (controllerSizingCoroutine != null)
+        {
+            StopCoroutine(controllerSizingCoroutine);
+        }
+        controllerSizingCoroutine = StartCoroutine(SetController(time, centerY, height));
+    }
+
+    private IEnumerator SetController(float time, float targetCenterY, float targetHeight)
+    {
+        if (time <= 0)
+        {
+            Controller.center = new Vector3(0, targetCenterY, 0);
+            Controller.height = targetHeight;
+            yield break;
+        }
+
+        float elapsedTime = 0f;
+        float currentCenterY = Controller.center.y;
+        float currentHeight = Controller.height;
+
+        while (elapsedTime < time)
+        {
+            //float t = elapsedTime / time; // 선형 보간
+            //float t = 1f - Mathf.Pow(1f - (elapsedTime / time), 2); // ease_out // 처음엔 완만하게 나중에 빠르게
+            //float t = Mathf.Pow(elapsedTime / time, 2); //ease-in // 처음에 빠르게 나중엔 느리게
+
+            float t = (elapsedTime / time);
+            t = t * t * (3f - 2f * t);
+            //Ease - In - Out
+
+            Controller.center = new Vector3(0, Mathf.Lerp(currentCenterY, targetCenterY, t), 0);
+            Controller.height = Mathf.Lerp(currentHeight, targetHeight, t); ;
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        Controller.center = new Vector3(0, targetCenterY, 0);
+        Controller.height = targetHeight;
     }
 }

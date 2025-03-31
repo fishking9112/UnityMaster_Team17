@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerLB_WalkState : PlayerLB_GroundedState
 {
@@ -10,7 +11,6 @@ public class PlayerLB_WalkState : PlayerLB_GroundedState
 
     public override void Enter()
     {
-        name = "Walk";
         LBStateMachine.MovementSpeedModifier = LBStateMachine.player.playerSO.GroundData.WalkSpeed;
         animationSpeedModifier = 4f;
         //Debug.Log($"Enter:{animationSpeedModifier}");
