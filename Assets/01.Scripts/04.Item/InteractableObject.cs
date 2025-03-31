@@ -6,6 +6,13 @@ using UnityEngine;
 /// </summary>
 public abstract class InteractableObject : MonoBehaviour
 {
+    private Outline outline;
+
+    private void Start()
+    {
+        outline = GetComponent<Outline>();
+    }
+
     /// <summary>
     /// 상호작용 가능한 오브젝트의 이름을 반환하는 함수(UI에 띄울 때 사용)
     /// </summary>
@@ -22,4 +29,20 @@ public abstract class InteractableObject : MonoBehaviour
     /// 상호작용 가능한 오브젝트와 상호작용했을 때 호출
     /// </summary>
     public abstract void OnInteract();
+
+    /// <summary>
+    /// 오브젝트의 Outline을 그려줌
+    /// </summary>
+    public void OnOutline()
+    {
+        outline.enabled = true;
+    }
+
+    /// <summary>
+    /// 오브젝트의 Outline을 꺼줌
+    /// </summary>
+    public void OffOutline()
+    {
+        outline.enabled = false;
+    }
 }
