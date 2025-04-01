@@ -9,15 +9,15 @@ public class Bullet : MonoBehaviour
     float Speed = 20;
     Coroutine coroutine;
 
-    Vector3 targetToPlayer = new Vector3();
+    Vector3 Tartget = new Vector3();
     public GameObject Particle;
 
-    public void SettingDamage(float damage, Transform ene)
+    public void SettingDamage(float damage, Vector3 _tartget)
     {
         //처음 세팅 데미지와 방향
         Damage = damage;
 
-        targetToPlayer = GameManager.Instance.player.transform.position - ene.position + new Vector3(Random.Range(-2f,2f), Random.Range(-2f, 2f) + 1, Random.Range(-2f, 2f));
+        Tartget = _tartget;
 
         coroutine = StartCoroutine(ShootToTarget());
         Invoke("DestroyThisObject", 5f);
@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviour
     {
         while (true)
         {
-            transform.localPosition += targetToPlayer.normalized * Speed * Time.deltaTime;
+            transform.localPosition += Tartget.normalized * Speed * Time.deltaTime;
             yield return null;
         }
     }

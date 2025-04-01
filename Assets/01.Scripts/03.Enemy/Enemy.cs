@@ -84,7 +84,9 @@ public class Enemy : MonoBehaviour
         //총을 총구에서 쏘도록 제작
         GameObject bullet = BulletManager.Instance.SpawnBullet();
         bullet.transform.position = EnemyShootPosition.transform.position;
-        bullet.GetComponent<Bullet>().SettingDamage(Data.Damage, EnemyShootPosition.transform);
+        bullet.GetComponent<Bullet>().SettingDamage(Data.Damage, 
+            GameManager.Instance.player.transform.position - EnemyShootPosition.transform.position + 
+            new Vector3(UnityEngine.Random.Range(-2f, 2f), UnityEngine.Random.Range(-2f, 2f) + 1, UnityEngine.Random.Range(-2f, 2f)));
     }
 
     public void GetDamage(float amount)
