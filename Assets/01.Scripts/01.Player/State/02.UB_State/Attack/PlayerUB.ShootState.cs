@@ -30,7 +30,7 @@ public class PlayerUB_ShootState : PlayerUB_AttackState
     {
         base.Update();
 
-        if (!UBStateMachine.player.Input.playerActions.Shoot.IsPressed()) ;
+        if (!UBStateMachine.player.Input.playerActions.Shoot.IsPressed())
         {
             UBStateMachine.ChangeState(UBStateMachine.ub_AimState);
         }
@@ -40,9 +40,13 @@ public class PlayerUB_ShootState : PlayerUB_AttackState
 
     private IEnumerator OnShoot(float interval)
     {
-        // 발사
+        while (true)
+        {
+            // 발사 로직
+            Debug.Log("발사");
 
-        //인터벌동안 쉬고.
-        yield return new WaitForSeconds(interval);
+            //인터벌동안 쉬고.
+            yield return new WaitForSeconds(interval);
+        }
     }
 }

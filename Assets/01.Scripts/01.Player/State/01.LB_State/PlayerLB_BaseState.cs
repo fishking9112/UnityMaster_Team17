@@ -15,9 +15,6 @@ public class PlayerLB_BaseState : Player_BaseState
         base.Update();
 
         LBStateMachine.player.Animator.SetFloat("MoveSpeed", LBStateMachine.MovementSpeedModifier * animationSpeedModifier); // 테스트용
-        Debug.Log($"MovementSpeedModifier:{LBStateMachine.MovementSpeedModifier}");
-        Debug.Log($"animationSpeedModifier:{animationSpeedModifier}");
-        Debug.Log(LBStateMachine.player.Animator.GetFloat("MoveSpeed"));
     }
 
     protected override void AddInputActionCallbacks()

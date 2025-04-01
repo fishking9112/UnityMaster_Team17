@@ -25,7 +25,7 @@ public class PlayerLB_FallState : PlayerLB_AirState
         base.PhysicsUpdate();
         if (LBStateMachine.player.Controller.isGrounded)
         {
-            // 추락 시간이 2초 이상이면 Landing으로 전환, 아니면 idle로 전환 
+            // 추락 시간이 1초 이상이면 Landing으로 전환, 아니면 idle로 전환 
             if (Time.time - fallTime > 1)
             {
                 LBStateMachine.ChangeState(LBStateMachine.lb_LandingState);
@@ -37,7 +37,7 @@ public class PlayerLB_FallState : PlayerLB_AirState
             {
                 LBStateMachine.ChangeState(LBStateMachine.lb_IdleState);
 
-                LBStateMachine.player.StartControllerSizing(0);
+                LBStateMachine.player.StartControllerSizing(0.3f);
             }
         }
     }

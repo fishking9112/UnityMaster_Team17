@@ -13,7 +13,6 @@ public class PlayerUB_AimState : PlayerUB_AttackState
     {
         base.Enter();
 
-        UBStateMachine.player.AimVCam.Priority = 20;
         StartAnimation(LBStateMachine.player.AnimationData.UB_AimParameterHash); // 수정해야함
     }
 
@@ -21,7 +20,6 @@ public class PlayerUB_AimState : PlayerUB_AttackState
     {
         base.Exit();
 
-        UBStateMachine.player.AimVCam.Priority = 0;
         StopAnimation(LBStateMachine.player.AnimationData.UB_AimParameterHash);
     }
 

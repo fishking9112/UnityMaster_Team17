@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerLB_LandingState : PlayerLB_AirState
 {
-    private float fallTime;
+    //private float fallTime;
     public PlayerLB_LandingState(PlayerLBStateMachine LBstateMachine, PlayerUBStateMachine UBStateMachine) : base(LBstateMachine, UBStateMachine)
     {
     }
