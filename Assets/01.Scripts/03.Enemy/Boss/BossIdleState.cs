@@ -28,28 +28,7 @@ public class BossIdleState : BossBaseState
 
         //범위 밖이면 인식을 못한다
         if (IsInChasingRange() == -1) return;
-        
-        //근거리 공격
-        else if (IsInChasingRange() <= stateMachine.Boss.Data.AttackRange)
-        {
-            if (IsPlayerInSight())
-            {
-                stateMachine.ChangeState(stateMachine.MiliAttackState);
-            }
-        }
-        //원거리 공격
-        else if (IsInChasingRange() <= stateMachine.Boss.Data.RemainAttackRange)
-        {
-            if((stateMachine.Boss.IsLeftArm && stateMachine.Boss.LastRocketAttack + stateMachine.Boss.RocketRate < Time.time) && 
-                (stateMachine.Boss.IsRightArm && stateMachine.Boss.LastGunAttack + stateMachine.Boss.GunRate < Time.time))
-            {
-                if (IsPlayerInSight())
-                {
-                    stateMachine.ChangeState(stateMachine.AttackState);
-                }
-            }
-        }
-        else if(IsInChasingDistance() <= stateMachine.Boss.Data.PlayerChasingRange)
+        if(IsInChasingRange() <= stateMachine.Boss.Data.PlayerChasingRange)
         {
             stateMachine.ChangeState(stateMachine.ChaseState);
         }

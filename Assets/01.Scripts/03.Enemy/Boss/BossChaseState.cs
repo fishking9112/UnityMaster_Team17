@@ -31,10 +31,9 @@ public class BossChaseState : BossBaseState
         stateMachine.Boss.agent.SetDestination(GameManager.Instance.player.transform.position);
 
         //범위 밖이면 인식을 못한다
-        if (IsInChasingRange() == -1) return;
-
+        if (IsInChasingRange() == -1) stateMachine.ChangeState(stateMachine.IdleState);
         //근거리 공격
-        else if (IsInChasingRange() <= stateMachine.Boss.Data.AttackRange)
+        else if ((IsInChasingRange() <= stateMachine.Boss.Data.AttackRange) && (stateMachine.Boss.LastMiliAttack + stateMachine.Boss.MiliRate < Time.time))
         {
             if (IsPlayerInSight())
             {
@@ -42,16 +41,11 @@ public class BossChaseState : BossBaseState
             }
         }
         //원거리 공격
-        else if (IsInChasingRange() <= stateMachine.Boss.Data.RemainAttackRange)
+        else if ((IsInChasingRange() <= stateMachine.Boss.Data.RemainAttackRange) &&
+            ((stateMachine.Boss.IsLeftArm && stateMachine.Boss.LastRocketAttack + stateMachine.Boss.RocketRate < Time.time) ||
+                (stateMachine.Boss.IsRightArm && stateMachine.Boss.LastGunAttack + stateMachine.Boss.GunRate < Time.time)))
         {
-            if ((stateMachine.Boss.IsLeftArm && stateMachine.Boss.LastRocketAttack + stateMachine.Boss.RocketRate < Time.time) &&
-                (stateMachine.Boss.IsRightArm && stateMachine.Boss.LastGunAttack + stateMachine.Boss.GunRate < Time.time))
-            {
-                if (IsPlayerInSight())
-                {
-                    stateMachine.ChangeState(stateMachine.AttackState);
-                }
-            }
+            stateMachine.ChangeState(stateMachine.AttackState);
         }
         else if (IsInChasingDistance() > stateMachine.Boss.Data.PlayerChasingRange)
         {

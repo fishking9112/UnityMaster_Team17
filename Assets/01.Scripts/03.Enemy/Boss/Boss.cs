@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,8 +36,8 @@ public class Boss : MonoBehaviour
     public float GunRate;
     public float LastRocketAttack;
     public float RocketRate;
-
     public float LastMiliAttack;
+    public float MiliRate;
 
     private void Awake()
     {
@@ -70,7 +71,7 @@ public class Boss : MonoBehaviour
     {
         stateMachine.PhysicsUpdate();
     }
-    public void ShootRiffle()
+    void ShootRiffle()
     {
         //총을 총구에서 쏘도록 제작
         GameObject bullet = BulletManager.Instance.SpawnBullet();
@@ -79,6 +80,72 @@ public class Boss : MonoBehaviour
         bullet.GetComponent<Bullet>().SettingDamage(Data.Damage,
             GameManager.Instance.player.transform.position - BossRightShootPosition.transform.position +
             new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), UnityEngine.Random.Range(-0.5f, 0.5f) + 1, UnityEngine.Random.Range(-0.5f, 0.5f)));
+    }
+    void ShootRocket()
+    {
+        //로켓을 왼속에서 발싸
+        GameObject Rocket = BulletManager.Instance.SpawnRocket();
+        Rocket.transform.position = BossLeftShootPosition.transform.position;
+        Rocket.transform.rotation = Quaternion.LookRotation((GameManager.Instance.player.transform.position - BossLeftShootPosition.transform.position).normalized);
+        Rocket.GetComponent<Rocket>().SettingDamage(Data.Damage * 5,
+            GameManager.Instance.player.transform.position - BossLeftShootPosition.transform.position +
+            new Vector3(UnityEngine.Random.Range(-0.1f, 0.1f), UnityEngine.Random.Range(-0.1f, 0.1f) + 1, UnityEngine.Random.Range(-0.1f, 0.1f)));
+    }
+
+    public void Riffle()
+    {
+        LastGunAttack = Time.time;
+
+        StartCoroutine(coroutineRiffle());
+    }
+
+    IEnumerator coroutineRiffle()
+    {
+        int i = 0;
+
+        while (i < 20)
+        {
+            ShootRiffle();
+            i++;
+            yield return new WaitForSeconds(0.2f);
+        }
+
+        stateMachine.ChangeState(stateMachine.IdleState);
+    }
+    public void Rocket()
+    {
+        LastRocketAttack = Time.time;
+
+        StartCoroutine(coroutineRocket());
+    }
+
+    IEnumerator coroutineRocket()
+    {
+        int i = 0;
+
+        while (i < 5)
+        {
+            ShootRocket();
+            i++;
+            yield return new WaitForSeconds(1f);
+        }
+
+        stateMachine.ChangeState(stateMachine.IdleState);
+    }
+
+    public void InvokeMiliAttack()
+    {
+        Invoke("MiliAttack", 1f);
+    }
+
+    void MiliAttack()
+    {
+        if((GameManager.Instance.player.transform.position - transform.position).sqrMagnitude < Data.AttackRange * 2)
+        {
+            //데미지를 준다
+        }
+
+        stateMachine.ChangeState(stateMachine.IdleState);
     }
 
     public void GetDamage(float amount)

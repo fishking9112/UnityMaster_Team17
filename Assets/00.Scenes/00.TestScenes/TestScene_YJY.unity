@@ -155,7 +155,8 @@ MonoBehaviour:
   isDontDestroyOnLoad: 0
   BulletObject: {fileID: 941617230123092236, guid: 4633de1b178fe554b96952af19c3d143,
     type: 3}
-  RocketObject: {fileID: 0}
+  RocketObject: {fileID: 1645326908666424, guid: 3ce206ec6dca65a4b8357f9e7768cbd2,
+    type: 3}
 --- !u!4 &141464447
 Transform:
   m_ObjectHideFlags: 0
@@ -1136,7 +1137,7 @@ PrefabInstance:
     - target: {fileID: 5168119546860579821, guid: b1487351b7566bd49bf2884c05c48b1b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.76
+      value: -14
       objectReference: {fileID: 0}
     - target: {fileID: 5168119546860579821, guid: b1487351b7566bd49bf2884c05c48b1b,
         type: 3}
@@ -1146,7 +1147,7 @@ PrefabInstance:
     - target: {fileID: 5168119546860579821, guid: b1487351b7566bd49bf2884c05c48b1b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 51.4
+      value: 16.4
       objectReference: {fileID: 0}
     - target: {fileID: 5168119546860579821, guid: b1487351b7566bd49bf2884c05c48b1b,
         type: 3}
@@ -1398,10 +1399,11 @@ MonoBehaviour:
   LeftArm: {fileID: 1092275831}
   IsLeftArm: 0
   LastGunAttack: 0
-  GunRate: 0
+  GunRate: 10
   LastRocketAttack: 0
-  RocketRate: 0
+  RocketRate: 40
   LastMiliAttack: 0
+  MiliRate: 3
 --- !u!195 &1870729528
 NavMeshAgent:
   m_ObjectHideFlags: 0
