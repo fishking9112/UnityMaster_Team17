@@ -6,6 +6,7 @@ using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.PlayerLoop;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class Player : MonoBehaviour
     public ForceReceiver ForceReceiver { get; private set; }
     public Rigidbody Rigidbody { get; private set; }
     public PlayerBoundHandler BoundHandler { get; private set; }
+    public Image crosshair;
 
     public Coroutine controllerSizingCoroutine { get; private set; }
     [field: SerializeField] public CinemachineVirtualCamera AimVCam { get; private set; } 
@@ -48,6 +50,7 @@ public class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         LBStateMachine.ChangeState(LBStateMachine.lb_IdleState);
         UBStateMachine.ChangeState(UBStateMachine.ub_UnArmedState);
+        crosshair.enabled = false;
     }
 
     private void Update()

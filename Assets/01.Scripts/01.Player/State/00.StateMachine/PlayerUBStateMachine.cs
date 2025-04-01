@@ -8,6 +8,8 @@ public class PlayerUBStateMachine : PlayerStateMachine
     public PlayerUB_ShootState ub_ShootState;
     public PlayerUB_ReloadState ub_ReloadState;
 
+    public bool AttackMode = false;
+
     public PlayerUBStateMachine(Player player) : base(player)
     {
     }

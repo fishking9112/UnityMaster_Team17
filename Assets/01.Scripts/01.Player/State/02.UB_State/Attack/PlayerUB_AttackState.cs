@@ -13,6 +13,8 @@ public class PlayerUB_AttackState : PlayerUB_BaseState
         base.Enter();
 
         UBStateMachine.player.AimVCam.Priority = 20;
+        UBStateMachine.AttackMode = true;
+        UBStateMachine.player.crosshair.enabled = true;
         StartAnimation(LBStateMachine.player.AnimationData.UB_AttackParameterHash);
     }
 
@@ -21,6 +23,8 @@ public class PlayerUB_AttackState : PlayerUB_BaseState
         base.Exit();
 
         UBStateMachine.player.AimVCam.Priority = 0;
+        UBStateMachine.AttackMode = false;
+        UBStateMachine.player.crosshair.enabled = false;
         StopAnimation(LBStateMachine.player.AnimationData.UB_AttackParameterHash);
     }
 }

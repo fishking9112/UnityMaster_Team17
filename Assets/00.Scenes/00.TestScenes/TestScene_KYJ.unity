@@ -281,7 +281,7 @@ MonoBehaviour:
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 1
+    m_Time: 0.5
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
@@ -439,6 +439,11 @@ PrefabInstance:
         by Humanoid clips.\n\tTransform 'UpperLeg_Left'\n\tTransform 'UpperLeg_Right'\n\tTransform
         'LowerLeg_Left'\n\tTransform 'LowerLeg_Right'\n\tFrom animation clip 'Dash'"
       objectReference: {fileID: 0}
+    - target: {fileID: 3183860369149584056, guid: b1487351b7566bd49bf2884c05c48b1b,
+        type: 3}
+      propertyPath: crosshair
+      value: 
+      objectReference: {fileID: 761762285}
     - target: {fileID: 5168119546860579821, guid: b1487351b7566bd49bf2884c05c48b1b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -489,11 +494,39 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5498604625913405165, guid: b1487351b7566bd49bf2884c05c48b1b,
+        type: 3}
+      propertyPath: m_Name
+      value: Crosshair
+      objectReference: {fileID: 0}
+    - target: {fileID: 6998253667270904858, guid: b1487351b7566bd49bf2884c05c48b1b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6256038996575566392, guid: b1487351b7566bd49bf2884c05c48b1b, type: 3}
+    - {fileID: 4306715868984693329, guid: b1487351b7566bd49bf2884c05c48b1b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3562470501975259783, guid: b1487351b7566bd49bf2884c05c48b1b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1368270036}
   m_SourcePrefab: {fileID: 100100000, guid: b1487351b7566bd49bf2884c05c48b1b, type: 3}
+--- !u!114 &761762285 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6998253667270904858, guid: b1487351b7566bd49bf2884c05c48b1b,
+    type: 3}
+  m_PrefabInstance: {fileID: 530351264}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,6 +712,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1368270031 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3562470501975259783, guid: b1487351b7566bd49bf2884c05c48b1b,
+    type: 3}
+  m_PrefabInstance: {fileID: 530351264}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1368270036
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368270031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c9beda531928fc40968802117a5d256, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RecenterTarget: 0
+  m_VerticalAxis:
+    Value: 0
+    m_SpeedMode: 0
+    m_MaxSpeed: 300
+    m_AccelTime: 0.1
+    m_DecelTime: 0.1
+    m_InputAxisName: Mouse Y
+    m_InputAxisValue: 0
+    m_InvertInput: 1
+    m_MinValue: -70
+    m_MaxValue: 70
+    m_Wrap: 0
+    m_Recentering:
+      m_enabled: 0
+      m_WaitTime: 1
+      m_RecenteringTime: 2
+      m_LegacyHeadingDefinition: -1
+      m_LegacyVelocityFilterStrength: -1
+  m_VerticalRecentering:
+    m_enabled: 0
+    m_WaitTime: 1
+    m_RecenteringTime: 2
+    m_LegacyHeadingDefinition: -1
+    m_LegacyVelocityFilterStrength: -1
+  m_HorizontalAxis:
+    Value: 0
+    m_SpeedMode: 0
+    m_MaxSpeed: 300
+    m_AccelTime: 0.1
+    m_DecelTime: 0.1
+    m_InputAxisName: Mouse X
+    m_InputAxisValue: 0
+    m_InvertInput: 0
+    m_MinValue: -180
+    m_MaxValue: 180
+    m_Wrap: 1
+    m_Recentering:
+      m_enabled: 0
+      m_WaitTime: 1
+      m_RecenteringTime: 2
+      m_LegacyHeadingDefinition: -1
+      m_LegacyVelocityFilterStrength: -1
+  m_HorizontalRecentering:
+    m_enabled: 0
+    m_WaitTime: 1
+    m_RecenteringTime: 2
+    m_LegacyHeadingDefinition: -1
+    m_LegacyVelocityFilterStrength: -1
+  m_ApplyBeforeBody: 0
 --- !u!1 &1605948251
 GameObject:
   m_ObjectHideFlags: 0
