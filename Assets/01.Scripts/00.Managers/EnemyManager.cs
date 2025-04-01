@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ public class EnemyManager : MonoSingleton<EnemyManager>
 {
     public GameObject EnemyObject;
     List<GameObject> Enemys = new List<GameObject>();
+
+    public event Action OnDie;
 
     protected override void Awake()
     {
@@ -40,5 +43,10 @@ public class EnemyManager : MonoSingleton<EnemyManager>
             }
         }
         return null;
+    }
+
+    public void Die()
+    {
+        OnDie?.Invoke();
     }
 }
