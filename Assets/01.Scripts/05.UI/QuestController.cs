@@ -35,7 +35,47 @@ public class QuestController : MonoBehaviour
         {
             if (questUI != null)
             {
+                Debug.Log($"AddQuest : + {questinfo.name}");
                 GameObject newQuestUI = GameObject.Instantiate(questUI, questPannel.transform);
+                QuestUIController questUIController = newQuestUI.GetComponent<QuestUIController>();
+                
+                switch(questinfo.type)
+                {
+                    case QuestType.PLAYER_MOVE:
+                        questUIController.TextQuestDes.text = questinfo.description;
+                        break;
+                    case QuestType.USE_REPAIRKIT:
+                        questUIController.TextQuestDes.text = questinfo.description;
+
+                        questUIController.TextQuestCout.gameObject.SetActive(true);
+                        questUIController.TextQuestMaxCount.gameObject.SetActive(true);
+                        //임시
+                        int Count = 0;
+                        questUIController.TextQuestCout.text = Count.ToString();
+                        questUIController.TextQuestMaxCount.text = questinfo.requiredUseCount.ToString();
+                        break;
+                    case QuestType.USE_GRENADE:
+                        questUIController.TextQuestDes.text = questinfo.description;
+
+                        questUIController.TextQuestCout.gameObject.SetActive(true);
+                        questUIController.TextQuestMaxCount.gameObject.SetActive(true);
+                        //임시
+                        int Count_2 = 0;
+                        questUIController.TextQuestCout.text = Count_2.ToString();
+                        questUIController.TextQuestMaxCount.text = questinfo.requiredUseCount.ToString();
+                        break;
+                    case QuestType.KILL_ENEMY:
+                        questUIController.TextQuestDes.text = questinfo.description;
+
+                        questUIController.TextQuestCout.gameObject.SetActive(true);
+                        questUIController.TextQuestMaxCount.gameObject.SetActive(true);
+                        //임시
+                        int Count_3 = 0;
+                        questUIController.TextQuestCout.text = Count_3.ToString();
+                        questUIController.TextQuestMaxCount.text = questinfo.requiredKillEnemyCount.ToString();
+                        break;
+                }
+                
             }
             else
             {
