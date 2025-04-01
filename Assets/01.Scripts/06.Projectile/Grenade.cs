@@ -19,7 +19,7 @@ public class Grenade : MonoBehaviour
 
         foreach (var col in colliders)
         {
-            if (col.CompareTag("Enemy"))
+            if (col.CompareTag("Grenade_Target"))
             {
                 enemyColliders.Add(col);
             }
