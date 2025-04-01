@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurretPartDamage : MonoBehaviour
+public class ScarecrowPartDamage : MonoBehaviour
 {
     public float MultToDamage;
     Collider partCollider;
@@ -14,7 +14,7 @@ public class TurretPartDamage : MonoBehaviour
 
     private void Start()
     {
-        GetComponentInParent<Turret>().Partscollider.Add(partCollider);
+        GetComponentInParent<Scarecrow>().Partscollider.Add(partCollider);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -22,7 +22,7 @@ public class TurretPartDamage : MonoBehaviour
         if (other.GetComponent<Bullet>())
         {
             //총 데미지를 계산하고 삭제
-            GetComponentInParent<Turret>().GetDamage(other.GetComponent<Bullet>().Damage * MultToDamage);
+            GetComponentInParent<Scarecrow>().GetDamage(other.GetComponent<Bullet>().Damage * MultToDamage);
             other.GetComponent<Bullet>().DestroyThisObject();
         }
     }
