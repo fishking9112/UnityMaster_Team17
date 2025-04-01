@@ -15,28 +15,12 @@ public class Door : MonoBehaviour
     public void OpenDoor()
     {
         anim.Play("open");
-        //StartCoroutine(CloseDoor());
+        StartCoroutine(CloseDoor());
     }
 
     private IEnumerator CloseDoor()
     {
         yield return new WaitForSeconds(3f);
         anim.Play("close");
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            anim.Play("close");
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            anim.Play("open");
-        }
     }
 }
