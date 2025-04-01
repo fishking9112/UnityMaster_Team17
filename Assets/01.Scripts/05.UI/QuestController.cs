@@ -5,14 +5,15 @@ using UnityEngine;
 public class QuestController : MonoBehaviour
 {
     [SerializeField]
-    private GameObject quest;
+    private GameObject questUI;
 
     [SerializeField]
     private GameObject questPannel;
 
     private void Start()
     {
-        quest = Resources.Load<GameObject>("Quest");
+        //Resources 폴더를 사용 안해서 패스 !
+        //quest = Resources.Load<GameObject>("Quest");
 
         questPannel = transform.Find("QuestPannel").gameObject;
 
@@ -28,9 +29,31 @@ public class QuestController : MonoBehaviour
     // 퀘스트 보드에 퀘스트 추가하는 함수
     public void AddQuest(QuestInfo questinfo)
     {
-        Debug.Log("AddQuest");
-
-        
+        //Quest Pannel 에 Quest 추가
+        //GameObject newQuestUI = new GameObject($"QuestUI");
+        if(questPannel != null)
+        {
+            if (questUI != null)
+            {
+                GameObject newQuestUI = GameObject.Instantiate(questUI, questPannel.transform);
+            }
+            else
+            {
+                Debug.LogWarning("questUI_Prefab is null !");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("QuestPannel is null !");
+        }
     }
 
+    private void Update()
+    {
+        //test
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            GameObject newQuestUI = GameObject.Instantiate(questUI, questPannel.transform);
+        }
+    }
 }
