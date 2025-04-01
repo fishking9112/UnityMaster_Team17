@@ -18,4 +18,4 @@ MonoBehaviour:
     <WalkSpeed>k__BackingField: 0.4
     <RunSpeed>k__BackingField: 1
   <DashSpeed>k__BackingField: 30
-  <ShootInterval>k__BackingField: 0.3
+  <FireRPS>k__BackingField: 1

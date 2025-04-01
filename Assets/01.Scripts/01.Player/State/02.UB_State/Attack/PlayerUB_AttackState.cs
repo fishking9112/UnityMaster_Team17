@@ -13,7 +13,7 @@ public class PlayerUB_AttackState : PlayerUB_BaseState
         base.Enter();
 
         UBStateMachine.player.AimVCam.Priority = 20;
-        StartAnimation(LBStateMachine.player.AnimationData.UB_AttackParameterHash); // 수정해야함.
+        StartAnimation(LBStateMachine.player.AnimationData.UB_AttackParameterHash);
     }
 
     public override void Exit()

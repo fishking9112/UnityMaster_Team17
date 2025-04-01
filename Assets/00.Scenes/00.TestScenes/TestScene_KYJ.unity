@@ -426,6 +426,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerwithCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 3043889400535232738, guid: b1487351b7566bd49bf2884c05c48b1b,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 677e9cd5f9f8a9f44ac63f197516265c, type: 2}
+    - target: {fileID: 3043889400535232738, guid: b1487351b7566bd49bf2884c05c48b1b,
+        type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'UpperLeg_Left'\n\tTransform 'UpperLeg_Right'\n\tTransform
+        'LowerLeg_Left'\n\tTransform 'LowerLeg_Right'\n\tFrom animation clip 'Dash'"
+      objectReference: {fileID: 0}
     - target: {fileID: 5168119546860579821, guid: b1487351b7566bd49bf2884c05c48b1b,
         type: 3}
       propertyPath: m_LocalPosition.x

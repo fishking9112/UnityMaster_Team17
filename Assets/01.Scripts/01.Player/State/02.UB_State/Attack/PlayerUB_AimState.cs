@@ -13,7 +13,7 @@ public class PlayerUB_AimState : PlayerUB_AttackState
     {
         base.Enter();
 
-        StartAnimation(LBStateMachine.player.AnimationData.UB_AimParameterHash); // 수정해야함
+        StartAnimation(LBStateMachine.player.AnimationData.UB_AimParameterHash);
     }
 
     public override void Exit()

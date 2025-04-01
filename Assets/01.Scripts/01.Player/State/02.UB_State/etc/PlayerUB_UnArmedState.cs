@@ -12,7 +12,7 @@ public class PlayerUB_UnArmedState : PlayerUB_BaseState
     public override void Enter()
     {
         base.Enter();
-        StartAnimation(LBStateMachine.player.AnimationData.UB_UnArmedParameterHash); // 수정해야함.
+        StartAnimation(LBStateMachine.player.AnimationData.UB_UnArmedParameterHash); 
     }
 
     public override void Exit()
