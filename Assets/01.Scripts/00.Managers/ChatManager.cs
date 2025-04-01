@@ -25,7 +25,7 @@ public class ChatManager : MonoSingleton<ChatManager>
     }
 
     /// <summary>
-    /// id를 받아와서 출력할 chat을 초기화
+    /// id를 받아와서 출력할 chat을 초기화하고 출력
     /// </summary>
     /// <param name="id"> 출력할 chat의 id </param>
     public void UpdateChatText(int id)
@@ -38,7 +38,7 @@ public class ChatManager : MonoSingleton<ChatManager>
 
 
     /// <summary>
-    /// 대화 내용을 화면에 출력. speeker = 말하는 사람
+    /// 대화 내용을 화면에 출력. speeker = 말하는 사람(문장의 맨뒤 chat타입 글자로 판단)
     /// </summary>
     IEnumerator DisplayChat()
     {
@@ -61,7 +61,7 @@ public class ChatManager : MonoSingleton<ChatManager>
     }
 
     /// <summary>
-    /// 대화 내용을 한글자 씩 출력
+    /// 대화 내용을 한 글자씩 출력
     /// </summary>
     /// <param name="str"> 출력할 대화 문장 </param>
     IEnumerator TypingText(string str)
