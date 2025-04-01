@@ -5,34 +5,38 @@ using System;
 
 public class DoorController : MonoBehaviour
 {
+    // doors의 개수만큼 requiredQuestIDs를 설정해주어야 함.
+    // requiredQuestIDs의 각 인덱스에 해당하는 퀘스트 ID가 완료되면 해당 인덱스의 (doors)문이 열림.
     public Door[] doors;
+    public int[] requiredQuestIDs;
 
-    // 실행예제
-    private void Update()
+    private Dictionary<int, Door> doorDict = new();
+
+    private void Awake()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if(doors.Length != requiredQuestIDs.Length)
         {
-            OpenDoorIndex(0);
+            Debug.LogError("문의 개수와 퀘스트 ID의 개수가 일치하지 않습니다.");
+            return;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+
+        for (int i = 0; i < requiredQuestIDs.Length; i++)
         {
-            OpenDoorIndex(1);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            OpenDoorIndex(2);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            OpenDoorIndex(3);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            OpenDoorIndex(4);
+            doorDict[requiredQuestIDs[i]] = doors[i];     
         }
     }
-    private void OpenDoorIndex(int index)
+
+    private void Start()
     {
-        doors[index].OpenDoor();
+        QuestManager.Instance.OnQuestCleared += OpenDoorByQuest;
+    }
+
+    // 퀘스트 ID를 받아서 해당 퀘스트 ID가 requiredQuestIDs에 있는지 확인하고 있으면 해당 인덱스의 문을 열어줌.
+    private void OpenDoorByQuest(int questID)
+    {
+        if (doorDict.TryGetValue(questID, out Door door))
+        {
+            door.OpenDoor();
+        }
     }
 }
