@@ -3,15 +3,6 @@ using UnityEngine;
 public class QuestKillEnemy : QuestBase
 {
     private int _curKillEnemyCount;
-
-    //해당 부분이 EnemyManager 같은 적 처치에 관련된 스크립트에 포함 되어야 함
-    //public event Action OnDie;
-
-    //public void Die()
-    //{
-    //    OnDie?.Invoke();
-    //}
-
     public TestScript test;
 
     /// <summary>
@@ -20,9 +11,7 @@ public class QuestKillEnemy : QuestBase
     protected override void QuestInit()
     {
         _curKillEnemyCount = 0;
-        // EnemyManager.Instance.OnDie += KillEnemy;
-
-        test.OnDie += KillEnemy;
+        EnemyManager.Instance.OnDie += KillEnemy;
     }
 
     /// <summary>
@@ -35,9 +24,7 @@ public class QuestKillEnemy : QuestBase
             if(_curKillEnemyCount >= questInfo.requiredKillEnemyCount)
             {
                 questManager.QuestClear(questInfo.id);
-                // EnemyManager.Instance.OnDie -= KillEnemy;
-
-                test.OnDie -= KillEnemy;
+                EnemyManager.Instance.OnDie -= KillEnemy;
             }
         }
     }

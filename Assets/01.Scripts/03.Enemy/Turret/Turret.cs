@@ -54,6 +54,8 @@ public class Turret : MonoBehaviour
         if (HP <= 0)
         {
             //맞고 죽을 경우
+            EnemyManager.Instance.Die();
+
             HP = 0;
             stateMachine.ChangeState(stateMachine.DeadState);
             StartCoroutine(DeadMotion());
