@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,6 +6,8 @@ public class QuestManager : MonoSingleton<QuestManager>
 {
     public QuestData questData;
     private Dictionary<int, QuestBase> _questDictionary;
+
+    public event Action<int> OnQuestCleared; // 퀘스트 클리어 시 발생하는 이벤트(현재 DoorController에서 사용) - 한만진
 
     protected override void Awake()
     {
@@ -83,6 +86,8 @@ public class QuestManager : MonoSingleton<QuestManager>
         quest.questState = QuestState.CLEAR;
 
         Debug.Log("퀘스트 완료");
+
+        OnQuestCleared?.Invoke(id); // 퀘스트 클리어 시 이벤트 발생 - 한만진
     }
 
     /// <summary>
