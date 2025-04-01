@@ -58,6 +58,10 @@ public class Player_BaseState : IState
         //Debug.Log($"이름:{name},애니메이션:{animationSpeedModifier}");
     }
 
+    public virtual void LateUpdate()
+    {
+    }
+
     protected void StartAnimation(int animationHash)
     {
         LBStateMachine.player.Animator.SetBool(animationHash, true);
@@ -121,10 +125,10 @@ public class Player_BaseState : IState
                 player.rotation = Quaternion.Slerp(player.rotation, target, LBStateMachine.player.playerSO.GroundData.RotationDamping * Time.deltaTime);
             }
         }
-        else
-        {
-            LBStateMachine.player.transform.rotation = Quaternion.LookRotation(UBStateMachine.player.AimVCam.transform.forward);
-        }
+        //else
+        //{
+        //    LBStateMachine.player.transform.rotation = Quaternion.LookRotation(UBStateMachine.player.AimVCam.transform.forward);
+        //}
     }
 
     protected virtual void OnMovementCanceled(InputAction.CallbackContext context)

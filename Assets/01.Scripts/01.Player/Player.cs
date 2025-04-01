@@ -21,9 +21,14 @@ public class Player : MonoBehaviour
     public Rigidbody Rigidbody { get; private set; }
     public PlayerBoundHandler BoundHandler { get; private set; }
     public Image crosshair;
+    public PlayerTargetingHandler TargetingHandler { get; private set; }
 
     public Coroutine controllerSizingCoroutine { get; private set; }
-    [field: SerializeField] public CinemachineVirtualCamera AimVCam { get; private set; } 
+    [field: SerializeField] public CinemachineVirtualCamera AimVCam { get; private set; }
+    [field: SerializeField] public CinemachineVirtualCamera NaviVCam { get; private set; }
+
+    //public Transform spine;
+
 
     public PlayerLBStateMachine LBStateMachine;
     public PlayerUBStateMachine UBStateMachine;
@@ -32,17 +37,18 @@ public class Player : MonoBehaviour
     {
         AnimationData.Initialize();
 
-        LBStateMachine = new PlayerLBStateMachine(this);
-        UBStateMachine = new PlayerUBStateMachine(this);
-        LBStateMachine.Initialize(UBStateMachine);
-        UBStateMachine.Initialize(LBStateMachine);
-
         Animator = GetComponentInChildren<Animator>();
         Input = GetComponent<PlayerController>();
         Controller = GetComponent<CharacterController>();
         ForceReceiver = GetComponent<ForceReceiver>();
         Rigidbody = GetComponent<Rigidbody>();
         BoundHandler = GetComponent<PlayerBoundHandler>();
+        TargetingHandler = GetComponent<PlayerTargetingHandler>();
+
+        LBStateMachine = new PlayerLBStateMachine(this);
+        UBStateMachine = new PlayerUBStateMachine(this);
+        LBStateMachine.Initialize(UBStateMachine);
+        UBStateMachine.Initialize(LBStateMachine);
     }
 
     private void Start()
@@ -65,6 +71,12 @@ public class Player : MonoBehaviour
     {
         LBStateMachine.PhysicsUpdate();
         UBStateMachine.PhysicsUpdate();
+    }
+
+    private void LateUpdate()
+    {
+        LBStateMachine.LateUpdate();
+        UBStateMachine.LateUpdate();
     }
 
     public void StartControllerSizing(float time = 0, float centerY = 1, float height = 2)

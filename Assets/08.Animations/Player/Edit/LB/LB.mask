@@ -24,15 +24,15 @@ AvatarMask:
   - m_Path: Hips
     m_Weight: 1
   - m_Path: Hips/ArmPosition_Left
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Hips/ArmPosition_Right
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Hips/ArmPosition_Right/magazine_Right
     m_Weight: 1
   - m_Path: Hips/ArmPosition_Right/Trigger_Right
     m_Weight: 1
   - m_Path: Hips/Spine
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Hips/Spine/Chest
     m_Weight: 1
   - m_Path: Hips/Spine/Chest/BackPack

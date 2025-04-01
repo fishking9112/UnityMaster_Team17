@@ -32,6 +32,11 @@ public class EnemyBaseState : IState
     {
 
     }
+
+    public void LateUpdate()
+    {
+    }
+
     protected void StartAnimation(int animatorHash)
     {
         stateMachine.Enemy.animator.SetBool(animatorHash, true);
