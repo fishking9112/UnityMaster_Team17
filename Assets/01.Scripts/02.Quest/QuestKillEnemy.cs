@@ -11,7 +11,7 @@ public class QuestKillEnemy : QuestBase
     protected override void QuestInit()
     {
         _curKillEnemyCount = 0;
-        EnemyManager.Instance.OnDie += KillEnemy;
+        EnemyManager.Instance.OnDie += KillEnemyCount;
     }
 
     /// <summary>
@@ -24,12 +24,12 @@ public class QuestKillEnemy : QuestBase
             if(_curKillEnemyCount >= questInfo.requiredKillEnemyCount)
             {
                 questManager.QuestClear(questInfo.id);
-                EnemyManager.Instance.OnDie -= KillEnemy;
+                EnemyManager.Instance.OnDie -= KillEnemyCount;
             }
         }
     }
 
-    private void KillEnemy()
+    private void KillEnemyCount()
     {
         _curKillEnemyCount++;
     }

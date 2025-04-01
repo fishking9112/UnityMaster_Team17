@@ -16,6 +16,7 @@ public class ChatManager : MonoSingleton<ChatManager>
     {
         base.Awake();
 
+        _chatText = GameObject.Find("Test").GetComponent<TextMeshProUGUI>();
         // UIManager에서 _chatText 연결해주기
     }
 

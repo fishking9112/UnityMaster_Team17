@@ -15,30 +15,54 @@ MonoBehaviour:
   sheetURL: 1v_nkmbO8MzXts1qLHKEclOda4oLwR9PBHfJRSuYwYRE
   sheetName: Quest
   startRowIndex: 2
-  endRowIndex: 4
+  endRowIndex: 7
   questInfoList:
   - id: 0
-    name: "\uC774\uB3D9 \uD29C\uD1A0\uB9AC\uC5BC"
+    name: "\uC774\uB3D9"
     description: "wasd\uB97C \uB20C\uB7EC \uC774\uB3D9\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4.
-      \uB2E4\uC74C \uC9C0\uC5ED\uC73C\uB85C \uC774\uB3D9 \uD574\uBCF4\uC138\uC694."
+      \uB2E4\uC74C \uC9C0\uC5ED\uC73C\uB85C \uC774\uB3D9\uD558\uC138\uC694."
     position: {x: 0, y: 0, z: 0}
     scale: {x: 2, y: 1, z: 2}
     type: 0
     requiredDistance: 10
     requiredKillEnemyCount: 0
   - id: 1
-    name: "\uC544\uC774\uD15C \uC0AC\uC6A9 \uD29C\uD1A0\uB9AC\uC5BC"
-    description: "\uC544\uC774\uD15C\uC744 \uC0AC\uC6A9\uD574\uBCF4\uC138\uC694."
+    name: "\uD68C\uBCF5 \uC544\uC774\uD15C \uC0AC\uC6A9"
+    description: "\uD68C\uBCF5 \uC544\uC774\uD15C\uC744 \uC0AC\uC6A9\uD574\uBCF4\uC138\uC694."
     position: {x: 5, y: 0, z: 0}
     scale: {x: 2, y: 1, z: 2}
     type: 1
     requiredDistance: 0
     requiredKillEnemyCount: 0
   - id: 2
-    name: "\uC801 \uCC98\uCE58 \uD29C\uD1A0\uB9AC\uC5BC"
-    description: "\uC801\uC744 3\uB9C8\uB9AC \uCC98\uCE58\uD558\uC138\uC694."
+    name: "\uD5C8\uC218\uC544\uBE44 \uCC98\uCE58"
+    description: "\uD5C8\uC218\uC544\uBE44\uB97C 3\uB9C8\uB9AC \uCC98\uCE58\uD558\uC138\uC694."
     position: {x: 10, y: 0, z: 0}
     scale: {x: 2, y: 1, z: 2}
     type: 2
     requiredDistance: 0
     requiredKillEnemyCount: 3
+  - id: 3
+    name: "\uC218\uB958\uD0C4 \uC0AC\uC6A9"
+    description: "\uC218\uB958\uD0C4\uC744 \uC0AC\uC6A9\uD574\uBCF4\uC138\uC694."
+    position: {x: 15, y: 0, z: 0}
+    scale: {x: 2, y: 1, z: 2}
+    type: 1
+    requiredDistance: 0
+    requiredKillEnemyCount: 0
+  - id: 4
+    name: "\uBAA8\uC758 \uC804\uD22C"
+    description: "\uAD6C\uC5ED\uB0B4 \uBAA8\uB4E0 \uC801\uC744 \uCC98\uCE58\uD558\uC138\uC694."
+    position: {x: 20, y: 0, z: 0}
+    scale: {x: 2, y: 1, z: 2}
+    type: 2
+    requiredDistance: 0
+    requiredKillEnemyCount: 5
+  - id: 5
+    name: "\uBCF4\uC2A4\uC804"
+    description: "\uBCF4\uC2A4\uB97C \uCC98\uCE58\uD558\uC138\uC694."
+    position: {x: 25, y: 0, z: 0}
+    scale: {x: 2, y: 1, z: 2}
+    type: 2
+    requiredDistance: 0
+    requiredKillEnemyCount: 1
