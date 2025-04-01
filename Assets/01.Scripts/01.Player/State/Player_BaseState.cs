@@ -11,9 +11,10 @@ public class Player_BaseState : IState
     Camera cam = Camera.main;
 
     protected float animationSpeedModifier =1f;
+    public bool WalkMode;
 
-
-    protected string name;
+    protected Vector3 movementDirection;
+    protected float bonusSpeed;
 
     public Player_BaseState(PlayerLBStateMachine LBStateMachine, PlayerUBStateMachine UBStateMachine)
     {
@@ -23,12 +24,11 @@ public class Player_BaseState : IState
 
     protected virtual void AddInputActionCallbacks()
     {
-        LBStateMachine.player.Input.playerActions.Movement.canceled += OnMovementCanceled;
+        
     }
 
     protected virtual void RemoveInputActionCallbacks()
     {
-        LBStateMachine.player.Input.playerActions.Movement.canceled -= OnMovementCanceled;
     }
 
 
@@ -75,14 +75,11 @@ public class Player_BaseState : IState
 
     private void Move()
     {
-        Vector3 movementDirection = GetMovementDirection();
+        movementDirection = GetMovementDirection();
 
         Move(movementDirection);
 
         Rotate(movementDirection);
-
-        LBStateMachine.player.Animator.SetFloat("MoveSpeed", LBStateMachine.MovementSpeedModifier * animationSpeedModifier); // 테스트용
-        //Debug.Log($"Move하는 상태 이름:{name}");
     }
 
     private Vector3 GetMovementDirection()
@@ -102,7 +99,7 @@ public class Player_BaseState : IState
 
     private void Move(Vector3 direction)
     {
-        Vector3 movement = (direction * GetMovementSpeed()) * Time.deltaTime; // + verticalMovement
+        Vector3 movement = ((direction * (GetMovementSpeed() + bonusSpeed)) + LBStateMachine.player.ForceReceiver.Movement) * Time.deltaTime; // + verticalMovement
         LBStateMachine.player.Controller.Move(movement);
     }
 
@@ -125,13 +122,15 @@ public class Player_BaseState : IState
 
     protected virtual void OnMovementCanceled(InputAction.CallbackContext context)
     {
-        if(LBStateMachine.MovementInput != Vector2.zero)
-        {
-            LBStateMachine.ChangeState(LBStateMachine.lb_IdleState);
-        }
     }
 
-    //protected virtual void OnMovementStarted(InputAction.CallbackContext context) // 이거 안한 이유 = 입력있을때마다 changestate하는게 더 문제.
+    protected virtual void OnJumpStarted(InputAction.CallbackContext context)
+    {
+    }
+
+
+    //protected virtual void OnMovementStarted(InputAction.CallbackContext context) // 이거 안한 이유 = 입력있을때마다 changestate하는 문제.
     //{
     //}
+
 }
