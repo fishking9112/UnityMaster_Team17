@@ -8,6 +8,7 @@ public class TurretStateMachine : StateMachine
 
     public TurretIdleState IdleState { get; set; }
     public TurretAttackState AttackState { get; set; }
+    public TurretDeadState DeadState { get; set; }
 
     public TurretStateMachine(Turret turret)
     {
@@ -15,5 +16,6 @@ public class TurretStateMachine : StateMachine
 
         IdleState = new TurretIdleState(this);
         AttackState = new TurretAttackState(this);
+        DeadState = new TurretDeadState(this);
     }
 }

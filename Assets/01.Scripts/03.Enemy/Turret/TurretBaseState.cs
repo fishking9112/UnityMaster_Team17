@@ -11,24 +11,39 @@ public class TurretBaseState : IState
         this.stateMachine = stateMachine;
     }
 
-    public void Enter()
+    public virtual void Enter()
     {
     }
 
-    public void Exit()
+    public virtual void Exit()
     {
     }
 
-    public void HandleInput()
+    public virtual void HandleInput()
     {
     }
 
-    public void PhysicsUpdate()
+    public virtual void PhysicsUpdate()
     {
     }
 
-    public void Update()
+    public virtual void Update()
     {
+    }
+    protected float IsInChasingRange()
+    {
+        //일정 각도 내에 있는 플레이어와 적의 거리 값, 없으면 -1
+        Vector3 directionToPlayer = GameManager.Instance.player.transform.position - stateMachine.Turret.transform.position;
+        float playerDistanceSqr = directionToPlayer.sqrMagnitude;
+        if (playerDistanceSqr <= stateMachine.Turret.ChasingMaxRange)
+        {
+            float angle = Vector3.Angle(stateMachine.Turret.transform.forward, directionToPlayer);
+            if (angle <= stateMachine.Turret.SeightAngle)
+            {
+                return playerDistanceSqr;
+            }
+        }
+        return -1;
     }
 
     protected float IsInChasingDistance()
