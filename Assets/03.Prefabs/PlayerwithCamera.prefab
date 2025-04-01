@@ -1115,8 +1115,8 @@ MonoBehaviour:
     m_InputAxisName: Mouse X
     m_InputAxisValue: 0
     m_InvertInput: 0
-    m_MinValue: -60
-    m_MaxValue: 60
+    m_MinValue: 8.942818
+    m_MaxValue: 108.9428
     m_Wrap: 0
     m_Recentering:
       m_enabled: 0
@@ -2137,7 +2137,7 @@ Transform:
   m_GameObject: {fileID: 5571531047093836197}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.49, z: 0}
+  m_LocalPosition: {x: 0, y: 1.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2606,7 +2606,7 @@ Transform:
   m_GameObject: {fileID: 6999320000809505701}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.79, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2650,6 +2650,9 @@ MonoBehaviour:
   crosshair: {fileID: 6998253667270904858}
   <AimVCam>k__BackingField: {fileID: 7399553722638327452}
   <NaviVCam>k__BackingField: {fileID: 7147894215694355865}
+  spine: {fileID: 8398143119705090702}
+  armRight: {fileID: 7579833628324585426}
+  vector: {x: 90, y: 90, z: 90}
 --- !u!143 &8216679211258663707
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2702,6 +2705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 8216679211258663707}
   drag: 0.3
+  jumpStarted: 0
 --- !u!114 &8701431903218646511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3216,7 +3220,7 @@ Transform:
   m_GameObject: {fileID: 7872399792699714303}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 4.49, z: 0}
+  m_LocalPosition: {x: 1.5, y: 1.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
