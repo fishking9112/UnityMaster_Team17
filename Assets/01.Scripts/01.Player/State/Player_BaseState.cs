@@ -80,8 +80,6 @@ public class Player_BaseState : IState
         Move(movementDirection);
 
         Rotate(movementDirection);
-
-        LBStateMachine.player.Animator.SetFloat("MoveSpeed", LBStateMachine.MovementSpeedModifier * animationSpeedModifier); // 테스트용
     }
 
     private Vector3 GetMovementDirection()
