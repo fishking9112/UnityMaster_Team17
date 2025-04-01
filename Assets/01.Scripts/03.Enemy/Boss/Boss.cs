@@ -75,6 +75,7 @@ public class Boss : MonoBehaviour
         //총을 총구에서 쏘도록 제작
         GameObject bullet = BulletManager.Instance.SpawnBullet();
         bullet.transform.position = BossRightShootPosition.transform.position;
+        bullet.transform.rotation = Quaternion.LookRotation((GameManager.Instance.player.transform.position - BossRightShootPosition.transform.position).normalized);
         bullet.GetComponent<Bullet>().SettingDamage(Data.Damage,
             GameManager.Instance.player.transform.position - BossRightShootPosition.transform.position +
             new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), UnityEngine.Random.Range(-0.5f, 0.5f) + 1, UnityEngine.Random.Range(-0.5f, 0.5f)));
