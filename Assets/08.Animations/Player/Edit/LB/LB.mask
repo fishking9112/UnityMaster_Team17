@@ -34,9 +34,9 @@ AvatarMask:
   - m_Path: Hips/Spine
     m_Weight: 0
   - m_Path: Hips/Spine/Chest
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Hips/Spine/Chest/BackPack
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Hips/Spine/Chest/BackPack/ArmPlacement_Left
     m_Weight: 1
   - m_Path: Hips/Spine/Chest/BackPack/ArmPlacement_Right
@@ -44,7 +44,7 @@ AvatarMask:
   - m_Path: Hips/Spine/Chest/BackPack/ArmPlacement_Upper
     m_Weight: 1
   - m_Path: Hips/Spine/Chest/Neck
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Hips/Spine/Chest/Neck/Head
     m_Weight: 1
   - m_Path: Hips/Spine/Chest/Neck/Head/Headgear_Left
@@ -52,7 +52,7 @@ AvatarMask:
   - m_Path: Hips/Spine/Chest/Neck/Head/Headgear_Right
     m_Weight: 1
   - m_Path: Hips/Spine/Chest/Shoulder_Left
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Hips/Spine/Chest/Shoulder_Left/ShoulderPadCTRL_Left
     m_Weight: 1
   - m_Path: Hips/Spine/Chest/Shoulder_Left/ShoulderPadCTRL_Left/ShoulderPadBlade_Left
@@ -84,7 +84,7 @@ AvatarMask:
   - m_Path: Hips/Spine/Chest/Shoulder_Left/UpperArm_Left/LowerArm_Left/Hand_Left/Thumb_Proximal_Left/Thumb_Intermediate_Left/Thumb_Distal_Left
     m_Weight: 1
   - m_Path: Hips/Spine/Chest/Shoulder_Right
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Hips/Spine/Chest/Shoulder_Right/ShoulderPadCTRL_Right
     m_Weight: 1
   - m_Path: Hips/Spine/Chest/Shoulder_Right/ShoulderPadCTRL_Right/ShoulderPadBlade_Right

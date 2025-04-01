@@ -17,6 +17,7 @@ public class PlayerLB_LandingState : PlayerLB_AirState
     {
         base.Exit();
         StopAnimation(LBStateMachine.player.AnimationData.LB_LandingParameterHash);
+
     }
 
     public override void Update()

@@ -8,7 +8,7 @@ public class ForceReceiver : MonoBehaviour
 
     [SerializeField] private float drag = 0.3f;
     private float verticalVelocity;
-
+    public bool jumpStarted;
     public Vector3 Movement => impact + Vector3.up * verticalVelocity;
     private Vector3 dampingVelocity;
     private Vector3 impact;
@@ -20,13 +20,14 @@ public class ForceReceiver : MonoBehaviour
 
     private void Update()
     {
-        if (controller.isGrounded)
+        if (controller.isGrounded && !jumpStarted)
         {
             verticalVelocity = Physics.gravity.y * Time.deltaTime;
         }
         else
         {
             verticalVelocity += Physics.gravity.y * Time.deltaTime;
+            jumpStarted = false;
         }
 
         impact = Vector3.SmoothDamp(impact, Vector3.zero, ref dampingVelocity, drag);

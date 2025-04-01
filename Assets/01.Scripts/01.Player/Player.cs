@@ -27,8 +27,9 @@ public class Player : MonoBehaviour
     [field: SerializeField] public CinemachineVirtualCamera AimVCam { get; private set; }
     [field: SerializeField] public CinemachineVirtualCamera NaviVCam { get; private set; }
 
-    //public Transform spine;
-
+    public Transform spine;
+    public Transform armRight;
+    public Vector3 vector;
 
     public PlayerLBStateMachine LBStateMachine;
     public PlayerUBStateMachine UBStateMachine;

@@ -55,7 +55,6 @@ public class Player_BaseState : IState
     public virtual void Update()
     {
         Move();
-        //Debug.Log($"이름:{name},애니메이션:{animationSpeedModifier}");
     }
 
     public virtual void LateUpdate()

@@ -43,7 +43,7 @@ public class PlayerLB_DashState : PlayerLB_BaseState
 
     IEnumerator Dash() // 속도 증가 대쉬.
     {
-        float accelerationDuration = 0.1f;
+        float accelerationDuration = 0.2f;
         float elapsedTime = 0;
 
         while (elapsedTime < accelerationDuration)
@@ -55,7 +55,7 @@ public class PlayerLB_DashState : PlayerLB_BaseState
             yield return null;
         }
 
-        float decelerationDuration = 1.5f;
+        float decelerationDuration = 0.8f;
         elapsedTime = 0;
 
         while (elapsedTime < decelerationDuration)

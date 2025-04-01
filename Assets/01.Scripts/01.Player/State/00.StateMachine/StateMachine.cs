@@ -41,5 +41,6 @@ public abstract class StateMachine
     public void LateUpdate()
     {
         currentState.LateUpdate();
+        Debug.Log(currentState);
     }
 }

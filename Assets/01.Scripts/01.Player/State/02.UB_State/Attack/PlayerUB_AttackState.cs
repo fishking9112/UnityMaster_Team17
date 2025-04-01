@@ -89,8 +89,9 @@ public class PlayerUB_AttackState : PlayerUB_BaseState
         // 기본 회전을 고려하여 최종 회전 계산
         spine.rotation = targetRotation * baseRotation;
 
-        //UBStateMachine.player.AimVCam.transform.position = Vector3.one * Time.time;
-        //UBStateMachine.player.NaviVCam.transform.position = Vector3.one * Time.time;
+        Quaternion baseRotation2 = Quaternion.Euler(UBStateMachine.player.vector);
+        Quaternion targetRotation2 = Quaternion.LookRotation(Camera.main.transform.forward);
+        UBStateMachine.player.armRight.rotation = targetRotation2 * baseRotation2;
 
     }
 }
