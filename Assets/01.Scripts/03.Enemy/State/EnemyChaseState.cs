@@ -36,7 +36,7 @@ public class EnemyChaseState : EnemyBaseState
             stateMachine.ChangeState(stateMachine.IdleState);
         }
         //일정범위 내에 시야 내면 공격
-        else if(IsInChasingRange() <= stateMachine.Enemy.Data.AttackRange)
+        else if(IsInChasingRange() <= stateMachine.Enemy.Data.AttackRange && IsInChasingRange() != -1)
         {
             if (IsPlayerInSight())
             {
