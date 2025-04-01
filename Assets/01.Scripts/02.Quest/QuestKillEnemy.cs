@@ -3,7 +3,6 @@ using UnityEngine;
 public class QuestKillEnemy : QuestBase
 {
     private int _curKillEnemyCount;
-    public TestScript test;
 
     /// <summary>
     /// 퀘스트 요구치 초기화 및 이벤트 구독
