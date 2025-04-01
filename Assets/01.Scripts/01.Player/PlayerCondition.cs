@@ -1,7 +1,5 @@
 using UnityEngine;
 
-
-
 public class PlayerCondition : MonoBehaviour
 {
     public int CurHealth { get; private set; }

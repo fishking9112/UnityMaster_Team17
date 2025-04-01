@@ -53,8 +53,11 @@ public class QuestManager : MonoSingleton<QuestManager>
             case QuestType.PLAYER_MOVE:
                 questObject.AddComponent<QuestMove>();
                 break;
-            case QuestType.USE_ITEM:
-                questObject.AddComponent<QuestUseItem>();
+            case QuestType.USE_GRENADE:
+                questObject.AddComponent<QuestUseGrenade>();
+                break;
+            case QuestType.USE_REPAIRKIT:
+                questObject.AddComponent<QuestUseRepairKit>();
                 break;
             case QuestType.KILL_ENEMY:
                 questObject.AddComponent<QuestKillEnemy>();

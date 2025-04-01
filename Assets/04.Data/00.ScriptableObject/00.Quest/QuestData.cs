@@ -8,7 +8,8 @@ using System;
 public enum QuestType
 {
     PLAYER_MOVE,
-    USE_ITEM,
+    USE_REPAIRKIT,
+    USE_GRENADE,
     KILL_ENEMY,
 }
 
@@ -27,6 +28,9 @@ public struct QuestInfo
 
     // KILL_ENEMY type일 때 사용
     public int requiredKillEnemyCount;
+
+    // USE_xxx type일 때 사용
+    public int requiredUseCount;
 }
 
 [CreateAssetMenu(fileName = "QuestData", menuName = "Scriptable Object/New QuestData")]
@@ -88,6 +92,12 @@ public class QuestData : SheetDataReaderBase
                     if(_questInfo.type == QuestType.KILL_ENEMY)
                     {
                         _questInfo.requiredKillEnemyCount = int.Parse(cell.value);
+                    }
+                    break;
+                case "requiredUseCount":
+                    if(_questInfo.type == QuestType.USE_REPAIRKIT || _questInfo.type == QuestType.USE_GRENADE)
+                    {
+                        _questInfo.requiredUseCount = int.Parse(cell.value);
                     }
                     break;
             }

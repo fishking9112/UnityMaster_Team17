@@ -3,7 +3,6 @@ using UnityEngine;
 public class QuestKillEnemy : QuestBase
 {
     private int _curKillEnemyCount;
-    public TestScript test;
 
     /// <summary>
     /// 퀘스트 요구치 초기화 및 이벤트 구독
@@ -11,7 +10,7 @@ public class QuestKillEnemy : QuestBase
     protected override void QuestInit()
     {
         _curKillEnemyCount = 0;
-        EnemyManager.Instance.OnDie += KillEnemy;
+        EnemyManager.Instance.OnDie += KillEnemyCount;
     }
 
     /// <summary>
@@ -24,12 +23,12 @@ public class QuestKillEnemy : QuestBase
             if(_curKillEnemyCount >= questInfo.requiredKillEnemyCount)
             {
                 questManager.QuestClear(questInfo.id);
-                EnemyManager.Instance.OnDie -= KillEnemy;
+                EnemyManager.Instance.OnDie -= KillEnemyCount;
             }
         }
     }
 
-    private void KillEnemy()
+    private void KillEnemyCount()
     {
         _curKillEnemyCount++;
     }

@@ -17,13 +17,13 @@ public class ItemObject : InteractableObject
         switch (data.itemType)
         {
             case ItemType.GRENADE:
-                // player의 수류탄 수 증가
+                //GameManager.Instance.player.Condition.AddGrenade(data.value);
                 break;
             case ItemType.MAGAZINE:
-                // player의 탄창 수 증가
+                //GameManager.Instance.player.Condition.AddMagazine(data.value);
                 break;
             case ItemType.REPAIR_KIT:
-                // player의 수리키트 수 증가
+                //GameManager.Instance.player.Condition.AddRepairKit(data.value);
                 break;
         }
         Destroy(this.gameObject);
