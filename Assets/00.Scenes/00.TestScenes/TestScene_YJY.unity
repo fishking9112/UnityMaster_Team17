@@ -155,7 +155,7 @@ MonoBehaviour:
   isDontDestroyOnLoad: 0
   BulletObject: {fileID: 941617230123092236, guid: 4633de1b178fe554b96952af19c3d143,
     type: 3}
-  RocketObject: {fileID: 1645326908666424, guid: 3ce206ec6dca65a4b8357f9e7768cbd2,
+  RocketObject: {fileID: 7708833974862785505, guid: 348f7b9bef36909408bff2009f775a2b,
     type: 3}
 --- !u!4 &141464447
 Transform:

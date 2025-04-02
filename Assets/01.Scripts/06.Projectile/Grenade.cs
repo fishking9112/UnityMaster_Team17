@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,32 @@ public class Grenade : MonoBehaviour
     public GameObject explosionParticle;
 
     private GameObject curParticle;
+
+    public float Damage;
+    float Speed = 10;
+    Coroutine coroutine;
+    Vector3 Tartget = new Vector3();
+
+    public void SettingDamage(float damage, Vector3 _tartget)
+    {
+        //처음 세팅 데미지와 방향
+        Damage = damage;
+
+        Tartget = _tartget;
+
+        coroutine = StartCoroutine(ShootToTarget());
+        Invoke("DestroyThisObject", 5f);
+    }
+
+
+    IEnumerator ShootToTarget()
+    {
+        while (true)
+        {
+            transform.localPosition += Tartget.normalized * (Speed + Time.deltaTime) * Time.deltaTime;
+            yield return null;
+        }
+    }
 
     private void Explosion()
     {
@@ -43,13 +70,7 @@ public class Grenade : MonoBehaviour
         }
 
         gameObject.SetActive(false);
-        Invoke("DelayDestroy", 3f);
-    }
-
-    private void DelayDestroy()
-    {
-        Destroy(curParticle);
-        Destroy(this.gameObject);
+        Invoke("DestroyThisObject", 3f);
     }
 
     private void OnDrawGizmos()
@@ -62,4 +83,12 @@ public class Grenade : MonoBehaviour
     {
         Explosion();
     }
+
+    public void DestroyThisObject()
+    {
+        StopCoroutine(coroutine);
+
+        gameObject.SetActive(false);
+    }
+
 }

@@ -93,7 +93,7 @@ public class Boss : MonoBehaviour
         GameObject Rocket = BulletManager.Instance.SpawnRocket();
         Rocket.transform.position = BossLeftShootPosition.transform.position;
         Rocket.transform.rotation = Quaternion.LookRotation((GameManager.Instance.player.transform.position - BossLeftShootPosition.transform.position).normalized);
-        Rocket.GetComponent<Rocket>().SettingDamage(Data.Damage * 5,
+        Rocket.GetComponent<Grenade>().SettingDamage(Data.Damage * 5,
             GameManager.Instance.player.transform.position - BossLeftShootPosition.transform.position +
             new Vector3(UnityEngine.Random.Range(-0.1f, 0.1f), UnityEngine.Random.Range(-0.1f, 0.1f) + 1, UnityEngine.Random.Range(-0.1f, 0.1f)));
     }
