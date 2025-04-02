@@ -147,6 +147,8 @@ public class Boss : MonoBehaviour, IDamageable
 
     void MiliAttack()
     {
+        LastMiliAttack = Time.time;
+
         if ((GameManager.Instance.player.transform.position - transform.position).sqrMagnitude < Data.AttackRange * 2)
         {
             //데미지를 준다
@@ -157,6 +159,8 @@ public class Boss : MonoBehaviour, IDamageable
 
     public void GetDamage(float amount)
     {
+        if (HP <= 0) return;
+
         HP -= amount * GetDamageMultiple;
 
         if (LeftArmPartHp == 0 && IsLeftArm)
@@ -191,12 +195,6 @@ public class Boss : MonoBehaviour, IDamageable
             HP = 0;
             StopAllCoroutines();
             stateMachine.ChangeState(stateMachine.DeadState);
-        }
-        else
-        {
-            //맞고 살았을 경우
-            Invoke("OffColliders", 0.01f);
-            stateMachine.ChangeState(stateMachine.ChaseState);
         }
     }
 }
