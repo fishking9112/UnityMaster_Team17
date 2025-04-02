@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class QuestUIController : MonoBehaviour
@@ -18,11 +19,41 @@ public class QuestUIController : MonoBehaviour
     public QuestInfo curInfo;
     public int questID;
 
-    public void ClearQuest()
+    private void Update()
     {
-        TextQuestDes.color = Color.gray;
-        TextQuestCount.color = Color.gray;
-        TextQuestMaxCount.color = Color.gray;
+        CheckCount();
+        CheckClear();
+    }
+
+    private void CheckCount()
+    {
+        if(curInfo.type == QuestType.PLAYER_MOVE)
+        {
+            //언젠간 뭐가 추가 되겠지
+        }
+        else
+        {
+            TextQuestCount.text = curInfo.curCount.ToString();
+        }
+    }
+
+    private void CheckClear()
+    {
+        if(curInfo.questState == QuestState.ONGOING)
+        {
+
+            TextQuestDes.color = Color.white;
+            TextQuestCount.color = Color.white;
+            TextQuestMaxCount.color = Color.white;
+        }
+        else if (curInfo.questState == QuestState.CLEAR)
+        {
+
+            TextQuestDes.color = Color.gray;
+            TextQuestCount.color = Color.gray;
+            TextQuestMaxCount.color = Color.gray;
+        }
+
     }
 
 }

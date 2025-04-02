@@ -96,22 +96,4 @@ public class QuestController : MonoBehaviour
             Debug.LogWarning("QuestPannel is null !");
         }
     }
-
-    public void ClearQuest(int questID)
-    {
-        // 자식 목록
-        QuestUIController[] questUIControllers = GetComponentsInChildren<QuestUIController>();
-
-        //그중에 quest id 검색
-
-        for(int i = 0; i < questUIControllers.Length; i++)
-        {
-            if (questUIControllers[i].questID == questID)
-            {
-                // 맞는애 상태 변경
-                questUIControllers[i].ClearQuest();
-            }
-        }
-
-    }
 }

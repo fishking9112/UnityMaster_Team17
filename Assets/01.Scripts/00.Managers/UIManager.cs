@@ -40,8 +40,4 @@ public class UIManager : MonoSingleton<UIManager>
     {
         uiQuest_Canvas.GetComponent<QuestController>().AddQuest(questinfo);
     }
-    public void ClearQuest(int questID)
-    {
-        uiQuest_Canvas.GetComponent<QuestController>().ClearQuest(questID);
-    }
 }
