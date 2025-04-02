@@ -70,6 +70,8 @@ public class QuestManager : MonoSingleton<QuestManager>
     /// </summary>
     public void QuestStart(int id)
     {
+        SoundManager.Instance.PlayerSFX("Quest_Accept_SFX", GameManager.Instance.player.transform.position);
+
         QuestBase quest = _questDictionary[id];
 
         quest.questState = QuestState.ONGOING;
@@ -84,6 +86,8 @@ public class QuestManager : MonoSingleton<QuestManager>
     /// </summary>
     public void QuestClear(int id)
     {
+        SoundManager.Instance.PlayerSFX("Quest_Clear_SFX", GameManager.Instance.player.transform.position);
+
         QuestBase quest = _questDictionary[id];
 
         quest.questState = QuestState.CLEAR;
