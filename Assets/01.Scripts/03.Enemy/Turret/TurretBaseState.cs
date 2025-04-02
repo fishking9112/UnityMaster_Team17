@@ -30,6 +30,11 @@ public class TurretBaseState : IState
     public virtual void Update()
     {
     }
+
+    public virtual void LateUpdate()
+    {
+    }
+
     protected float IsInChasingRange()
     {
         //일정 각도 내에 있는 플레이어와 적의 거리 값, 없으면 -1

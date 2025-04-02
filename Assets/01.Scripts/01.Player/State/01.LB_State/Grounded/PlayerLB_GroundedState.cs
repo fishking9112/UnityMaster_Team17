@@ -36,6 +36,7 @@ public class PlayerLB_GroundedState : PlayerLB_BaseState
         base.AddInputActionCallbacks();
 
         LBStateMachine.player.Input.playerActions.Movement.canceled += OnMovementCanceled;
+        LBStateMachine.player.Input.playerActions.Jump.started += OnJumpStarted;
 
     }
 
@@ -44,6 +45,7 @@ public class PlayerLB_GroundedState : PlayerLB_BaseState
         base.RemoveInputActionCallbacks();
 
         LBStateMachine.player.Input.playerActions.Movement.canceled -= OnMovementCanceled;
+        LBStateMachine.player.Input.playerActions.Jump.started -= OnJumpStarted;
 
     }
 
