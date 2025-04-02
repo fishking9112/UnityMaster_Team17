@@ -447,9 +447,54 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3183860369149584056, guid: b1487351b7566bd49bf2884c05c48b1b,
         type: 3}
+      propertyPath: vector.x
+      value: 155
+      objectReference: {fileID: 0}
+    - target: {fileID: 3183860369149584056, guid: b1487351b7566bd49bf2884c05c48b1b,
+        type: 3}
+      propertyPath: vector.y
+      value: 135
+      objectReference: {fileID: 0}
+    - target: {fileID: 3183860369149584056, guid: b1487351b7566bd49bf2884c05c48b1b,
+        type: 3}
+      propertyPath: vector.z
+      value: 225
+      objectReference: {fileID: 0}
+    - target: {fileID: 3183860369149584056, guid: b1487351b7566bd49bf2884c05c48b1b,
+        type: 3}
       propertyPath: aimCamPivot
       value: 
       objectReference: {fileID: 464675959}
+    - target: {fileID: 3183860369149584056, guid: b1487351b7566bd49bf2884c05c48b1b,
+        type: 3}
+      propertyPath: vectorPos.x
+      value: -35.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3183860369149584056, guid: b1487351b7566bd49bf2884c05c48b1b,
+        type: 3}
+      propertyPath: vectorPos.y
+      value: 30.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3183860369149584056, guid: b1487351b7566bd49bf2884c05c48b1b,
+        type: 3}
+      propertyPath: vectorPos.z
+      value: -2.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 3183860369149584056, guid: b1487351b7566bd49bf2884c05c48b1b,
+        type: 3}
+      propertyPath: vectorRot.x
+      value: 229
+      objectReference: {fileID: 0}
+    - target: {fileID: 3183860369149584056, guid: b1487351b7566bd49bf2884c05c48b1b,
+        type: 3}
+      propertyPath: vectorRot.y
+      value: 13.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 3183860369149584056, guid: b1487351b7566bd49bf2884c05c48b1b,
+        type: 3}
+      propertyPath: vectorRot.z
+      value: 37.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5168119546860579821, guid: b1487351b7566bd49bf2884c05c48b1b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -508,12 +553,12 @@ PrefabInstance:
     - target: {fileID: 6278831083891148992, guid: b1487351b7566bd49bf2884c05c48b1b,
         type: 3}
       propertyPath: m_HorizontalAxis.m_MaxValue
-      value: 560
+      value: 395.3411
       objectReference: {fileID: 0}
     - target: {fileID: 6278831083891148992, guid: b1487351b7566bd49bf2884c05c48b1b,
         type: 3}
       propertyPath: m_HorizontalAxis.m_MinValue
-      value: -560
+      value: 295.3411
       objectReference: {fileID: 0}
     - target: {fileID: 7147894215694355865, guid: b1487351b7566bd49bf2884c05c48b1b,
         type: 3}

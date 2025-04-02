@@ -29,7 +29,8 @@ public class Player : MonoBehaviour
 
     public Transform spine;
     public Transform armRight;
-    public Vector3 vector;
+    public Vector3 vectorRot;
+    public Vector3 vectorPos;
 
     public PlayerLBStateMachine LBStateMachine;
     public PlayerUBStateMachine UBStateMachine;

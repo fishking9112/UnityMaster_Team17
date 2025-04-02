@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerUB_AttackState : PlayerUB_BaseState
 {
     public Transform spine;
+    public Transform Hip;
     CinemachinePOV aimCamPOV;
     //CinemachinePOV naviCamPOV;
 
@@ -14,6 +15,7 @@ public class PlayerUB_AttackState : PlayerUB_BaseState
     public PlayerUB_AttackState(PlayerLBStateMachine LBstateMachine, PlayerUBStateMachine UBStateMachine) : base(LBstateMachine, UBStateMachine)
     {
         spine = UBStateMachine.player.Animator.GetBoneTransform(HumanBodyBones.Spine);
+        Hip = UBStateMachine.player.Animator.GetBoneTransform(HumanBodyBones.Hips);
         aimCamPOV = UBStateMachine.player.AimVCam.GetCinemachineComponent<CinemachinePOV>();
         //naviCamPOV = UBStateMachine.player.NaviVCam.GetCinemachineComponent<CinemachinePOV>();
     }
@@ -98,6 +100,8 @@ public class PlayerUB_AttackState : PlayerUB_BaseState
         UBStateMachine.AttackMode = false;
         UBStateMachine.player.crosshair.enabled = false;
         StopAnimation(LBStateMachine.player.AnimationData.UB_AttackParameterHash);
+        UBStateMachine.player.armRight.transform.SetParent(Hip, false);
+
     }
 
     //Quaternion spineWorldRot;
@@ -130,9 +134,17 @@ public class PlayerUB_AttackState : PlayerUB_BaseState
         // 기본 회전을 고려하여 최종 회전 계산
         spine.rotation = targetRotation * baseRotation;
 
-        //Quaternion baseRotation2 = Quaternion.Euler(-UBStateMachine.player.vector);
+        Quaternion baseRotation2 = Quaternion.Euler(UBStateMachine.player.vectorRot);
+        Vector3 basePosition = spine.position;
+
         //Quaternion targetRotation2 = Quaternion.LookRotation(Camera.main.transform.forward);
-        //UBStateMachine.player.armRight.rotation = baseRotation2 * spine.rotation;
+
+        //UBStateMachine.player.armRight.rotation = targetRotation * baseRotation2;
+        //UBStateMachine.player.armRight.position = spine.position + UBStateMachine.player.vectorPos;
+        
+        UBStateMachine.player.armRight.transform.SetParent(spine, true);
+        UBStateMachine.player.armRight.transform.localRotation = baseRotation2;
+        UBStateMachine.player.armRight.transform.localPosition = UBStateMachine.player.vectorPos;
 
     }
 }
