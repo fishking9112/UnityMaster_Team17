@@ -34,6 +34,9 @@ public class Player : MonoBehaviour
     public PlayerLBStateMachine LBStateMachine;
     public PlayerUBStateMachine UBStateMachine;
 
+
+    //추가 
+    //public Transform aimCamPivot; // 삭제
     private void Awake()
     {
         AnimationData.Initialize();
@@ -66,6 +69,9 @@ public class Player : MonoBehaviour
         UBStateMachine.HanldeInput();
         LBStateMachine.Update();
         UBStateMachine.Update();
+        Debug.Log(UBStateMachine.player.AimVCam.transform.rotation.eulerAngles.y);
+        Debug.Log(UBStateMachine.player.AimVCam.transform.localRotation.eulerAngles.y);
+
     }
 
     private void FixedUpdate()

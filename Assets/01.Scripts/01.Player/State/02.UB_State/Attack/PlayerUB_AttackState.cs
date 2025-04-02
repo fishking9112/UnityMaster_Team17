@@ -36,15 +36,28 @@ public class PlayerUB_AttackState : PlayerUB_BaseState
         Quaternion fwd = Quaternion.LookRotation(flatFwd);
         UBStateMachine.player.transform.rotation = fwd;
 
+
         //Navi 카메라의 위치,회전값을 Aim 카메라로 이동
         UBStateMachine.player.AimVCam.ForceCameraPosition(
             UBStateMachine.player.NaviVCam.transform.position,
             UBStateMachine.player.NaviVCam.transform.rotation
             );
 
-        //Aim 카메라 회전각 조정.
-        aimCamPOV.m_HorizontalAxis.m_MinValue = fwd.eulerAngles.y - 50;
-        aimCamPOV.m_HorizontalAxis.m_MaxValue = fwd.eulerAngles.y + 50;
+
+
+
+        //Aim 카메라 최소최대회전각 조정.
+
+        float characterYRotation = UBStateMachine.player.transform.rotation.eulerAngles.y;
+
+        // 제한각 설정 (좌우 50도)
+        aimCamPOV.m_HorizontalAxis.m_MinValue = characterYRotation - 50f;
+        aimCamPOV.m_HorizontalAxis.m_MaxValue = characterYRotation + 50f;
+
+        // 현재 POV 값을 캐릭터 방향으로 리셋 (필수사항)
+        aimCamPOV.m_HorizontalAxis.Value = characterYRotation;
+
+
 
         UBStateMachine.player.AimVCam.Priority = 20;
 
