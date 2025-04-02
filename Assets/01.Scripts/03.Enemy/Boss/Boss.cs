@@ -195,20 +195,6 @@ public class Boss : MonoBehaviour, IDamageable
 
             stateMachine.ChangeState(stateMachine.IdleState);
         }
-        else if (HP <= MaxHP / 2 && !isHalf)
-        {
-            //그로기
-            isHalf = true;
-            StopAllCoroutines();
-
-            SoundManager.Instance.PlayerSFX("Robot_Damage_SFX", transform.position);
-            GameObject par = Instantiate(DeadParticle);
-            par.transform.position = transform.position;
-
-            animator.SetTrigger(AnimationData.HalfHitParameterHash);
-
-            stateMachine.ChangeState(stateMachine.IdleState);
-        }
         else if (HP <= 0)
         {
             //사망
@@ -222,6 +208,20 @@ public class Boss : MonoBehaviour, IDamageable
             par.transform.position = transform.position;
 
             stateMachine.ChangeState(stateMachine.DeadState);
+        }
+        else if (HP <= MaxHP / 2 && !isHalf)
+        {
+            //그로기
+            isHalf = true;
+            StopAllCoroutines();
+
+            SoundManager.Instance.PlayerSFX("Robot_Damage_SFX", transform.position);
+            GameObject par = Instantiate(DeadParticle);
+            par.transform.position = transform.position;
+
+            animator.SetTrigger(AnimationData.HalfHitParameterHash);
+
+            stateMachine.ChangeState(stateMachine.IdleState);
         }
     }
 }
