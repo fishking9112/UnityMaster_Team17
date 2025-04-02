@@ -11,4 +11,9 @@ public class GameManager : MonoSingleton<GameManager>
         // Find
         player = GameObject.Find("Player").GetComponent<Player>();
     }
+
+    private void Start()
+    {
+        SoundManager.Instance.PlayBGM("GameScene_BGM");
+    }
 }
