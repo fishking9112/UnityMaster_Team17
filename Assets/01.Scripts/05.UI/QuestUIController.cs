@@ -6,13 +6,13 @@ using UnityEngine;
 public class QuestUIController : MonoBehaviour
 {
     [SerializeField]
-    private TextMeshProUGUI _textQuestDes;
-    public TextMeshProUGUI TextQuestDes {  get { return _textQuestDes; } }
+    private TextMeshProUGUI textQuestDes;
+    public TextMeshProUGUI TextQuestDes {  get { return textQuestDes; } }
     [SerializeField]
-    private TextMeshProUGUI _textQuestCount;
-    public TextMeshProUGUI TextQuestCout {  get { return _textQuestCount; } }
+    private TextMeshProUGUI textQuestCount;
+    public TextMeshProUGUI TextQuestCout {  get { return textQuestCount; } }
     [SerializeField]
-    private TextMeshProUGUI _textQuestMaxCount;
-    public TextMeshProUGUI TextQuestMaxCount { get { return _textQuestMaxCount; } }
+    private TextMeshProUGUI textQuestMaxCount;
+    public TextMeshProUGUI TextQuestMaxCount { get { return textQuestMaxCount; } }
 
 }
