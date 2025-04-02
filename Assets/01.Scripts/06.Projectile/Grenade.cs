@@ -37,7 +37,7 @@ public class Grenade : MonoBehaviour
             {
                 if (hit.collider.gameObject.CompareTag("Grenade_Target"))
                 {
-                    Debug.Log(hit.collider.name + " 피격");
+                    hit.collider.GetComponentInParent<IDamageable>().GetDamage(30f);
                 }
             }
         }
