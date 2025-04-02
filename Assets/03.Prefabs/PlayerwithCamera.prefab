@@ -1146,8 +1146,8 @@ MonoBehaviour:
     m_InputAxisName: Mouse X
     m_InputAxisValue: 0
     m_InvertInput: 0
-    m_MinValue: 242.1259
-    m_MaxValue: 342.1259
+    m_MinValue: -560
+    m_MaxValue: 560
     m_Wrap: 0
     m_Recentering:
       m_enabled: 0
