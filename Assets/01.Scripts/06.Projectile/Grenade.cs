@@ -64,7 +64,7 @@ public class Grenade : MonoBehaviour
             {
                 if (hit.collider.gameObject.layer == 8 || hit.collider.gameObject.layer == 6)
                 {
-                    hit.collider.GetComponentInParent<IDamageable>().GetDamage(30f);
+                    hit.collider.GetComponentInParent<IDamageable>().GetDamage(Damage);
                 }
             }
         }
