@@ -1,13 +1,11 @@
 public class QuestUseRepairKit : QuestBase
 {
-    private int _curUseRepairKitCount;
-
     /// <summary>
     /// 퀘스트 요구사항 초기화 및 이벤트 구독
     /// </summary>
     protected override void QuestInit()
     {
-        _curUseRepairKitCount = 0;
+        questInfo.curCount = 0;
         //GameManager.Instance.player.OnRepairKitUsed += UseRepairKitCount;
     }
 
@@ -18,7 +16,7 @@ public class QuestUseRepairKit : QuestBase
     {
         if (questState == QuestState.ONGOING)
         {
-            if (_curUseRepairKitCount >= questInfo.requiredUseCount)
+            if (questInfo.curCount >= questInfo.requiredCount)
             {
                 questManager.QuestClear(questInfo.id);
                 //GameManager.Instance.player.OnRepairKitUsed -= UseRepairKitCount;
@@ -28,6 +26,6 @@ public class QuestUseRepairKit : QuestBase
 
     private void UseRepairKitCount()
     {
-        _curUseRepairKitCount++;
+        questInfo.curCount++;
     }
 }

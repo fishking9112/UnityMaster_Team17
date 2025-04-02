@@ -87,7 +87,6 @@ public class PlayerInteraction : MonoBehaviour
 
     public void AddInteractionCallback()
     {
-        print("콜백함수 등록");
         GameManager.Instance.player.Input.playerActions.Interaction.started += OnInteractStared;
     }
 
@@ -97,10 +96,8 @@ public class PlayerInteraction : MonoBehaviour
     /// <param name="context"> 상호작용 할 키 </param>
     public void OnInteractStared(InputAction.CallbackContext context)
     {
-        print("상호작용 키 누름");
         if (_curInteractableObject != null)
         {
-            print("상호작용 작동");
             _curInteractableObject.OnInteract();
             _curInteractGameObject = null;
             _curInteractableObject = null;
