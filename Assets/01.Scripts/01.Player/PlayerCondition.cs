@@ -36,8 +36,9 @@ public class PlayerCondition : MonoBehaviour
     public int CurRepairKitCount { get => _curRepairKitCount; private set => _curRepairKitCount = value; }
 
     [SerializeField] private int _maxRepairKitCount = 3;
-    public int MaxRepairKitCount { get=>_maxRepairKitCount; private set=> _maxRepairKitCount = value; }
+    public int MaxRepairKitCount { get => _maxRepairKitCount; private set => _maxRepairKitCount = value; }
 
+    bool isLive =true;
     /// <summary>
     /// 체력 회복
     /// </summary>
@@ -67,7 +68,10 @@ public class PlayerCondition : MonoBehaviour
         if (temp <= 0)
         {
             CurHealth = 0;
-            OnDie();
+            if (isLive)
+            {
+                OnDie();
+            }
         }
         else
         {
@@ -80,7 +84,13 @@ public class PlayerCondition : MonoBehaviour
     /// </summary>
     public void OnDie()
     {
-        // 죽었을 때 처리
+        isLive = false;
+        GameManager.Instance.player.UBStateMachine.ChangeState(GameManager.Instance.player.UBStateMachine.DieState);
+        GameManager.Instance.player.LBStateMachine.ChangeState(GameManager.Instance.player.LBStateMachine.DieState);
+        foreach(var i in GameManager.Instance.player.GetComponentsInChildren<MonoBehaviour>())
+        {
+            Destroy(i);
+        }
     }
 
     /// <summary>

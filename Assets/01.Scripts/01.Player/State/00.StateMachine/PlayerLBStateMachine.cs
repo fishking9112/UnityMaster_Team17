@@ -1,3 +1,4 @@
+using Unity.IO.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEditorInternal;
 using UnityEngine;
@@ -18,6 +19,8 @@ public class PlayerLBStateMachine : PlayerStateMachine
     public PlayerLB_AscendState lb_AscendState;
 
     public PlayerLB_DashState lb_DashState;
+
+    public Player_DieState DieState;
 
     public float MovementSpeed { get; private set; }
     public float MovementSpeedModifier { get; set; } = 1f;
@@ -45,6 +48,8 @@ public class PlayerLBStateMachine : PlayerStateMachine
         lb_AscendState = new PlayerLB_AscendState(this, UBStateMachine);
 
         lb_DashState = new PlayerLB_DashState(this, UBStateMachine);
+
+        DieState = new Player_DieState(this, UBStateMachine);
 
         MovementSpeed = player.playerSO.GroundData.BaseSpeed;
     }

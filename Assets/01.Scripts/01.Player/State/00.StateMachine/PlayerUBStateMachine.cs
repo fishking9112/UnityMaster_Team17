@@ -11,6 +11,8 @@ public class PlayerUBStateMachine : PlayerStateMachine
     public PlayerUB_GrenadeState ub_GrenadeState;
     public PlayerUB_ReloadState ub_ReloadState;
 
+    public Player_DieState DieState;
+
     public bool AttackMode = false;
 
     public PlayerUBStateMachine(Player player) : base(player)
@@ -27,6 +29,8 @@ public class PlayerUBStateMachine : PlayerStateMachine
         ub_ShootState = new PlayerUB_ShootState(LBStateMachine, this);
         ub_GrenadeState = new PlayerUB_GrenadeState(LBStateMachine, this);
         ub_ReloadState = new PlayerUB_ReloadState(LBStateMachine, this);
+
+        DieState = new Player_DieState(LBStateMachine, this);
     }
 
     public override void Update()

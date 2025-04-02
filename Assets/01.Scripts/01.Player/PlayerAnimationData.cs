@@ -6,6 +6,10 @@ using UnityEngine;
 [Serializable]
 public class PlayerAnimationData
 {
+    [SerializeField] private string DieParameterName = "Die";
+    public int DieParameterHash { get; private set; }
+
+
     [Header("LowerBody")]
     [SerializeField] private string lb_GroundedParameterName = "@Grounded";
     [SerializeField] private string lb_IdleParameterName = "Idle";
@@ -59,6 +63,8 @@ public class PlayerAnimationData
 
     public void Initialize()
     {
+        DieParameterHash = Animator.StringToHash(DieParameterName);
+
         //LB
         LB_GroundedParameterHash = Animator.StringToHash(lb_GroundedParameterName);
         LB_IdleParameterHash = Animator.StringToHash(lb_IdleParameterName);
