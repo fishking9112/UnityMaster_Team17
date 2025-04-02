@@ -7,6 +7,9 @@ public class BulletManager : MonoSingleton<BulletManager>
     public GameObject BulletObject;
     List<GameObject> Bullets = new List<GameObject>();
 
+    public GameObject RocketObject;
+    List<GameObject> Rockets = new List<GameObject>();
+
     protected override void Awake()
     {
         base.Awake();
@@ -34,6 +37,33 @@ public class BulletManager : MonoSingleton<BulletManager>
             if (!bullet.activeSelf)
             {
                 return bullet;
+            }
+        }
+        return null;
+    }
+    public GameObject SpawnRocket()
+    {
+        GameObject gameObject = FindOffRocket();
+
+        if (gameObject == null)
+        {
+            gameObject = Instantiate(RocketObject, this.transform);
+            Rockets.Add(gameObject);
+        }
+
+        gameObject.SetActive(true);
+        return gameObject;
+    }
+
+    GameObject FindOffRocket()
+    {
+        if (Rockets.Count == 0) return null;
+
+        foreach (GameObject rocket in Rockets)
+        {
+            if (!rocket.activeSelf)
+            {
+                return rocket;
             }
         }
         return null;
