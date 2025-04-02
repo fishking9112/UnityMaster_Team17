@@ -31,8 +31,6 @@ public class Player : MonoBehaviour
     public Transform armRight;
     public Vector3 vector;
 
-    public Transform bulletFiringPos;
-
     public PlayerLBStateMachine LBStateMachine;
     public PlayerUBStateMachine UBStateMachine;
 
