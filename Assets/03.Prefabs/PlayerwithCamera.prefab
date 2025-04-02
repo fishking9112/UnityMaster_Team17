@@ -2966,8 +2966,7 @@ MonoBehaviour:
   armRight: {fileID: 7579833628324585426}
   vectorRot: {x: 229, y: 13.53, z: 37.1}
   vectorPos: {x: -35.8, y: 30.7, z: -2.32}
-  boosterEff: {fileID: 4417433812260470718, guid: a7163c178c4759a458e62f0965f8f31f,
-    type: 3}
+  boosterEff: {fileID: 2045996393851481106}
 --- !u!143 &8216679211258663707
 CharacterController:
   m_ObjectHideFlags: 0
@@ -4175,6 +4174,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7163c178c4759a458e62f0965f8f31f, type: 3}
+--- !u!1 &2045996393851481106 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4417433812260470718, guid: a7163c178c4759a458e62f0965f8f31f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2389500745224999852}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4794750968173404283 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7179677744887067607, guid: a7163c178c4759a458e62f0965f8f31f,
