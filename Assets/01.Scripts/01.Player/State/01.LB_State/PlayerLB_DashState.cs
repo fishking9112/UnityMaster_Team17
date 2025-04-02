@@ -69,5 +69,6 @@ public class PlayerLB_DashState : PlayerLB_BaseState
         bonusSpeed = 0f;
 
         LBStateMachine.ChangeState(LBStateMachine.lb_IdleState);
+        LBStateMachine.player.boosterEff.SetActive(false);
     }
 }

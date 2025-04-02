@@ -50,6 +50,7 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.GetComponentInParent<Player>())
         {
             GameObject par = Instantiate(PlayerHitParticle);
+            SoundManager.Instance.PlayerSFX("Player_Damage_SFX", transform.position);
             par.transform.position = transform.position;
             par.transform.rotation = transform.rotation;
         }
@@ -61,6 +62,7 @@ public class Bullet : MonoBehaviour
         }
         else if (other.gameObject.layer == 8)
         {
+            SoundManager.Instance.PlayerSFX("Metal_Hit_SFX", transform.position);
             GameObject par = Instantiate(RobotHitParticle);
             par.transform.position = transform.position;
             par.transform.rotation = transform.rotation;
@@ -68,6 +70,7 @@ public class Bullet : MonoBehaviour
         else
         {
             //적,플레이어가 아닌 이상 튀기는 파티클과 함께 삭제
+            SoundManager.Instance.PlayerSFX("Wall_Hit_SFX", transform.position);
             GameObject par = Instantiate(Particle);
             par.transform.position = transform.position;
             DestroyThisObject();

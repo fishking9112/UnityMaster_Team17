@@ -32,6 +32,7 @@ public class Scarecrow : MonoBehaviour, IDamageable
         else
         {
             animator.SetTrigger("GetHit");
+            SoundManager.Instance.PlayerSFX("Scarecrow_Die_SFX", transform.position);
         }
     }
     public void OnColliders()

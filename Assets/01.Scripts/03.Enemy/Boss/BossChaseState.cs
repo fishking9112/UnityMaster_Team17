@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BossChaseState : BossBaseState
 {
+    float soundtime = 0;
     public BossChaseState(BossStateMachine stateMachine) : base(stateMachine)
     {
     }
@@ -29,6 +30,16 @@ public class BossChaseState : BossBaseState
         base.Update();
 
         stateMachine.Boss.agent.SetDestination(GameManager.Instance.player.transform.position);
+
+        if (soundtime >= 4.9f)
+        {
+            soundtime = 0;
+            SoundManager.Instance.PlayerSFX("Robot_Walk_SFX", stateMachine.Boss.transform.position);
+        }
+        else
+        {
+            soundtime += Time.deltaTime;
+        }
 
         if (stateMachine.Boss.HP <= 0)
         {

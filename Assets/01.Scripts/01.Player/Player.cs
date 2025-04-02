@@ -34,6 +34,8 @@ public class Player : MonoBehaviour, IDamageable
     public PlayerLBStateMachine LBStateMachine;
     public PlayerUBStateMachine UBStateMachine;
 
+    public GameObject boosterEff;
+
 
     //추가 
     //public Transform aimCamPivot; // 삭제

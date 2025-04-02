@@ -82,6 +82,7 @@ public class Grenade : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Explosion();
+        SoundManager.Instance.PlayerSFX("Grenade_Explosion_SFX", transform.position);
     }
 
     public void DestroyThisObject()

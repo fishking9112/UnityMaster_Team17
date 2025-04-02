@@ -82,6 +82,7 @@ public class Boss : MonoBehaviour, IDamageable
         //총을 총구에서 쏘도록 제작
         GameObject bullet = BulletManager.Instance.SpawnBullet();
         bullet.transform.position = BossRightShootPosition.transform.position;
+        SoundManager.Instance.PlayerSFX("Player_Shoot_SFX", BossRightShootPosition.transform.position);
         bullet.transform.rotation = Quaternion.LookRotation((GameManager.Instance.player.transform.position - BossRightShootPosition.transform.position).normalized);
         bullet.GetComponent<Bullet>().SettingDamage(Data.Damage,
             GameManager.Instance.player.transform.position - BossRightShootPosition.transform.position +
@@ -92,6 +93,7 @@ public class Boss : MonoBehaviour, IDamageable
         //로켓을 왼속에서 발싸
         GameObject Rocket = BulletManager.Instance.SpawnRocket();
         Rocket.transform.position = BossLeftShootPosition.transform.position;
+        SoundManager.Instance.PlayerSFX("Grenade_Explosion_SFX", BossLeftShootPosition.transform.position);
         Rocket.transform.rotation = Quaternion.LookRotation((GameManager.Instance.player.transform.position - BossLeftShootPosition.transform.position).normalized);
         Rocket.GetComponent<Grenade>().SettingDamage(Data.Damage * 5,
             GameManager.Instance.player.transform.position - BossLeftShootPosition.transform.position +
@@ -150,9 +152,10 @@ public class Boss : MonoBehaviour, IDamageable
     {
         LastMiliAttack = Time.time;
 
+        SoundManager.Instance.PlayerSFX("Robot_Stomping_SFX", transform.position);
         if ((GameManager.Instance.player.transform.position - transform.position).sqrMagnitude < Data.AttackRange * 2)
         {
-            //데미지를 준다
+            GameManager.Instance.player.GetComponent<Player>().GetDamage(Data.Damage);
         }
 
         stateMachine.ChangeState(stateMachine.IdleState);
@@ -170,6 +173,7 @@ public class Boss : MonoBehaviour, IDamageable
             LeftArm.SetActive(false);
             StopAllCoroutines();
 
+            SoundManager.Instance.PlayerSFX("Robot_Damage_SFX", LeftArm.transform.position);
             GameObject par = Instantiate(DeadParticle);
             par.transform.position = LeftArm.transform.position;
 
@@ -183,6 +187,7 @@ public class Boss : MonoBehaviour, IDamageable
             RightArm.SetActive(false);
             StopAllCoroutines();
 
+            SoundManager.Instance.PlayerSFX("Robot_Damage_SFX", RightArm.transform.position);
             GameObject par = Instantiate(DeadParticle);
             par.transform.position = RightArm.transform.position;
 
@@ -196,6 +201,7 @@ public class Boss : MonoBehaviour, IDamageable
             isHalf = true;
             StopAllCoroutines();
 
+            SoundManager.Instance.PlayerSFX("Robot_Damage_SFX", transform.position);
             GameObject par = Instantiate(DeadParticle);
             par.transform.position = transform.position;
 
@@ -211,6 +217,7 @@ public class Boss : MonoBehaviour, IDamageable
             HP = 0;
             StopAllCoroutines();
 
+            SoundManager.Instance.PlayerSFX("Robot_Dead", transform.position);
             GameObject par = Instantiate(DeadParticle);
             par.transform.position = transform.position;
 
