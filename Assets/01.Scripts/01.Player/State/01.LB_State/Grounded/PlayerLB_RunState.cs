@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerLB_RunState : PlayerLB_GroundedState
+public class PlayerLB_RunState : PlayerLB_GroundedState // 미사용
 {
     public PlayerLB_RunState(PlayerLBStateMachine LBstateMachine, PlayerUBStateMachine UBStateMachine) : base(LBstateMachine, UBStateMachine)
     {

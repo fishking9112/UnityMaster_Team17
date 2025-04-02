@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.Rendering.DebugManager;
 
 public class PlayerLB_GroundedState : PlayerLB_BaseState
 {
@@ -37,6 +38,7 @@ public class PlayerLB_GroundedState : PlayerLB_BaseState
 
         LBStateMachine.player.Input.playerActions.Movement.canceled += OnMovementCanceled;
         LBStateMachine.player.Input.playerActions.Jump.started += OnJumpStarted;
+        LBStateMachine.player.Input.playerActions.Run.started += OnSwitchingRunMode;
 
     }
 
@@ -46,6 +48,7 @@ public class PlayerLB_GroundedState : PlayerLB_BaseState
 
         LBStateMachine.player.Input.playerActions.Movement.canceled -= OnMovementCanceled;
         LBStateMachine.player.Input.playerActions.Jump.started -= OnJumpStarted;
+        LBStateMachine.player.Input.playerActions.Run.started -= OnSwitchingRunMode;
 
     }
 
@@ -68,8 +71,17 @@ public class PlayerLB_GroundedState : PlayerLB_BaseState
         LBStateMachine.ChangeState(LBStateMachine.lb_JumpState);
     }
 
-    //protected void OnSwitchingWalkMode(InputAction.CallbackContext context)
-    //{
-    //    WalkMode = !WalkMode;
-    //}
+    private void OnSwitchingRunMode(InputAction.CallbackContext context)
+    {
+        if (LBStateMachine.RunMode)
+        {
+            LBStateMachine.RunMode = false;
+            LBStateMachine.lb_WalkState.walkSpeed = LBStateMachine.player.playerSO.GroundData.WalkSpeed;
+        }
+        else
+        {
+            LBStateMachine.RunMode = true;
+            LBStateMachine.lb_WalkState.walkSpeed = LBStateMachine.player.playerSO.GroundData.RunSpeed;
+        }
+    }
 }

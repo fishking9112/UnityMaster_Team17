@@ -24,7 +24,7 @@ public class PlayerLBStateMachine : PlayerStateMachine
     public float MovementSpeedModifier2 { get; set; } = 1f;
 
     public bool movable = true;
-
+    public bool RunMode = false;
     public PlayerLBStateMachine(Player player) : base(player)
     {
     }
