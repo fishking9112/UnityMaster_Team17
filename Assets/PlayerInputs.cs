@@ -127,9 +127,18 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Boom"",
+                    ""name"": ""Grenade"",
                     ""type"": ""Button"",
                     ""id"": ""560d7c4e-e501-4594-be23-e6c2eef38397"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RepairKit"",
+                    ""type"": ""Button"",
+                    ""id"": ""cded9b16-ba65-409b-8a48-691f9750a336"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -309,7 +318,18 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Boom"",
+                    ""action"": ""Grenade"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7d8f85c7-9a50-4085-a963-0b35273b0cbf"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RepairKit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -331,7 +351,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
         m_Player_Arm = m_Player.FindAction("Arm", throwIfNotFound: true);
-        m_Player_Boom = m_Player.FindAction("Boom", throwIfNotFound: true);
+        m_Player_Grenade = m_Player.FindAction("Grenade", throwIfNotFound: true);
+        m_Player_RepairKit = m_Player.FindAction("RepairKit", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -404,7 +425,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Reload;
     private readonly InputAction m_Player_Arm;
-    private readonly InputAction m_Player_Boom;
+    private readonly InputAction m_Player_Grenade;
+    private readonly InputAction m_Player_RepairKit;
     public struct PlayerActions
     {
         private @PlayerInputs m_Wrapper;
@@ -420,7 +442,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Reload => m_Wrapper.m_Player_Reload;
         public InputAction @Arm => m_Wrapper.m_Player_Arm;
-        public InputAction @Boom => m_Wrapper.m_Player_Boom;
+        public InputAction @Grenade => m_Wrapper.m_Player_Grenade;
+        public InputAction @RepairKit => m_Wrapper.m_Player_RepairKit;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -463,9 +486,12 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Arm.started += instance.OnArm;
             @Arm.performed += instance.OnArm;
             @Arm.canceled += instance.OnArm;
-            @Boom.started += instance.OnBoom;
-            @Boom.performed += instance.OnBoom;
-            @Boom.canceled += instance.OnBoom;
+            @Grenade.started += instance.OnGrenade;
+            @Grenade.performed += instance.OnGrenade;
+            @Grenade.canceled += instance.OnGrenade;
+            @RepairKit.started += instance.OnRepairKit;
+            @RepairKit.performed += instance.OnRepairKit;
+            @RepairKit.canceled += instance.OnRepairKit;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -503,9 +529,12 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Arm.started -= instance.OnArm;
             @Arm.performed -= instance.OnArm;
             @Arm.canceled -= instance.OnArm;
-            @Boom.started -= instance.OnBoom;
-            @Boom.performed -= instance.OnBoom;
-            @Boom.canceled -= instance.OnBoom;
+            @Grenade.started -= instance.OnGrenade;
+            @Grenade.performed -= instance.OnGrenade;
+            @Grenade.canceled -= instance.OnGrenade;
+            @RepairKit.started -= instance.OnRepairKit;
+            @RepairKit.performed -= instance.OnRepairKit;
+            @RepairKit.canceled -= instance.OnRepairKit;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -536,6 +565,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
         void OnArm(InputAction.CallbackContext context);
-        void OnBoom(InputAction.CallbackContext context);
+        void OnGrenade(InputAction.CallbackContext context);
+        void OnRepairKit(InputAction.CallbackContext context);
     }
 }

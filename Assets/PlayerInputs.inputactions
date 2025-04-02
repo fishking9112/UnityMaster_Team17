@@ -105,9 +105,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Boom",
+                    "name": "Grenade",
                     "type": "Button",
                     "id": "560d7c4e-e501-4594-be23-e6c2eef38397",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RepairKit",
+                    "type": "Button",
+                    "id": "cded9b16-ba65-409b-8a48-691f9750a336",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -287,7 +296,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Boom",
+                    "action": "Grenade",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7d8f85c7-9a50-4085-a963-0b35273b0cbf",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RepairKit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

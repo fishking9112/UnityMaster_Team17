@@ -6,7 +6,7 @@ public class QuestUseGrenade : QuestBase
     protected override void QuestInit()
     {
         questInfo.curCount = 0;
-        //GameManager.Instance.player.OnGrenadeUsed += UseGrenadeCount;
+        GameManager.Instance.player.UseItem.OnGrenadeUsed += UseGrenadeCount;
 
     }
 
@@ -20,7 +20,7 @@ public class QuestUseGrenade : QuestBase
             if (questInfo.curCount >= questInfo.requiredCount)
             {
                 questManager.QuestClear(questInfo.id);
-                //GameManager.Instance.player.OnGrenadeUsed -= UseGrenadeCount;
+                GameManager.Instance.player.UseItem.OnGrenadeUsed -= UseGrenadeCount;
             }
         }
     }
