@@ -17,7 +17,6 @@ public class Player : MonoBehaviour, IDamageable
     [field: SerializeField] public PlayerSO playerSO { get; private set; }
     public ForceReceiver ForceReceiver { get; private set; }
     public Rigidbody Rigidbody { get; private set; }
-    public PlayerBoundHandler BoundHandler { get; private set; }
     public Image crosshair;
     public PlayerTargetingHandler TargetingHandler { get; private set; }
     public PlayerUseItem playerUseItem { get; private set; }
@@ -50,7 +49,6 @@ public class Player : MonoBehaviour, IDamageable
         Controller = GetComponent<CharacterController>();
         ForceReceiver = GetComponent<ForceReceiver>();
         Rigidbody = GetComponent<Rigidbody>();
-        BoundHandler = GetComponent<PlayerBoundHandler>();
         TargetingHandler = GetComponent<PlayerTargetingHandler>();
         playerUseItem = GetComponent<PlayerUseItem>();
 
