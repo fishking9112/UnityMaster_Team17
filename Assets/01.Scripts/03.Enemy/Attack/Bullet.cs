@@ -40,10 +40,11 @@ public class Bullet : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy")) return;
         //무언가에 맞았을 때
-        if(!(collision.gameObject.GetComponentInParent<Player>() || collision.gameObject.GetComponentInParent<Enemy>() || collision.gameObject.GetComponent<Enemy>()))
+        if (!(other.gameObject.GetComponentInParent<Player>() || other.gameObject.GetComponentInParent<Enemy>() || other.gameObject.GetComponent<Enemy>()))
         {
             //적,플레이어가 아닌 이상 튀기는 파티클과 함께 삭제
             GameObject par = Instantiate(Particle);

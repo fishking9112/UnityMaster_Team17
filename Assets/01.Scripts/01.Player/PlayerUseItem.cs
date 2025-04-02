@@ -39,11 +39,21 @@ public class PlayerUseItem : MonoBehaviour
             OnGrenadeUsed?.Invoke();
 
             // 유탄 발사 
+            ShootRocket();
         }
         else
         {
             Debug.Log("유탄이 부족합니다.");
         }
+    }
+    void ShootRocket()
+    {
+        //로켓을 왼속에서 발싸
+        GameObject Rocket = BulletManager.Instance.SpawnRocket();
+        Rocket.transform.position = GameManager.Instance.player.TargetingHandler.bulletStartPos.position;
+        Rocket.transform.rotation = Quaternion.LookRotation((GameManager.Instance.player.TargetingHandler.bulletTargetPos - GameManager.Instance.player.TargetingHandler.bulletStartPos.position).normalized);
+        Rocket.GetComponent<Grenade>().SettingDamage(3,
+            GameManager.Instance.player.TargetingHandler.bulletTargetPos - GameManager.Instance.player.TargetingHandler.bulletStartPos.position);
     }
 
     /// <summary>

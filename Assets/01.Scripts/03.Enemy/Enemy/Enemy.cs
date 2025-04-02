@@ -53,8 +53,6 @@ public class Enemy : MonoBehaviour, IDamageable
         //체력값 받아오기
         HP = Data.Hp;
         MaxHP = Data.Hp;
-
-        OffColliders();
     }
     private void Update()
     {
@@ -65,21 +63,6 @@ public class Enemy : MonoBehaviour, IDamageable
     private void FixedUpdate()
     {
         stateMachine.PhysicsUpdate();
-    }
-
-    public void OnColliders()
-    {
-        foreach (Collider col in Partscollider)
-        {
-            col.enabled = true;
-        }
-    }
-    public void OffColliders()
-    {
-        foreach (Collider col in Partscollider)
-        {
-            col.enabled = false;
-        }
     }
 
     public void ShootRiffle()
@@ -109,7 +92,6 @@ public class Enemy : MonoBehaviour, IDamageable
         else
         {
             //맞고 살았을 경우
-            Invoke("OffColliders", 0.01f);
             stateMachine.ChangeState(stateMachine.ChaseState);
         }
     }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 984302371120566356}
   - component: {fileID: 3140868912249263957}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66,7 +66,7 @@ GameObject:
   - component: {fileID: 8730753156132445248}
   - component: {fileID: 8613465733833346358}
   - component: {fileID: 5859509067081464069}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BodyTurn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5049145526958659428}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TurretShootPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,6 +163,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8730753156132445248}
     m_Modifications:
+    - target: {fileID: 100000, guid: 16d680e182214dc499e37615d29c06b0, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 16d680e182214dc499e37615d29c06b0, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 16d680e182214dc499e37615d29c06b0, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 16d680e182214dc499e37615d29c06b0, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 16d680e182214dc499e37615d29c06b0, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 16d680e182214dc499e37615d29c06b0, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 16d680e182214dc499e37615d29c06b0, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -256,6 +280,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 984302371120566356}
     m_Modifications:
+    - target: {fileID: 100000, guid: 57deba1b0134b8844a19b024ee58829e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 57deba1b0134b8844a19b024ee58829e, type: 3}
       propertyPath: m_RootOrder
       value: 5

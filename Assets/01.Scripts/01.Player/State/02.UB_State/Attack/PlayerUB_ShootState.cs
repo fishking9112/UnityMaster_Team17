@@ -57,10 +57,19 @@ public class PlayerUB_ShootState : PlayerUB_AttackState
             yield return new WaitForSeconds(interval / 2);
 
             // 발사 로직
-            Debug.Log("발사");
+            ShootRiffle();
 
             //인터벌동안 쉬고.
             yield return new WaitForSeconds(interval / 2);
         }
+    }
+    void ShootRiffle()
+    {
+        //총을 총구에서 쏘도록 제작
+        GameObject bullet = BulletManager.Instance.SpawnBullet();
+        bullet.transform.position = UBStateMachine.player.TargetingHandler.bulletStartPos.position;
+        bullet.transform.rotation = Quaternion.LookRotation((UBStateMachine.player.TargetingHandler.bulletTargetPos - UBStateMachine.player.TargetingHandler.bulletStartPos.position).normalized);
+        bullet.GetComponent<Bullet>().SettingDamage(1, //어택 데미지
+            UBStateMachine.player.TargetingHandler.bulletTargetPos - UBStateMachine.player.TargetingHandler.bulletStartPos.position);
     }
 }
