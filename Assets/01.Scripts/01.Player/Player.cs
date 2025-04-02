@@ -20,6 +20,7 @@ public class Player : MonoBehaviour, IDamageable
     public PlayerBoundHandler BoundHandler { get; private set; }
     public Image crosshair;
     public PlayerTargetingHandler TargetingHandler { get; private set; }
+    public PlayerUseItem playerUseItem { get; private set; }
 
     public Coroutine controllerSizingCoroutine { get; private set; }
     [field: SerializeField] public CinemachineVirtualCamera AimVCam { get; private set; }
@@ -27,11 +28,15 @@ public class Player : MonoBehaviour, IDamageable
 
     public Transform spine;
     public Transform armRight;
-    public Vector3 vector;
+    public Vector3 vectorRot;
+    public Vector3 vectorPos;
 
     public PlayerLBStateMachine LBStateMachine;
     public PlayerUBStateMachine UBStateMachine;
 
+
+    //추가 
+    //public Transform aimCamPivot; // 삭제
     private void Awake()
     {
         AnimationData.Initialize();
@@ -45,6 +50,7 @@ public class Player : MonoBehaviour, IDamageable
         Rigidbody = GetComponent<Rigidbody>();
         BoundHandler = GetComponent<PlayerBoundHandler>();
         TargetingHandler = GetComponent<PlayerTargetingHandler>();
+        playerUseItem = GetComponent<PlayerUseItem>();
 
         LBStateMachine = new PlayerLBStateMachine(this);
         UBStateMachine = new PlayerUBStateMachine(this);

@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerUB_AttackState : PlayerUB_BaseState
 {
     public Transform spine;
+    public Transform Hip;
     CinemachinePOV aimCamPOV;
     //CinemachinePOV naviCamPOV;
 
@@ -14,6 +15,7 @@ public class PlayerUB_AttackState : PlayerUB_BaseState
     public PlayerUB_AttackState(PlayerLBStateMachine LBstateMachine, PlayerUBStateMachine UBStateMachine) : base(LBstateMachine, UBStateMachine)
     {
         spine = UBStateMachine.player.Animator.GetBoneTransform(HumanBodyBones.Spine);
+        Hip = UBStateMachine.player.Animator.GetBoneTransform(HumanBodyBones.Hips);
         aimCamPOV = UBStateMachine.player.AimVCam.GetCinemachineComponent<CinemachinePOV>();
         //naviCamPOV = UBStateMachine.player.NaviVCam.GetCinemachineComponent<CinemachinePOV>();
     }
@@ -36,15 +38,28 @@ public class PlayerUB_AttackState : PlayerUB_BaseState
         Quaternion fwd = Quaternion.LookRotation(flatFwd);
         UBStateMachine.player.transform.rotation = fwd;
 
+
         //Navi 카메라의 위치,회전값을 Aim 카메라로 이동
         UBStateMachine.player.AimVCam.ForceCameraPosition(
             UBStateMachine.player.NaviVCam.transform.position,
             UBStateMachine.player.NaviVCam.transform.rotation
             );
 
-        //Aim 카메라 회전각 조정.
-        aimCamPOV.m_HorizontalAxis.m_MinValue = fwd.eulerAngles.y - 50;
-        aimCamPOV.m_HorizontalAxis.m_MaxValue = fwd.eulerAngles.y + 50;
+
+
+
+        //Aim 카메라 최소최대회전각 조정.
+
+        float characterYRotation = UBStateMachine.player.transform.rotation.eulerAngles.y;
+
+        // 제한각 설정 (좌우 50도)
+        aimCamPOV.m_HorizontalAxis.m_MinValue = characterYRotation - 50f;
+        aimCamPOV.m_HorizontalAxis.m_MaxValue = characterYRotation + 50f;
+
+        // 현재 POV 값을 캐릭터 방향으로 리셋 (필수사항)
+        aimCamPOV.m_HorizontalAxis.Value = characterYRotation;
+
+
 
         UBStateMachine.player.AimVCam.Priority = 20;
 
@@ -85,6 +100,8 @@ public class PlayerUB_AttackState : PlayerUB_BaseState
         UBStateMachine.AttackMode = false;
         UBStateMachine.player.crosshair.enabled = false;
         StopAnimation(LBStateMachine.player.AnimationData.UB_AttackParameterHash);
+        UBStateMachine.player.armRight.transform.SetParent(Hip, false);
+
     }
 
     //Quaternion spineWorldRot;
@@ -117,9 +134,17 @@ public class PlayerUB_AttackState : PlayerUB_BaseState
         // 기본 회전을 고려하여 최종 회전 계산
         spine.rotation = targetRotation * baseRotation;
 
-        //Quaternion baseRotation2 = Quaternion.Euler(-UBStateMachine.player.vector);
+        Quaternion baseRotation2 = Quaternion.Euler(UBStateMachine.player.vectorRot);
+        Vector3 basePosition = spine.position;
+
         //Quaternion targetRotation2 = Quaternion.LookRotation(Camera.main.transform.forward);
-        //UBStateMachine.player.armRight.rotation = baseRotation2 * spine.rotation;
+
+        //UBStateMachine.player.armRight.rotation = targetRotation * baseRotation2;
+        //UBStateMachine.player.armRight.position = spine.position + UBStateMachine.player.vectorPos;
+        
+        UBStateMachine.player.armRight.transform.SetParent(spine, true);
+        UBStateMachine.player.armRight.transform.localRotation = baseRotation2;
+        UBStateMachine.player.armRight.transform.localPosition = UBStateMachine.player.vectorPos;
 
     }
 }
