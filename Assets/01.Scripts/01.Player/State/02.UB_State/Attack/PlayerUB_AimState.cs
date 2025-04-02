@@ -13,15 +13,13 @@ public class PlayerUB_AimState : PlayerUB_AttackState
     {
         base.Enter();
 
-        UBStateMachine.player.AimVCam.Priority = 20;
-        StartAnimation(LBStateMachine.player.AnimationData.UB_AimParameterHash); // 수정해야함
+        StartAnimation(LBStateMachine.player.AnimationData.UB_AimParameterHash);
     }
 
     public override void Exit()
     {
         base.Exit();
 
-        UBStateMachine.player.AimVCam.Priority = 0;
         StopAnimation(LBStateMachine.player.AnimationData.UB_AimParameterHash);
     }
 
@@ -51,6 +49,8 @@ public class PlayerUB_AimState : PlayerUB_AttackState
 
     private void OnShoot(InputAction.CallbackContext context)
     {
+        UBStateMachine.ub_ShootState.interTransition = true;
+        interTransition = true;
         UBStateMachine.ChangeState(UBStateMachine.ub_ShootState);
     }
 }

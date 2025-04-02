@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossRightArmPartDamage : MonoBehaviour
+public class BossRightArmPartDamage : BossPartDamage
 {
-    // Start is called before the first frame update
-    void Start()
+    protected override void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (other.GetComponent<Bullet>())
+        {
+            //총 데미지를 계산하고 삭제
+            GetComponentInParent<Boss>().RightArmPartHp -= other.GetComponent<Bullet>().Damage * MultToDamage;
+            GetComponentInParent<Boss>().GetDamage(other.GetComponent<Bullet>().Damage * MultToDamage);
+            other.GetComponent<Bullet>().DestroyThisObject();
+        }
     }
 }

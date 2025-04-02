@@ -6,7 +6,7 @@ public class QuestUseRepairKit : QuestBase
     protected override void QuestInit()
     {
         questInfo.curCount = 0;
-        //GameManager.Instance.player.OnRepairKitUsed += UseRepairKitCount;
+        GameManager.Instance.player.UseItem.OnRepairKitUsed += UseRepairKitCount;
     }
 
     /// <summary>
@@ -19,7 +19,7 @@ public class QuestUseRepairKit : QuestBase
             if (questInfo.curCount >= questInfo.requiredCount)
             {
                 questManager.QuestClear(questInfo.id);
-                //GameManager.Instance.player.OnRepairKitUsed -= UseRepairKitCount;
+                GameManager.Instance.player.UseItem.OnRepairKitUsed -= UseRepairKitCount;
             }
         }
     }

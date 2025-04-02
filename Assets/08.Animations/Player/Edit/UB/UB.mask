@@ -116,7 +116,7 @@ AvatarMask:
   - m_Path: Hips/Spine/Chest/Shoulder_Right/UpperArm_Right/LowerArm_Right/Hand_Right/Thumb_Proximal_Right/Thumb_Intermediate_Right/Thumb_Distal_Right
     m_Weight: 1
   - m_Path: Hips/UpperLeg_Left
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Hips/UpperLeg_Left/LowerLeg_Left
     m_Weight: 1
   - m_Path: Hips/UpperLeg_Left/LowerLeg_Left/Foot_Left
@@ -126,7 +126,7 @@ AvatarMask:
   - m_Path: Hips/UpperLeg_Left/LowerLeg_Left/Foot_Left/Toe_Left/Toetip_Left
     m_Weight: 1
   - m_Path: Hips/UpperLeg_Right
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Hips/UpperLeg_Right/LowerLeg_Right
     m_Weight: 1
   - m_Path: Hips/UpperLeg_Right/LowerLeg_Right/Foot_Right

@@ -13,5 +13,10 @@ public class BossDeadState : BossBaseState
         base.Enter();
 
         TriggerAnimation(stateMachine.Boss.AnimationData.IsDeadParameterHash);
+
+        foreach(Collider collider in stateMachine.Boss.Partscollider)
+        {
+            collider.enabled = false;
+        }
     }
 }

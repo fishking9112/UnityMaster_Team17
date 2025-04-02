@@ -15,7 +15,6 @@ public class PartDamage : MonoBehaviour
     private void Start()
     {
         GetComponentInParent<Enemy>().Partscollider.Add(partCollider);
-        partCollider.enabled = false;
     }
 
     private void OnTriggerEnter(Collider other)

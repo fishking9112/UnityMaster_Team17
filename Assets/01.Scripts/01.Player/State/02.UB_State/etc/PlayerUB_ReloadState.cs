@@ -10,7 +10,7 @@ public class PlayerUB_ReloadState : PlayerUB_BaseState
     public override void Enter()
     {
         base.Enter();
-        StartAnimation(LBStateMachine.player.AnimationData.UB_ReloadParameterHash); // 수정해야함.
+        StartAnimation(LBStateMachine.player.AnimationData.UB_ReloadParameterHash); 
     }
 
     public override void Exit()

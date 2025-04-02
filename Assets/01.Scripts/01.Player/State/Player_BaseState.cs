@@ -10,7 +10,7 @@ public class Player_BaseState : IState
 
     Camera cam = Camera.main;
 
-    protected float animationSpeedModifier =1f;
+    protected float animationSpeedModifier = 1f;
     public bool WalkMode;
 
     protected Vector3 movementDirection;
@@ -24,7 +24,7 @@ public class Player_BaseState : IState
 
     protected virtual void AddInputActionCallbacks()
     {
-        
+
     }
 
     protected virtual void RemoveInputActionCallbacks()
@@ -55,7 +55,10 @@ public class Player_BaseState : IState
     public virtual void Update()
     {
         Move();
-        //Debug.Log($"이름:{name},애니메이션:{animationSpeedModifier}");
+    }
+
+    public virtual void LateUpdate()
+    {
     }
 
     protected void StartAnimation(int animationHash)
@@ -105,19 +108,26 @@ public class Player_BaseState : IState
 
     private float GetMovementSpeed()
     {
-        float moveSpeed = LBStateMachine.MovementSpeed * LBStateMachine.MovementSpeedModifier;
+        float moveSpeed = LBStateMachine.MovementSpeed * LBStateMachine.MovementSpeedModifier * LBStateMachine.MovementSpeedModifier2; // 베이스 스피드 * 상태 스피드 계수
         return moveSpeed;
     }
 
     private void Rotate(Vector3 direction)
     {
-        if(direction != Vector3.zero)
+        if (!UBStateMachine.AttackMode)
         {
-            Transform player = LBStateMachine.player.transform;
-            Quaternion target = Quaternion.LookRotation(direction);
+            if (direction != Vector3.zero)
+            {
+                Transform player = LBStateMachine.player.transform;
+                Quaternion target = Quaternion.LookRotation(direction);
 
-            player.rotation = Quaternion.Slerp(player.rotation, target, LBStateMachine.player.playerSO.GroundData.RotationDamping * Time.deltaTime); 
+                player.rotation = Quaternion.Slerp(player.rotation, target, LBStateMachine.player.playerSO.GroundData.RotationDamping * Time.deltaTime);
+            }
         }
+        //else
+        //{
+        //    LBStateMachine.player.transform.rotation = Quaternion.LookRotation(UBStateMachine.player.AimVCam.transform.forward);
+        //}
     }
 
     protected virtual void OnMovementCanceled(InputAction.CallbackContext context)

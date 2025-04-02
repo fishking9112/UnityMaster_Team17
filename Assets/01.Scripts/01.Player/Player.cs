@@ -1,17 +1,16 @@
-
 using Cinemachine;
 using System.Collections;
-using System.Linq.Expressions;
-using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.PlayerLoop;
 
-public class Player : MonoBehaviour
+using UnityEngine.UI;
+
+public class Player : MonoBehaviour, IDamageable
 {
     [field: Header("Animations")]
     [field: SerializeField] public PlayerAnimationData AnimationData { get; private set; }
 
+    public PlayerUseItem UseItem { get; private set; }
+    public PlayerCondition Condition { get; private set; }
     public Animator Animator { get; private set; }
     public PlayerController Input { get; private set; }
     public CharacterController Controller { get; private set; }
@@ -19,9 +18,16 @@ public class Player : MonoBehaviour
     public ForceReceiver ForceReceiver { get; private set; }
     public Rigidbody Rigidbody { get; private set; }
     public PlayerBoundHandler BoundHandler { get; private set; }
+    public Image crosshair;
+    public PlayerTargetingHandler TargetingHandler { get; private set; }
 
     public Coroutine controllerSizingCoroutine { get; private set; }
-    [field: SerializeField] public CinemachineVirtualCamera AimVCam { get; private set; } 
+    [field: SerializeField] public CinemachineVirtualCamera AimVCam { get; private set; }
+    [field: SerializeField] public CinemachineVirtualCamera NaviVCam { get; private set; }
+
+    public Transform spine;
+    public Transform armRight;
+    public Vector3 vector;
 
     public PlayerLBStateMachine LBStateMachine;
     public PlayerUBStateMachine UBStateMachine;
@@ -30,17 +36,20 @@ public class Player : MonoBehaviour
     {
         AnimationData.Initialize();
 
-        LBStateMachine = new PlayerLBStateMachine(this);
-        UBStateMachine = new PlayerUBStateMachine(this);
-        LBStateMachine.Initialize(UBStateMachine);
-        UBStateMachine.Initialize(LBStateMachine);
-
+        UseItem = GetComponent<PlayerUseItem>();
+        Condition = GetComponent<PlayerCondition>();
         Animator = GetComponentInChildren<Animator>();
         Input = GetComponent<PlayerController>();
         Controller = GetComponent<CharacterController>();
         ForceReceiver = GetComponent<ForceReceiver>();
         Rigidbody = GetComponent<Rigidbody>();
         BoundHandler = GetComponent<PlayerBoundHandler>();
+        TargetingHandler = GetComponent<PlayerTargetingHandler>();
+
+        LBStateMachine = new PlayerLBStateMachine(this);
+        UBStateMachine = new PlayerUBStateMachine(this);
+        LBStateMachine.Initialize(UBStateMachine);
+        UBStateMachine.Initialize(LBStateMachine);
     }
 
     private void Start()
@@ -48,6 +57,7 @@ public class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         LBStateMachine.ChangeState(LBStateMachine.lb_IdleState);
         UBStateMachine.ChangeState(UBStateMachine.ub_UnArmedState);
+        crosshair.enabled = false;
     }
 
     private void Update()
@@ -62,6 +72,12 @@ public class Player : MonoBehaviour
     {
         LBStateMachine.PhysicsUpdate();
         UBStateMachine.PhysicsUpdate();
+    }
+
+    private void LateUpdate()
+    {
+        LBStateMachine.LateUpdate();
+        UBStateMachine.LateUpdate();
     }
 
     public void StartControllerSizing(float time = 0, float centerY = 1, float height = 2)
@@ -105,5 +121,10 @@ public class Player : MonoBehaviour
 
         Controller.center = new Vector3(0, targetCenterY, 0);
         Controller.height = targetHeight;
+    }
+
+    public void GetDamage(float amount)
+    {
+        Condition.SubHealth((int)amount);
     }
 }
