@@ -1,9 +1,8 @@
-using Google.GData.AccessControl;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : MonoBehaviour
+public class Turret : MonoBehaviour, IDamageable
 {
     public GameObject TurretShootPosition;
     public float HP;
@@ -12,7 +11,7 @@ public class Turret : MonoBehaviour
 
     public GameObject DeadHeadBone;
     public GameObject TurnHeadPosition;
-    
+
     public float ChasingMaxRange;
     public float SeightAngle;
     public float AttackRate;
@@ -41,10 +40,10 @@ public class Turret : MonoBehaviour
     {
         //총을 총구에서 쏘도록 제작
         GameObject bullet = BulletManager.Instance.SpawnBullet();
-        bullet.transform.position = TurretShootPosition.transform.position; 
-        
-        bullet.GetComponent<Bullet>().SettingDamage(Damage, 
-            GameManager.Instance.player.transform.position - TurretShootPosition.transform.position + new Vector3(0,1,0));
+        bullet.transform.position = TurretShootPosition.transform.position;
+
+        bullet.GetComponent<Bullet>().SettingDamage(Damage,
+            GameManager.Instance.player.transform.position - TurretShootPosition.transform.position + new Vector3(0, 1, 0));
     }
 
     public void GetDamage(float amount)
@@ -54,6 +53,8 @@ public class Turret : MonoBehaviour
         if (HP <= 0)
         {
             //맞고 죽을 경우
+            EnemyManager.Instance.Die();
+
             HP = 0;
             stateMachine.ChangeState(stateMachine.DeadState);
             StartCoroutine(DeadMotion());
@@ -62,7 +63,7 @@ public class Turret : MonoBehaviour
 
     IEnumerator DeadMotion()
     {
-        while(DeadHeadBone.transform.eulerAngles.x < 300)
+        while (DeadHeadBone.transform.eulerAngles.x < 300)
         {
             DeadHeadBone.transform.eulerAngles += new Vector3(1, 0, 0) * 30 * Time.deltaTime;
             yield return null;

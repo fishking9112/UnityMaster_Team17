@@ -13,6 +13,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Start()
     {
+        AddInteractionCallback();
         ClearInteraction();
     }
 
@@ -84,13 +85,18 @@ public class PlayerInteraction : MonoBehaviour
         Debug.Log(_curInteractableObject.GetDescriptionText());
     }
 
+    public void AddInteractionCallback()
+    {
+        GameManager.Instance.player.Input.playerActions.Interaction.started += OnInteractStared;
+    }
+
     /// <summary>
     /// Input System의 값을 받아 상호작용 가능한 오브젝트와 상호작용하는 함수
     /// </summary>
     /// <param name="context"> 상호작용 할 키 </param>
-    public void OnInteractInput(InputAction.CallbackContext context)
+    public void OnInteractStared(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started && _curInteractableObject != null)
+        if (_curInteractableObject != null)
         {
             _curInteractableObject.OnInteract();
             _curInteractGameObject = null;

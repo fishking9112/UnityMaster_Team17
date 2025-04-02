@@ -5,14 +5,15 @@ using UnityEngine;
 public class QuestController : MonoBehaviour
 {
     [SerializeField]
-    private GameObject quest;
+    private GameObject questUI;
 
     [SerializeField]
     private GameObject questPannel;
 
     private void Start()
     {
-        quest = Resources.Load<GameObject>("Quest");
+        //Resources 폴더를 사용 안해서 패스 !
+        //quest = Resources.Load<GameObject>("Quest");
 
         questPannel = transform.Find("QuestPannel").gameObject;
 
@@ -28,9 +29,68 @@ public class QuestController : MonoBehaviour
     // 퀘스트 보드에 퀘스트 추가하는 함수
     public void AddQuest(QuestInfo questinfo)
     {
-        Debug.Log("AddQuest");
+        //Quest Pannel 에 Quest 추가
+        //GameObject newQuestUI = new GameObject($"QuestUI");
+        if(questPannel != null)
+        {
+            if (questUI != null)
+            {
+                Debug.Log($"AddQuest : + {questinfo.name}");
+                GameObject newQuestUI = GameObject.Instantiate(questUI, questPannel.transform);
+                QuestUIController questUIController = newQuestUI.GetComponent<QuestUIController>();
+                
+                switch(questinfo.type)
+                {
+                    case QuestType.PLAYER_MOVE:
+                        questUIController.TextQuestDes.text = questinfo.description;
+                        break;
+                    case QuestType.USE_REPAIRKIT:
+                        questUIController.TextQuestDes.text = questinfo.description;
 
-        
+                        questUIController.TextQuestCout.gameObject.SetActive(true);
+                        questUIController.TextQuestMaxCount.gameObject.SetActive(true);
+
+                        questUIController.TextQuestCout.text = questinfo.curCount.ToString();
+                        questUIController.TextQuestMaxCount.text = questinfo.requiredCount.ToString();
+                        break;
+                    case QuestType.USE_GRENADE:
+                        questUIController.TextQuestDes.text = questinfo.description;
+
+                        questUIController.TextQuestCout.gameObject.SetActive(true);
+                        questUIController.TextQuestMaxCount.gameObject.SetActive(true);
+
+                        questUIController.TextQuestCout.text = questinfo.curCount.ToString();
+                        questUIController.TextQuestMaxCount.text = questinfo.requiredCount.ToString();
+                        break;
+                    case QuestType.KILL_ENEMY:
+                        questUIController.TextQuestDes.text = questinfo.description;
+
+                        questUIController.TextQuestCout.gameObject.SetActive(true);
+                        questUIController.TextQuestMaxCount.gameObject.SetActive(true);
+
+                        questUIController.TextQuestCout.text = questinfo.curCount.ToString();
+                        questUIController.TextQuestMaxCount.text = questinfo.requiredCount.ToString();
+                        break;
+                }
+                
+            }
+            else
+            {
+                Debug.LogWarning("questUI_Prefab is null !");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("QuestPannel is null !");
+        }
     }
 
+    private void Update()
+    {
+        //test
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            GameObject newQuestUI = GameObject.Instantiate(questUI, questPannel.transform);
+        }
+    }
 }

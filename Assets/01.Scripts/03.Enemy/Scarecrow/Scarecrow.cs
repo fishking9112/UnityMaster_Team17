@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scarecrow : MonoBehaviour
+public class Scarecrow : MonoBehaviour, IDamageable
 {
     public Animator animator;
     public float HP;
@@ -22,6 +22,8 @@ public class Scarecrow : MonoBehaviour
         if (HP <= 0)
         {
             //맞고 죽을 경우
+            EnemyManager.Instance.Die();
+
             HP = 0;
             animator.SetTrigger("IsDead");
             OffColliders();

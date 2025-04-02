@@ -48,7 +48,7 @@ public abstract class QuestBase : MonoBehaviour
             if (other.CompareTag("Player"))
             {
                 QuestInit();
-                UIManager.Instance.AddQuest(questInfo);
+                //UIManager.Instance.AddQuest(questInfo);
                 questManager.QuestStart(questInfo.id);
             }
         }
