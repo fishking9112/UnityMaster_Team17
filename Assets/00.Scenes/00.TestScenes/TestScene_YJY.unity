@@ -1147,7 +1147,7 @@ PrefabInstance:
     - target: {fileID: 5168119546860579821, guid: b1487351b7566bd49bf2884c05c48b1b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 16.4
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 5168119546860579821, guid: b1487351b7566bd49bf2884c05c48b1b,
         type: 3}
@@ -1399,9 +1399,9 @@ MonoBehaviour:
   LeftArm: {fileID: 1092275831}
   IsLeftArm: 0
   LastGunAttack: 0
-  GunRate: 10
+  GunRate: 0
   LastRocketAttack: 0
-  RocketRate: 40
+  RocketRate: 30
   LastMiliAttack: 0
   MiliRate: 3
 --- !u!195 &1870729528

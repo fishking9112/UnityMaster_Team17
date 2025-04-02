@@ -24,6 +24,15 @@ public class BossAttackState : BossBaseState
         StopAnimation(stateMachine.Boss.AnimationData.AttackParameterHash);
     }
 
+    public override void Update()
+    {
+        base.Update();
+
+        Transform playerTransform = stateMachine.Boss.transform;
+        Quaternion targetRotation = Quaternion.LookRotation((GameManager.Instance.player.transform.position - stateMachine.Boss.transform.position).normalized);
+        playerTransform.rotation = Quaternion.Slerp(playerTransform.rotation, targetRotation, 6 * Time.deltaTime);
+    }
+
     void ShootToPlayer()
     {
         if (stateMachine.Boss.IsRightArm && stateMachine.Boss.LastGunAttack + stateMachine.Boss.GunRate < Time.time)

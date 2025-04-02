@@ -95,6 +95,7 @@ public class Boss : MonoBehaviour
     public void Riffle()
     {
         LastGunAttack = Time.time;
+        GunRate = Random.Range(5f, 10f);
 
         StartCoroutine(coroutineRiffle());
     }
@@ -115,6 +116,7 @@ public class Boss : MonoBehaviour
     public void Rocket()
     {
         LastRocketAttack = Time.time;
+        RocketRate = Random.Range(20f, 30f);
 
         StartCoroutine(coroutineRocket());
     }
