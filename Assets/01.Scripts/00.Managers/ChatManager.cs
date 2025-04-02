@@ -16,7 +16,7 @@ public class ChatManager : MonoSingleton<ChatManager>
     {
         base.Awake();
 
-        _chatText = GameObject.Find("Text_Chat").GetComponent<TextMeshProUGUI>();
+        _chatText = GameObject.Find("Chat_Text").GetComponent<TextMeshProUGUI>();
     }
 
     private void Start()
