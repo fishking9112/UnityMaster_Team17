@@ -26,7 +26,7 @@ public class QuestMove : QuestBase
     /// </summary>
     protected override void QuestGoal()
     {
-        if (questState == QuestState.ONGOING)
+        if (questInfo.questState == QuestState.ONGOING)
         {
             if ((_targetPosition-_playerTransform.position).magnitude < clearDistance)
             {

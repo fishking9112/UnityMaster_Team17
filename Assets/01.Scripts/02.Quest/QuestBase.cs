@@ -10,18 +10,17 @@ public enum QuestState
 public abstract class QuestBase : MonoBehaviour
 {
     public QuestInfo questInfo;
-
-    public QuestState questState = QuestState.BEFORE;
     protected QuestManager questManager;
 
     protected virtual void Start()
     {
         questManager = QuestManager.Instance;
+        questInfo.questState = QuestState.BEFORE;
     }
 
     protected virtual void Update()
     {
-        if(questState == QuestState.ONGOING)
+        if(questInfo.questState == QuestState.ONGOING)
         {
             QuestGoal();
         }
@@ -43,7 +42,7 @@ public abstract class QuestBase : MonoBehaviour
     /// <param name="other"> 충돌 대상 </param>
     protected virtual void OnTriggerEnter(Collider other)
     {
-        if(questState == QuestState.BEFORE)
+        if(questInfo.questState == QuestState.BEFORE)
         {
             if (other.CompareTag("Player"))
             {

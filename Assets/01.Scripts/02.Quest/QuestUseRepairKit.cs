@@ -14,7 +14,7 @@ public class QuestUseRepairKit : QuestBase
     /// </summary>
     protected override void QuestGoal()
     {
-        if (questState == QuestState.ONGOING)
+        if (questInfo.questState == QuestState.ONGOING)
         {
             if (questInfo.curCount >= questInfo.requiredCount)
             {

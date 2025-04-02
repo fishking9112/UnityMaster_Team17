@@ -74,7 +74,7 @@ public class QuestManager : MonoSingleton<QuestManager>
 
         QuestBase quest = _questDictionary[id];
 
-        quest.questState = QuestState.ONGOING;
+        quest.questInfo.questState = QuestState.ONGOING;
 
         Debug.Log($"{_questDictionary[id].questInfo.name}");
         Debug.Log($"{_questDictionary[id].questInfo.description}");
@@ -90,7 +90,7 @@ public class QuestManager : MonoSingleton<QuestManager>
 
         QuestBase quest = _questDictionary[id];
 
-        quest.questState = QuestState.CLEAR;
+        quest.questInfo.questState = QuestState.CLEAR;
 
         Debug.Log("퀘스트 완료");
 
@@ -105,7 +105,7 @@ public class QuestManager : MonoSingleton<QuestManager>
         Debug.Log("퀘스트 리셋");
         for(int i = 0; i < _questDictionary.Count; i++)
         {
-            _questDictionary[i].questState = QuestState.BEFORE;
+            _questDictionary[i].questInfo.questState = QuestState.BEFORE;
         }
     }
 }
