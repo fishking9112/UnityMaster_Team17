@@ -4,7 +4,7 @@ using UnityEngine;
 
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamageable
 {
     [field: Header("Animations")]
     [field: SerializeField] public PlayerAnimationData AnimationData { get; private set; }
@@ -121,5 +121,10 @@ public class Player : MonoBehaviour
 
         Controller.center = new Vector3(0, targetCenterY, 0);
         Controller.height = targetHeight;
+    }
+
+    public void GetDamage(float amount)
+    {
+        Condition.SubHealth((int)amount);
     }
 }

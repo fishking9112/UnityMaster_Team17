@@ -1240,6 +1240,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2697955641031631413}
   - component: {fileID: 3043889400535232738}
+  - component: {fileID: 130813484904917119}
+  - component: {fileID: 1204163110760354082}
   m_Layer: 6
   m_Name: Robot
   m_TagString: Untagged
@@ -1293,6 +1295,41 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!136 &130813484904917119
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3917561278463149281}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.75
+  m_Height: 2.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &1204163110760354082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3917561278463149281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13cfe129db9efc84eb02bca9826bda5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4137883103398481264
 GameObject:
   m_ObjectHideFlags: 0
@@ -2789,6 +2826,7 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 183
+  bulletTargetPos: {x: 0, y: 0, z: 0}
   targetObj: {fileID: 1324353226588375588}
   bulletStartPos: {fileID: 1967637081236153840}
 --- !u!114 &2910537351447373200
@@ -2803,6 +2841,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8293154fe7340e94dacfc03313be676b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _curHealth: 0
+  _maxHealth: 100
+  _curDashGauge: 0
+  _maxDashGauge: 0
+  _curBulletCount: 0
+  _maxBulletCount: 30
+  _curMagazineCount: 0
+  _maxMagazineCount: 8
+  _curGrenadeCount: 0
+  _maxGrenadeCount: 5
+  _curRepairKitCount: 0
+  _maxRepairKitCount: 3
 --- !u!114 &2120476410186823759
 MonoBehaviour:
   m_ObjectHideFlags: 0
