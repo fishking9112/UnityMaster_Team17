@@ -3,7 +3,6 @@ using System.Collections;
 using TMPro;
 using UnityEditor.Rendering.LookDev;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ChatManager : MonoSingleton<ChatManager>
 {
@@ -11,14 +10,14 @@ public class ChatManager : MonoSingleton<ChatManager>
     private string[] _chat;
 
     private TextMeshProUGUI _chatText;
-    private Image _chatPannel;
 
     public float typingSpeed;
     public float clearSpeed;
 
     private bool _isChatting;
 
-    private IEnumerator displayCoroutine; 
+    private IEnumerator displayCoroutine;
+    private IEnumerator typingCoroutine;
 
     protected override void Awake()
     {
@@ -26,13 +25,10 @@ public class ChatManager : MonoSingleton<ChatManager>
 
         _chatText = GameObject.Find("Text_Chat").GetComponent<TextMeshProUGUI>();
         _isChatting = false;
-
-        _chatPannel = GameObject.Find("ChatPannel").GetComponent<Image>();
     }
 
     private void Start()
     {
-        _chatPannel.enabled = false;
         _chatText.text = string.Empty;
     }
 
@@ -42,20 +38,21 @@ public class ChatManager : MonoSingleton<ChatManager>
     /// <param name="id"> 출력할 chat의 id </param>
     public void UpdateChatText(int id)
     {
+        print("현재 id : " + id);
         if (_isChatting)
         {
-            StopAllCoroutines();
+            StopCoroutine(displayCoroutine);
+            StopCoroutine(typingCoroutine);
             _chatText.text = string.Empty;
-
-            _chatPannel.enabled = false;
-            _chatText.gameObject.SetActive(false);
         }
 
         ChatInfo chatInfo = chatData.chatInfoList.Find(info => info.id == id);
         _chat = chatInfo.content.Split("@");
 
-        _chatPannel.enabled = true;
-        _chatText.gameObject.SetActive(true);
+        for(int i = 0; i < _chat.Length; i++)
+        {
+            print(i +":"+ _chat[i]);
+        }
 
         displayCoroutine = DisplayChat();
         StartCoroutine(displayCoroutine);
@@ -67,11 +64,7 @@ public class ChatManager : MonoSingleton<ChatManager>
     /// </summary>
     IEnumerator DisplayChat()
     {
-        _chatPannel.enabled = true;
-        _chatText.gameObject.SetActive(true);
-
         _isChatting = true;
-
 
         char speeker = _chat[0][_chat[0].Length - 1];
 
@@ -83,19 +76,15 @@ public class ChatManager : MonoSingleton<ChatManager>
 
                 yield return new WaitForSeconds(clearSpeed);
                 _chatText.text = string.Empty;
-
             }
-            yield return StartCoroutine(TypingText(_chat[i]));
+            typingCoroutine = TypingText(_chat[i]);
+            yield return StartCoroutine(typingCoroutine);
         }
 
         yield return new WaitForSeconds(clearSpeed);
         _chatText.text = string.Empty;
 
         _isChatting = false;
-
-        _chatPannel.enabled = false;
-
-        _chatText.gameObject.SetActive(false);
     }
 
     /// <summary>
