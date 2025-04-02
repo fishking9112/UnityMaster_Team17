@@ -26,6 +26,9 @@ public class PlayerUseItem : MonoBehaviour
         GameManager.Instance.player.Input.playerActions.RepairKit.started += OnUseRepairKitStared;
     }
 
+    /// <summary>
+    /// 'G' 키를 누르면 유탄 발사
+    /// </summary>
     public void OnUseGrenadeStared(InputAction.CallbackContext context)
     {
         if(playerCondition.CurGrenadeCount > 0)
@@ -54,6 +57,9 @@ public class PlayerUseItem : MonoBehaviour
             GameManager.Instance.player.TargetingHandler.bulletTargetPos - GameManager.Instance.player.TargetingHandler.bulletStartPos.position);
     }
 
+    /// <summary>
+    /// 'T' 키를 누르면 수리 키트 사용
+    /// </summary>
     public void OnUseRepairKitStared(InputAction.CallbackContext context)
     {
         if (playerCondition.CurRepairKitCount > 0)
