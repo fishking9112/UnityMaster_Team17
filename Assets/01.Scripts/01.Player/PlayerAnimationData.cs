@@ -20,6 +20,9 @@ public class PlayerAnimationData
 
     [SerializeField] private string lb_DashParameterName = "Dash";
 
+    [SerializeField] private string lb_XParameterName = "X";
+    [SerializeField] private string lb_YParameterName = "Y";
+
     public int LB_GroundedParameterHash { get; private set; }
     public int LB_IdleParameterHash { get; private set; }
     public int LB_WalkParameterHash { get; private set; }
@@ -32,6 +35,9 @@ public class PlayerAnimationData
     public int LB_AscendParameterHash { get; private set; }
 
     public int LB_DashParameterHash { get; private set; }
+
+    public int LB_XParameterHash { get; private set; }
+    public int LB_YParameterHash { get; private set; }
 
     [Header("UpperBody")]
     [SerializeField] private string ub_ArmedParameterName = "@Armed";
@@ -64,6 +70,9 @@ public class PlayerAnimationData
         LB_AscendParameterHash = Animator.StringToHash(lb_AscendParameterName);
 
         LB_DashParameterHash = Animator.StringToHash(lb_DashParameterName);
+
+        LB_XParameterHash = Animator.StringToHash(lb_XParameterName);
+        LB_YParameterHash = Animator.StringToHash(lb_YParameterName);
 
         //UB
         UB_ArmedParameterHash = Animator.StringToHash(ub_ArmedParameterName);

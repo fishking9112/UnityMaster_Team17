@@ -29,7 +29,7 @@ public abstract class StateMachine
 
     }
 
-    public void Update()
+    public virtual void Update()
     {
         currentState.Update();
     }

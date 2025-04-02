@@ -7,6 +7,7 @@ public class PlayerGroundData
 
     [field: SerializeField, Range(0f, 25f)] public float BaseSpeed { get; private set; } = 5f;
     [field: SerializeField, Range(0f, 25f)] public float RotationDamping { get; private set; } = 5f;
+    [field: SerializeField, Range(0f, 2f)] public float AttackSpeed { get; private set; } = 0.5f;
 
     [field: Header("WalkData")]
     [field: SerializeField, Range(0f, 2)] public float WalkSpeed { get; private set; } = 0.225f;

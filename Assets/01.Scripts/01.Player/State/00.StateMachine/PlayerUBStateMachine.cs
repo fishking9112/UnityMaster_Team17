@@ -24,4 +24,10 @@ public class PlayerUBStateMachine : PlayerStateMachine
         ub_ShootState = new PlayerUB_ShootState(LBStateMachine, this);
         ub_ReloadState = new PlayerUB_ReloadState(LBStateMachine, this);
     }
+
+    public override void Update()
+    {
+        base.Update();
+        //ChangeState(ub_AimState); // 테스트용
+    }
 }

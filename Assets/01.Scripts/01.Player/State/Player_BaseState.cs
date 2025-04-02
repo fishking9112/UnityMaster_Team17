@@ -108,7 +108,7 @@ public class Player_BaseState : IState
 
     private float GetMovementSpeed()
     {
-        float moveSpeed = LBStateMachine.MovementSpeed * LBStateMachine.MovementSpeedModifier;
+        float moveSpeed = LBStateMachine.MovementSpeed * LBStateMachine.MovementSpeedModifier * LBStateMachine.MovementSpeedModifier2; // 베이스 스피드 * 상태 스피드 계수
         return moveSpeed;
     }
 
