@@ -27,7 +27,6 @@ public class Scarecrow : MonoBehaviour, IDamageable
             HP = 0;
             animator.SetTrigger("IsDead");
             OffColliders();
-            StartCoroutine(ReSpawnScarecrow());
         }
         else
         {
@@ -48,12 +47,5 @@ public class Scarecrow : MonoBehaviour, IDamageable
         {
             col.enabled = false;
         }
-    }
-
-    IEnumerator ReSpawnScarecrow()
-    {
-        yield return new WaitForSeconds(1.5f);
-        HP = MaxHP;
-        OnColliders();
     }
 }
