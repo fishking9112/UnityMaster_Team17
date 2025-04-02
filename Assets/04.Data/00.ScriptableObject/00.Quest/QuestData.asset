@@ -15,5 +15,62 @@ MonoBehaviour:
   sheetURL: 1v_nkmbO8MzXts1qLHKEclOda4oLwR9PBHfJRSuYwYRE
   sheetName: Quest
   startRowIndex: 2
-  endRowIndex: 7
-  questInfoList: []
+  endRowIndex: 8
+  questInfoList:
+  - id: 0
+    name: "\uC774\uB3D9"
+    description: "wasd\uB97C \uB20C\uB7EC \uC774\uB3D9\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4.
+      \uB2E4\uC74C \uC9C0\uC5ED\uC73C\uB85C \uC774\uB3D9\uD558\uC138\uC694."
+    position: {x: 58, y: 1, z: 30}
+    scale: {x: 9, y: 3, z: 12}
+    type: 0
+    requiredCount: 0
+    curCount: 0
+  - id: 1
+    name: "\uD5C8\uC218\uC544\uBE44 \uCC98\uCE58"
+    description: "\uD5C8\uC218\uC544\uBE44\uB97C 3\uB9C8\uB9AC \uCC98\uCE58\uD558\uC138\uC694."
+    position: {x: 86, y: 1, z: 20}
+    scale: {x: 12, y: 3, z: 3}
+    type: 3
+    requiredCount: 3
+    curCount: 0
+  - id: 2
+    name: "\uD130\uB81B \uCC98\uCE58"
+    description: "\uBB38\uC55E\uC758 \uD130\uB81B\uC744 \uCC98\uCE58\uD558\uC138\uC694."
+    position: {x: 93, y: 1, z: -19}
+    scale: {x: 3, y: 3, z: 12}
+    type: 3
+    requiredCount: 2
+    curCount: 0
+  - id: 3
+    name: "\uC720\uD0C4 \uC0AC\uC6A9"
+    description: "\uC720\uD0C4\uC744 2\uAC1C \uC0AC\uC6A9\uD574\uBCF4\uC138\uC694."
+    position: {x: 123, y: 7, z: -19}
+    scale: {x: 3, y: 3, z: 12}
+    type: 2
+    requiredCount: 2
+    curCount: 0
+  - id: 4
+    name: "\uC218\uB9AC \uD0A4\uD2B8 \uC0AC\uC6A9"
+    description: "\uC218\uB9AC \uD0A4\uD2B8\uB97C 1\uAC1C \uC0AC\uC6A9\uD574\uBCF4\uC138\uC694."
+    position: {x: 123, y: 7, z: -19}
+    scale: {x: 3, y: 3, z: 12}
+    type: 1
+    requiredCount: 1
+    curCount: 0
+  - id: 5
+    name: "\uBAA8\uC758 \uC804\uD22C"
+    description: "\uBAA8\uB4E0 \uC801\uC744 \uCC98\uCE58\uD558\uC138\uC694."
+    position: {x: 130, y: 7, z: -100}
+    scale: {x: 3, y: 3, z: 12}
+    type: 3
+    requiredCount: 12
+    curCount: 0
+  - id: 6
+    name: "\uBCF4\uC2A4\uC804"
+    description: "\uBCF4\uC2A4\uB97C \uCC98\uCE58\uD558\uC138\uC694."
+    position: {x: 60, y: 7, z: -100}
+    scale: {x: 3, y: 3, z: 12}
+    type: 3
+    requiredCount: 1
+    curCount: 0
