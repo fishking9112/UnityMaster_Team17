@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour, IDamageable
     public Animator animator{ get; private set; }
     public NavMeshAgent agent { get; private set; }
     public ForceReceiver ForceReceiver { get; private set; }
+    [field: SerializeField]  public GameObject DeadParticle { get; private set; }
 
     [field: Header("Seight")]
     [field: SerializeField] public GameObject EnemyRayPosition { get; private set; }
@@ -98,6 +99,9 @@ public class Enemy : MonoBehaviour, IDamageable
 
     void DisSpawnEnemy()
     {
+        GameObject par = Instantiate(DeadParticle);
+        par.transform.position = transform.position;
+
         gameObject.SetActive(false);
     }
 }

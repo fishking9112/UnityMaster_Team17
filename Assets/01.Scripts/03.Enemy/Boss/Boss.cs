@@ -11,6 +11,7 @@ public class Boss : MonoBehaviour, IDamageable
     [field: SerializeField] public BossAnimationData AnimationData { get; private set; }
     public Animator animator { get; private set; }
     public NavMeshAgent agent { get; private set; }
+    [field: SerializeField] public GameObject DeadParticle { get; private set; }
 
     [field: Header("Seight")]
     [field: SerializeField] public GameObject BossRayPosition { get; private set; }
@@ -23,7 +24,7 @@ public class Boss : MonoBehaviour, IDamageable
 
     private BossStateMachine stateMachine;
 
-    private float HP;
+    public float HP;
     private float MaxHP;
     private bool isHalf = false;
 
@@ -168,24 +169,39 @@ public class Boss : MonoBehaviour, IDamageable
             IsLeftArm = false;
             LeftArm.SetActive(false);
             StopAllCoroutines();
+
+            GameObject par = Instantiate(DeadParticle);
+            par.transform.position = LeftArm.transform.position;
+
             animator.SetTrigger(AnimationData.LeftHitParameterHash);
-            stateMachine.ChangeState(stateMachine.ChaseState);
+
+            stateMachine.ChangeState(stateMachine.IdleState);
         }
         else if (RightArmPartHp == 0 && IsRightArm)
         {
             IsRightArm = false;
             RightArm.SetActive(false);
             StopAllCoroutines();
+
+            GameObject par = Instantiate(DeadParticle);
+            par.transform.position = RightArm.transform.position;
+
             animator.SetTrigger(AnimationData.RightHitParameterHash);
-            stateMachine.ChangeState(stateMachine.ChaseState);
+
+            stateMachine.ChangeState(stateMachine.IdleState);
         }
         else if (HP <= MaxHP / 2 && !isHalf)
         {
             //그로기
             isHalf = true;
             StopAllCoroutines();
+
+            GameObject par = Instantiate(DeadParticle);
+            par.transform.position = transform.position;
+
             animator.SetTrigger(AnimationData.HalfHitParameterHash);
-            stateMachine.ChangeState(stateMachine.ChaseState);
+
+            stateMachine.ChangeState(stateMachine.IdleState);
         }
         else if (HP <= 0)
         {
@@ -194,6 +210,10 @@ public class Boss : MonoBehaviour, IDamageable
 
             HP = 0;
             StopAllCoroutines();
+
+            GameObject par = Instantiate(DeadParticle);
+            par.transform.position = transform.position;
+
             stateMachine.ChangeState(stateMachine.DeadState);
         }
     }

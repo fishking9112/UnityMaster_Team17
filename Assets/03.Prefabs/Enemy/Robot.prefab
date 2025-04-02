@@ -116,6 +116,8 @@ MonoBehaviour:
     RightHitParameterName: RightHit
     LeftHitParameterName: LeftHit
     HalfHitParameterName: HalfHit
+  <DeadParticle>k__BackingField: {fileID: 100004, guid: b46890100828db6429ff69c322b45893,
+    type: 3}
   <BossRayPosition>k__BackingField: {fileID: 1903176919110650571}
   <BossLeftShootPosition>k__BackingField: {fileID: 1600990092933546195}
   <BossRightShootPosition>k__BackingField: {fileID: 5750065368687946510}
