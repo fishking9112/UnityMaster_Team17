@@ -1232,6 +1232,7 @@ MonoBehaviour:
   textGrenadeCount: {fileID: 4298885756144003453}
   textRepairCount: {fileID: 8619333146243257091}
   textAmorCount: {fileID: 2531940151821593853}
+  imageHP: {fileID: 3307831465056489915}
 --- !u!1 &5008754551719585874
 GameObject:
   m_ObjectHideFlags: 0
