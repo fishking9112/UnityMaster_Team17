@@ -7,4 +7,11 @@ public class BossDeadState : BossBaseState
     public BossDeadState(BossStateMachine stateMachine) : base(stateMachine)
     {
     }
+
+    public override void Enter()
+    {
+        base.Enter();
+
+        TriggerAnimation(stateMachine.Boss.AnimationData.IsDeadParameterHash);
+    }
 }

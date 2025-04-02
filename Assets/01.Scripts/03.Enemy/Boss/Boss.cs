@@ -26,11 +26,14 @@ public class Boss : MonoBehaviour
 
     private float HP;
     private float MaxHP;
+    private bool isHalf = false;
 
     public GameObject RightArm;
     public bool IsRightArm;
+    public float RightArmPartHp;
     public GameObject LeftArm;
     public bool IsLeftArm;
+    public float LeftArmPartHp;
 
     public float LastGunAttack;
     public float GunRate;
@@ -55,6 +58,9 @@ public class Boss : MonoBehaviour
         //체력값 받아오기
         HP = Data.Hp;
         MaxHP = Data.Hp;
+
+        LeftArmPartHp = Data.Hp / 4;
+        RightArmPartHp = Data.Hp / 4;
 
         GetDamageMultiple = 0.1f;
 
@@ -149,18 +155,62 @@ public class Boss : MonoBehaviour
 
         stateMachine.ChangeState(stateMachine.IdleState);
     }
+    public void OnColliders()
+    {
+        foreach (Collider col in Partscollider)
+        {
+            col.enabled = true;
+        }
+    }
+    public void OffColliders()
+    {
+        foreach (Collider col in Partscollider)
+        {
+            col.enabled = false;
+        }
+    }
 
     public void GetDamage(float amount)
     {
         HP -= amount * GetDamageMultiple;
 
-        if (HP <= 0)
+        if (LeftArmPartHp == 0 && IsLeftArm)
         {
-            HP = 0;
+            IsLeftArm = false;
+            LeftArm.SetActive(false);
+            StopAllCoroutines();
+            animator.SetTrigger(AnimationData.LeftHitParameterHash);
+            stateMachine.ChangeState(stateMachine.ChaseState);
         }
-        else if(HP <= MaxHP / 2)
+        else if (RightArmPartHp == 0 && IsRightArm)
         {
-
+            IsRightArm = false;
+            RightArm.SetActive(false);
+            StopAllCoroutines();
+            animator.SetTrigger(AnimationData.RightHitParameterHash);
+            stateMachine.ChangeState(stateMachine.ChaseState);
+        }
+        else if (HP <= MaxHP / 2 && !isHalf)
+        {
+            //그로기
+            isHalf = true;
+            StopAllCoroutines();
+            animator.SetTrigger(AnimationData.HalfHitParameterHash);
+            stateMachine.ChangeState(stateMachine.ChaseState);
+        }
+        else if (HP <= 0)
+        {
+            //사망
+            HP = 0;
+            StopAllCoroutines();
+            OffColliders();
+            stateMachine.ChangeState(stateMachine.DeadState);
+        }
+        else
+        {
+            //맞고 살았을 경우
+            Invoke("OffColliders", 0.01f);
+            stateMachine.ChangeState(stateMachine.ChaseState);
         }
     }
 }

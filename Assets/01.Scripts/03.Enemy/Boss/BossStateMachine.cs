@@ -11,6 +11,7 @@ public class BossStateMachine : StateMachine
     public BossChaseState ChaseState { get; }
     public BossMiliAttackState MiliAttackState { get; }
     public BossAttackState AttackState { get; }
+    public BossDeadState DeadState { get; }
 
     public BossStateMachine(Boss boss)
     {
@@ -21,5 +22,6 @@ public class BossStateMachine : StateMachine
         ChaseState = new BossChaseState(this);
         MiliAttackState = new BossMiliAttackState(this);
         AttackState = new BossAttackState(this);
+        DeadState = new BossDeadState(this);
     }
 }

@@ -17,6 +17,7 @@ public class BossStartState : BossBaseState
 
     public override void Exit()
     {
+        stateMachine.Boss.GetDamageMultiple = 1f;
         base.Exit();
     }
 
