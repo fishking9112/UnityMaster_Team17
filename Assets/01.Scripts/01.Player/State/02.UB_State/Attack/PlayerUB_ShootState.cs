@@ -40,6 +40,8 @@ public class PlayerUB_ShootState : PlayerUB_AttackState
         // 좌클 놓으면 Aim으로 복귀
         if (!UBStateMachine.player.Input.playerActions.Shoot.IsPressed())
         {
+            UBStateMachine.ub_AimState.interTransition = true;
+            interTransition = true;
             UBStateMachine.ChangeState(UBStateMachine.ub_AimState);
         }
     }

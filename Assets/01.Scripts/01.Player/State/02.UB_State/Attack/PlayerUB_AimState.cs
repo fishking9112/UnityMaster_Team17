@@ -49,6 +49,8 @@ public class PlayerUB_AimState : PlayerUB_AttackState
 
     private void OnShoot(InputAction.CallbackContext context)
     {
+        UBStateMachine.ub_ShootState.interTransition = true;
+        interTransition = true;
         UBStateMachine.ChangeState(UBStateMachine.ub_ShootState);
     }
 }

@@ -9,6 +9,8 @@ public class PlayerUB_AttackState : PlayerUB_BaseState
     CinemachinePOV aimCamPOV;
     //CinemachinePOV naviCamPOV;
 
+    public bool interTransition;
+
     public PlayerUB_AttackState(PlayerLBStateMachine LBstateMachine, PlayerUBStateMachine UBStateMachine) : base(LBstateMachine, UBStateMachine)
     {
         spine = UBStateMachine.player.Animator.GetBoneTransform(HumanBodyBones.Spine);
@@ -20,6 +22,13 @@ public class PlayerUB_AttackState : PlayerUB_BaseState
     public override void Enter()
     {
         base.Enter();
+
+        //내부 전환이면 건너뜀
+        if (interTransition)
+        {
+            interTransition = false;
+            return;
+        }
 
         //플레이어를 카메라 방향으로 회전
         Vector3 flatFwd = Camera.main.transform.forward;
@@ -50,6 +59,13 @@ public class PlayerUB_AttackState : PlayerUB_BaseState
     public override void Exit()
     {
         base.Exit();
+
+        //내부 전환이면 건너뜀
+        if (interTransition)
+        {
+            interTransition = false;
+            return;
+        }
 
         //Aim 카메라 회전각 조정.
         aimCamPOV.m_HorizontalAxis.m_MinValue = -560;
