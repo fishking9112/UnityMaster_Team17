@@ -4,7 +4,7 @@ public class PlayerTargetingHandler : MonoBehaviour
 {
     Camera cam;
     [SerializeField] LayerMask targetMask;
-    Vector3 bulletTargetPos; // 2.총알은 여기로 가면 됨.
+    public Vector3 bulletTargetPos; // 2.총알은 여기로 가면 됨.
     [SerializeField] GameObject targetObj;
     public Transform bulletStartPos; // 1.총알은 여기서 발사됨.
 
