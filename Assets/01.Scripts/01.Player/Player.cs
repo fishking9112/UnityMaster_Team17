@@ -1,11 +1,7 @@
-
 using Cinemachine;
 using System.Collections;
-using System.Linq.Expressions;
-using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.PlayerLoop;
+
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -13,6 +9,8 @@ public class Player : MonoBehaviour
     [field: Header("Animations")]
     [field: SerializeField] public PlayerAnimationData AnimationData { get; private set; }
 
+    public PlayerUseItem UseItem { get; private set; }
+    public PlayerCondition Condition { get; private set; }
     public Animator Animator { get; private set; }
     public PlayerController Input { get; private set; }
     public CharacterController Controller { get; private set; }
@@ -38,6 +36,8 @@ public class Player : MonoBehaviour
     {
         AnimationData.Initialize();
 
+        UseItem = GetComponent<PlayerUseItem>();
+        Condition = GetComponent<PlayerCondition>();
         Animator = GetComponentInChildren<Animator>();
         Input = GetComponent<PlayerController>();
         Controller = GetComponent<CharacterController>();
