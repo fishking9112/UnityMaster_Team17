@@ -154,20 +154,6 @@ public class Boss : MonoBehaviour, IDamageable
 
         stateMachine.ChangeState(stateMachine.IdleState);
     }
-    public void OnColliders()
-    {
-        foreach (Collider col in Partscollider)
-        {
-            col.enabled = true;
-        }
-    }
-    public void OffColliders()
-    {
-        foreach (Collider col in Partscollider)
-        {
-            col.enabled = false;
-        }
-    }
 
     public void GetDamage(float amount)
     {
@@ -204,7 +190,6 @@ public class Boss : MonoBehaviour, IDamageable
 
             HP = 0;
             StopAllCoroutines();
-            OffColliders();
             stateMachine.ChangeState(stateMachine.DeadState);
         }
         else
