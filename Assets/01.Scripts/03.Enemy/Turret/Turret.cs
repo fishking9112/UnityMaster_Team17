@@ -40,6 +40,7 @@ public class Turret : MonoBehaviour, IDamageable
     {
         //총을 총구에서 쏘도록 제작
         GameObject bullet = BulletManager.Instance.SpawnBullet();
+        SoundManager.Instance.PlayerSFX("Player_Shoot_SFX", TurretShootPosition.transform.position);
         bullet.transform.position = TurretShootPosition.transform.position;
         bullet.transform.rotation = Quaternion.LookRotation((GameManager.Instance.player.transform.position - TurretShootPosition.transform.position).normalized);
         bullet.GetComponent<Bullet>().SettingDamage(Damage,
@@ -57,6 +58,7 @@ public class Turret : MonoBehaviour, IDamageable
 
             HP = 0;
             stateMachine.ChangeState(stateMachine.DeadState);
+            SoundManager.Instance.PlayerSFX("Turret_Die_SFx", transform.position);
             StartCoroutine(DeadMotion());
         }
     }

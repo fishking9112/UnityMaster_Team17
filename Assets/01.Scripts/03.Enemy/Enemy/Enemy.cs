@@ -70,6 +70,7 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         //총을 총구에서 쏘도록 제작
         GameObject bullet = BulletManager.Instance.SpawnBullet();
+        SoundManager.Instance.PlayerSFX("Player_Shoot_SFX", EnemyShootPosition.transform.position);
         bullet.transform.position = EnemyShootPosition.transform.position;
         bullet.transform.rotation = Quaternion.LookRotation((GameManager.Instance.player.transform.position - EnemyShootPosition.transform.position).normalized);
         bullet.GetComponent<Bullet>().SettingDamage(Data.Damage, 
@@ -86,7 +87,8 @@ public class Enemy : MonoBehaviour, IDamageable
             //맞고 죽을 경우
             EnemyManager.Instance.Die();
 
-            HP = 0;
+            HP = 0; 
+            SoundManager.Instance.PlayerSFX("Enemy_Die_SFX", transform.position);
             stateMachine.ChangeState(stateMachine.DeadState);
             Invoke("DisSpawnEnemy", 1);
         }

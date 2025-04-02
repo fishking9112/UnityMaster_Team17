@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyChaseState : EnemyBaseState
 {
+    float soundtime = 0;
     public EnemyChaseState(EnemyStateMachine stateMachine) : base(stateMachine)
     {
     }
@@ -12,6 +13,7 @@ public class EnemyChaseState : EnemyBaseState
         //추적 속도
         stateMachine.MovementSpeedModifier = 1f;
         stateMachine.Enemy.agent.speed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
+        soundtime = 0;
 
         base.Enter();
         StartAnimation(stateMachine.Enemy.AnimationData.ChasingParameterHash);
@@ -29,6 +31,15 @@ public class EnemyChaseState : EnemyBaseState
 
         //플레이어를 지속 추적
         stateMachine.Enemy.agent.SetDestination(stateMachine.Player.transform.position);
+        if(soundtime >= 1.4f)
+        {
+            soundtime = 0;
+            SoundManager.Instance.PlayerSFX("Enemy_Walk_SFX", stateMachine.Enemy.transform.position);
+        }
+        else
+        {
+            soundtime += Time.deltaTime;
+        }
 
         //플레이어와 적의 거리가 일정 이상이면 정지(각도 X))
         if (IsInChasingDistance() > stateMachine.Enemy.Data.PlayerChasingRange)
