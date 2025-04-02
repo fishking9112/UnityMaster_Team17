@@ -41,7 +41,7 @@ public class Turret : MonoBehaviour, IDamageable
         //총을 총구에서 쏘도록 제작
         GameObject bullet = BulletManager.Instance.SpawnBullet();
         bullet.transform.position = TurretShootPosition.transform.position;
-
+        bullet.transform.rotation = Quaternion.LookRotation((GameManager.Instance.player.transform.position - TurretShootPosition.transform.position).normalized);
         bullet.GetComponent<Bullet>().SettingDamage(Damage,
             GameManager.Instance.player.transform.position - TurretShootPosition.transform.position + new Vector3(0, 1, 0));
     }
@@ -65,7 +65,8 @@ public class Turret : MonoBehaviour, IDamageable
     {
         while (DeadHeadBone.transform.eulerAngles.x < 300)
         {
-            DeadHeadBone.transform.eulerAngles += new Vector3(1, 0, 0) * 30 * Time.deltaTime;
+            Debug.Log(DeadHeadBone.transform.eulerAngles);
+            DeadHeadBone.transform.localEulerAngles += new Vector3(1, 0, 0) * 30 * Time.deltaTime;
             yield return null;
         }
     }
