@@ -34,5 +34,6 @@ public class PlayerLB_BaseState : Player_BaseState
     protected virtual void OnDashStarted(InputAction.CallbackContext context)
     {
         LBStateMachine.ChangeState(LBStateMachine.lb_DashState);
+        LBStateMachine.player.boosterEff.SetActive(true);
     }
 }
