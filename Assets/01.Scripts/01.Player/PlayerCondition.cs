@@ -2,24 +2,41 @@ using UnityEngine;
 
 public class PlayerCondition : MonoBehaviour
 {
-    public int CurHealth { get; private set; }
-    public int MaxHealth { get; private set; } = 100;
+    [SerializeField] private int _curHealth;
+    public int CurHealth { get => _curHealth; private set => _curHealth = value; }
 
-    public int CurDashGauge { get; private set; }
-    public int MaxDashGauge { get; private set; }
+    [SerializeField] private int _maxHealth = 100;
+    public int MaxHealth { get => _maxHealth; private set => _maxHealth = value; }
 
-    public int CurBulletCount { get; private set; }
-    public int MaxBulletCount { get; private set; } = 30;
+    [SerializeField] private int _curDashGauge;
+    public int CurDashGauge { get => _curDashGauge; private set => _curDashGauge = value; }
 
-    public int CurMagazineCount { get; private set; }
-    public int MaxMagazineCount { get; private set; } = 8;
+    [SerializeField] private int _maxDashGauge;
+    public int MaxDashGauge { get => _maxDashGauge; private set => _maxDashGauge = value; }
 
-    public int CurGrenadeCount { get; private set; }
-    public int MaxGrenadeCount { get; private set; } = 5;
+    [SerializeField] private int _curBulletCount;
+    public int CurBulletCount { get => _curBulletCount; private set => _curBulletCount = value; }
 
+    [SerializeField] private int _maxBulletCount = 30;
+    public int MaxBulletCount { get => _maxBulletCount; private set => _maxBulletCount = value; }
 
-    public int CurRepairKitCount { get; private set; }
-    public int MaxRepairKitCount { get; private set; } = 3;
+    [SerializeField] private int _curMagazineCount;
+    public int CurMagazineCount { get => _curMagazineCount; private set => _curMagazineCount = value; }
+
+    [SerializeField] private int _maxMagazineCount = 8;
+    public int MaxMagazineCount { get => _maxMagazineCount; private set => _maxMagazineCount = value; }
+
+    [SerializeField] private int _curGrenadeCount;
+    public int CurGrenadeCount { get => _curGrenadeCount; private set => _curGrenadeCount = value; }
+
+    [SerializeField] private int _maxGrenadeCount = 5;
+    public int MaxGrenadeCount { get => _maxGrenadeCount; private set => _maxGrenadeCount = value; }
+
+    [SerializeField] private int _curRepairKitCount;
+    public int CurRepairKitCount { get => _curRepairKitCount; private set => _curRepairKitCount = value; }
+
+    [SerializeField] private int _maxRepairKitCount = 3;
+    public int MaxRepairKitCount { get=>_maxRepairKitCount; private set=> _maxRepairKitCount = value; }
 
     /// <summary>
     /// 체력 회복
@@ -74,7 +91,7 @@ public class PlayerCondition : MonoBehaviour
     {
         int temp = CurDashGauge + amount;
 
-        if(temp >= MaxDashGauge)
+        if (temp >= MaxDashGauge)
         {
             CurDashGauge = MaxDashGauge;
         }
@@ -144,9 +161,9 @@ public class PlayerCondition : MonoBehaviour
     /// <param name="amount"> 증가시킬 탄창 개수 </param>
     public void AddMagazine(int amount)
     {
-        int temp = CurMagazineCount - amount;
+        int temp = CurMagazineCount + amount;
 
-        if(temp >= MaxMagazineCount)
+        if (temp >= MaxMagazineCount)
         {
             CurMagazineCount = MaxMagazineCount;
         }
@@ -164,7 +181,7 @@ public class PlayerCondition : MonoBehaviour
     {
         int temp = CurMagazineCount - amount;
 
-        if(temp <= 0)
+        if (temp <= 0)
         {
             CurMagazineCount = 0;
         }
@@ -200,7 +217,7 @@ public class PlayerCondition : MonoBehaviour
     {
         int temp = CurGrenadeCount - amount;
 
-        if(temp <= 0)
+        if (temp <= 0)
         {
             CurGrenadeCount = 0;
         }
@@ -219,7 +236,7 @@ public class PlayerCondition : MonoBehaviour
     {
         int temp = CurRepairKitCount + amount;
 
-        if(temp >= MaxGrenadeCount)
+        if (temp >= MaxGrenadeCount)
         {
             CurRepairKitCount = MaxRepairKitCount;
         }
@@ -237,7 +254,7 @@ public class PlayerCondition : MonoBehaviour
     {
         int temp = CurRepairKitCount + amount;
 
-        if(temp <= 0)
+        if (temp <= 0)
         {
             CurRepairKitCount = 0;
         }

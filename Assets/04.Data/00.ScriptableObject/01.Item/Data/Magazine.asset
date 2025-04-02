@@ -15,6 +15,6 @@ MonoBehaviour:
   itemType: 1
   itemName: "\uD0C4\uCC3D"
   itemDescription: "\uCD1D\uC54C 30\uAC1C"
-  value: 30
+  value: 1
   itemPrefab: {fileID: 6086474154797146307, guid: 6e48823a4566e8f49a7c51706eae89a4,
     type: 3}

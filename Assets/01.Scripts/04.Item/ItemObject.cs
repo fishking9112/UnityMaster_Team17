@@ -17,13 +17,13 @@ public class ItemObject : InteractableObject
         switch (data.itemType)
         {
             case ItemType.GRENADE:
-                //GameManager.Instance.player.Condition.AddGrenade(data.value);
+                GameManager.Instance.player.Condition.AddGrenade(data.value);
                 break;
             case ItemType.MAGAZINE:
-                //GameManager.Instance.player.Condition.AddMagazine(data.value);
+                GameManager.Instance.player.Condition.AddMagazine(data.value);
                 break;
             case ItemType.REPAIR_KIT:
-                //GameManager.Instance.player.Condition.AddRepairKit(data.value);
+                GameManager.Instance.player.Condition.AddRepairKit(data.value);
                 break;
         }
         Destroy(this.gameObject);
