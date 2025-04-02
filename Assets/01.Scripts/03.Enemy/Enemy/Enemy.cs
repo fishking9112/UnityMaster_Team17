@@ -80,6 +80,8 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void GetDamage(float amount)
     {
+        if (HP <= 0) return;
+
         HP -= amount;
 
         if (HP <= 0)
