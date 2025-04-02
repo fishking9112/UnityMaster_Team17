@@ -9,11 +9,13 @@ public class QuestManager : MonoSingleton<QuestManager>
 
     public event Action<int> OnQuestCleared; // 퀘스트 클리어 시 발생하는 이벤트(현재 DoorController에서 사용) - 한만진
 
+    public bool isIntroScene = false;
+
     protected override void Awake()
     {
         base.Awake();
-
-        InitSpawnQuest();
+        if(isIntroScene == false)
+            InitSpawnQuest();
     }
 
     /// <summary>
