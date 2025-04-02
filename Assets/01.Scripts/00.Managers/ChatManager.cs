@@ -3,6 +3,7 @@ using System.Collections;
 using TMPro;
 using UnityEditor.Rendering.LookDev;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ChatManager : MonoSingleton<ChatManager>
 {
@@ -10,6 +11,7 @@ public class ChatManager : MonoSingleton<ChatManager>
     private string[] _chat;
 
     private TextMeshProUGUI _chatText;
+    private Image _chatPannel;
 
     public float typingSpeed;
     public float clearSpeed;
@@ -24,11 +26,13 @@ public class ChatManager : MonoSingleton<ChatManager>
         base.Awake();
 
         _chatText = GameObject.Find("Text_Chat").GetComponent<TextMeshProUGUI>();
+        _chatPannel = GameObject.Find("ChatPannel").GetComponent<Image>();
         _isChatting = false;
     }
 
     private void Start()
     {
+        _chatPannel.enabled = false;
         _chatText.text = string.Empty;
     }
 
@@ -44,6 +48,9 @@ public class ChatManager : MonoSingleton<ChatManager>
             StopCoroutine(displayCoroutine);
             StopCoroutine(typingCoroutine);
             _chatText.text = string.Empty;
+
+            _chatPannel.enabled = false;
+            _chatText.gameObject.SetActive(false);
         }
 
         ChatInfo chatInfo = chatData.chatInfoList.Find(info => info.id == id);
@@ -53,6 +60,9 @@ public class ChatManager : MonoSingleton<ChatManager>
         {
             print(i +":"+ _chat[i]);
         }
+
+        _chatPannel.enabled = true;
+        _chatText.gameObject.SetActive(true);
 
         displayCoroutine = DisplayChat();
         StartCoroutine(displayCoroutine);
@@ -85,6 +95,10 @@ public class ChatManager : MonoSingleton<ChatManager>
         _chatText.text = string.Empty;
 
         _isChatting = false;
+
+        _chatPannel.enabled = false;
+
+        _chatText.gameObject.SetActive(false);
     }
 
     /// <summary>
