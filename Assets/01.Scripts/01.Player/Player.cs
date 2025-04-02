@@ -70,9 +70,6 @@ public class Player : MonoBehaviour
         UBStateMachine.HanldeInput();
         LBStateMachine.Update();
         UBStateMachine.Update();
-        Debug.Log(UBStateMachine.player.AimVCam.transform.rotation.eulerAngles.y);
-        Debug.Log(UBStateMachine.player.AimVCam.transform.localRotation.eulerAngles.y);
-
     }
 
     private void FixedUpdate()

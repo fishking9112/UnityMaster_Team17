@@ -37,6 +37,7 @@ public class PlayerUB_AimState : PlayerUB_AttackState
         base.AddInputActionCallbacks();
 
         UBStateMachine.player.Input.playerActions.Shoot.started += OnShoot;
+        UBStateMachine.player.Input.playerActions.Boom.started += OnGrenade;
 
     }
 
@@ -45,6 +46,7 @@ public class PlayerUB_AimState : PlayerUB_AttackState
         base.RemoveInputActionCallbacks();
 
         UBStateMachine.player.Input.playerActions.Shoot.started -= OnShoot;
+        UBStateMachine.player.Input.playerActions.Boom.started -= OnGrenade;
     }
 
     private void OnShoot(InputAction.CallbackContext context)
@@ -52,5 +54,12 @@ public class PlayerUB_AimState : PlayerUB_AttackState
         UBStateMachine.ub_ShootState.interTransition = true;
         interTransition = true;
         UBStateMachine.ChangeState(UBStateMachine.ub_ShootState);
+    }
+
+    private void OnGrenade(InputAction.CallbackContext context)
+    {
+        UBStateMachine.ub_GrenadeState.interTransition = true;
+        interTransition = true;
+        UBStateMachine.ChangeState(UBStateMachine.ub_GrenadeState);
     }
 }

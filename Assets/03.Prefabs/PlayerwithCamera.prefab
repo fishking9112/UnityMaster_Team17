@@ -1146,8 +1146,8 @@ MonoBehaviour:
     m_InputAxisName: Mouse X
     m_InputAxisValue: 0
     m_InvertInput: 0
-    m_MinValue: -560
-    m_MaxValue: 560
+    m_MinValue: 242.1259
+    m_MaxValue: 342.1259
     m_Wrap: 0
     m_Recentering:
       m_enabled: 0
@@ -2196,7 +2196,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 6976633922571106583}
   m_Follow: {fileID: 6976633922571106583}
   m_Lens:
-    FieldOfView: 40
+    FieldOfView: 50
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -2329,7 +2329,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7596463823427977570}
   m_Layer: 6
-  m_Name: AimCameraPos(notyet)
+  m_Name: AimCameraPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2678,6 +2678,7 @@ MonoBehaviour:
     ub_AttackParameterName: '@Attack'
     ub_AimParameterName: Aim
     ub_ShootParameterName: Shoot
+    ub_GrenadeParameterName: Grenade
     ub_ReloadParameterName: Reload
   <playerSO>k__BackingField: {fileID: 11400000, guid: e2a5457627e399341a12fbfdea51d016,
     type: 2}
@@ -2686,8 +2687,8 @@ MonoBehaviour:
   <NaviVCam>k__BackingField: {fileID: 7147894215694355865}
   spine: {fileID: 8398143119705090702}
   armRight: {fileID: 7579833628324585426}
-  vector: {x: 90, y: 90, z: 90}
-  bulletFiringPos: {fileID: 0}
+  vectorRot: {x: 229, y: 13.53, z: 37.1}
+  vectorPos: {x: -35.8, y: 30.7, z: -2.32}
 --- !u!143 &8216679211258663707
 CharacterController:
   m_ObjectHideFlags: 0
