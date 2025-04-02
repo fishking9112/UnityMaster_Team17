@@ -58,6 +58,7 @@ public class PlayerUB_ShootState : PlayerUB_AttackState
 
             // 발사 로직
             ShootRiffle();
+            SoundManager.Instance.PlayerSFX("Player_Shoot_SFX", UBStateMachine.player.TargetingHandler.bulletStartPos.position);
 
             //인터벌동안 쉬고.
             yield return new WaitForSeconds(interval / 2);
