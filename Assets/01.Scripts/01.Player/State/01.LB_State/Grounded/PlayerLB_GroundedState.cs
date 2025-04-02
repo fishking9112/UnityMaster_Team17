@@ -21,13 +21,23 @@ public class PlayerLB_GroundedState : PlayerLB_BaseState
         StopAnimation(LBStateMachine.player.AnimationData.LB_GroundedParameterHash);
     }
 
+    float Falling;
+
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
 
-        if (!LBStateMachine.player.Controller.isGrounded)
+        if (!LBStateMachine.player.Controller.isGrounded) // 내리막길에서 추락모션 안나오게
         {
-            LBStateMachine.ChangeState(LBStateMachine.lb_FallState);
+            Falling += Time.fixedDeltaTime;
+            if (Falling > 0.2)
+            {
+                LBStateMachine.ChangeState(LBStateMachine.lb_FallState);
+            }
+        }
+        else
+        {
+            Falling = 0;
         }
     }
 
