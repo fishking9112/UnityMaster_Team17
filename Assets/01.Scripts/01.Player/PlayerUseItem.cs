@@ -64,12 +64,14 @@ public class PlayerUseItem : MonoBehaviour
     {
         if (playerCondition.CurRepairKitCount > 0)
         {
+            SoundManager.Instance.PlayerSFX("RepairKit_Use_SFX",GameManager.Instance.player.transform.position);
+
             Debug.Log("수리 키트 사용");
 
             playerCondition.SubRepairKit(1);
             OnRepairKitUsed?.Invoke();
 
-            // 수리 키트 사용
+            playerCondition.AddHealth(30);
         }
         else
         {

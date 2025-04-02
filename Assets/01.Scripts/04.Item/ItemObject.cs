@@ -16,6 +16,8 @@ public class ItemObject : InteractableObject
 
     public override void OnInteract()
     {
+        SoundManager.Instance.PlayerSFX("Item_Acquire_SFX", GameManager.Instance.player.transform.position);
+
         switch (data.itemType)
         {
             case ItemType.GRENADE:

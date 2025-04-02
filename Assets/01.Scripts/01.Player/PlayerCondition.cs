@@ -252,7 +252,7 @@ public class PlayerCondition : MonoBehaviour
     /// <param name="amount"> 감소시킬 수리 키트 개수 </param>
     public void SubRepairKit(int amount)
     {
-        int temp = CurRepairKitCount + amount;
+        int temp = CurRepairKitCount - amount;
 
         if (temp <= 0)
         {
