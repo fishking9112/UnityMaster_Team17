@@ -1,12 +1,15 @@
-using Google.GData.Extensions;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+public interface IDamageable
+{
+    public void GetDamage(float amount);
+}
+
 [Serializable]
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamageable
 {
     [field: SerializeField] public EnemySO Data { get; private set; }
 

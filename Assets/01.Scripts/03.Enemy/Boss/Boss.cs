@@ -1,10 +1,9 @@
-using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Boss : MonoBehaviour
+public class Boss : MonoBehaviour, IDamageable
 {
     [field: SerializeField] public EnemySO Data { get; private set; }
 
@@ -148,7 +147,7 @@ public class Boss : MonoBehaviour
 
     void MiliAttack()
     {
-        if((GameManager.Instance.player.transform.position - transform.position).sqrMagnitude < Data.AttackRange * 2)
+        if ((GameManager.Instance.player.transform.position - transform.position).sqrMagnitude < Data.AttackRange * 2)
         {
             //데미지를 준다
         }
@@ -201,6 +200,8 @@ public class Boss : MonoBehaviour
         else if (HP <= 0)
         {
             //사망
+            EnemyManager.Instance.Die();
+
             HP = 0;
             StopAllCoroutines();
             OffColliders();

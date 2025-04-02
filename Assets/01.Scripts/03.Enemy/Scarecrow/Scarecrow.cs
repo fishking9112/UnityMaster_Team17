@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scarecrow : MonoBehaviour
+public class Scarecrow : MonoBehaviour, IDamageable
 {
     public Animator animator;
     public float HP;

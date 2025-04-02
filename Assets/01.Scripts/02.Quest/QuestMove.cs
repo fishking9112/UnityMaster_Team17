@@ -5,6 +5,8 @@ public class QuestMove : QuestBase
     private Vector3 _targetPosition;
     private Transform _playerTransform;
 
+    public float clearDistance = 2;
+
     protected override void Update()
     {
         base.Update();
@@ -15,7 +17,7 @@ public class QuestMove : QuestBase
     /// </summary>
     protected override void QuestInit()
     {
-        _targetPosition = GameObject.Find("QuestMove_Target").transform.position;
+        _targetPosition = GameObject.Find("QuestMoveTarget").transform.position;
         _playerTransform = GameManager.Instance.player.transform;
     }
 
@@ -26,7 +28,7 @@ public class QuestMove : QuestBase
     {
         if (questState == QuestState.ONGOING)
         {
-            if ((_targetPosition-_playerTransform.position).magnitude < 1)
+            if ((_targetPosition-_playerTransform.position).magnitude < clearDistance)
             {
                 questManager.QuestClear(questInfo.id);
             }
