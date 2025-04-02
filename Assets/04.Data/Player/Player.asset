@@ -17,5 +17,7 @@ MonoBehaviour:
     <RotationDamping>k__BackingField: 3
     <WalkSpeed>k__BackingField: 0.4
     <RunSpeed>k__BackingField: 1
-  <DashSpeed>k__BackingField: 30
-  <ShootInterval>k__BackingField: 0.3
+  <AirData>k__BackingField:
+    <JumpForce>k__BackingField: 5
+  <DashSpeed>k__BackingField: 20
+  <FireRPS>k__BackingField: 10

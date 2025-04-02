@@ -8,6 +8,8 @@ public class PlayerUBStateMachine : PlayerStateMachine
     public PlayerUB_ShootState ub_ShootState;
     public PlayerUB_ReloadState ub_ReloadState;
 
+    public bool AttackMode = false;
+
     public PlayerUBStateMachine(Player player) : base(player)
     {
     }
@@ -21,5 +23,11 @@ public class PlayerUBStateMachine : PlayerStateMachine
         ub_AimState = new PlayerUB_AimState(LBStateMachine, this);
         ub_ShootState = new PlayerUB_ShootState(LBStateMachine, this);
         ub_ReloadState = new PlayerUB_ReloadState(LBStateMachine, this);
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        //ChangeState(ub_AimState); // 테스트용
     }
 }

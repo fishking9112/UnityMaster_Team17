@@ -125,6 +125,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Boom"",
+                    ""type"": ""Button"",
+                    ""id"": ""560d7c4e-e501-4594-be23-e6c2eef38397"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -292,6 +301,17 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Arm"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d166259f-f479-436d-b8eb-85dbae37d0f2"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Boom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -311,6 +331,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
         m_Player_Arm = m_Player.FindAction("Arm", throwIfNotFound: true);
+        m_Player_Boom = m_Player.FindAction("Boom", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -383,6 +404,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Reload;
     private readonly InputAction m_Player_Arm;
+    private readonly InputAction m_Player_Boom;
     public struct PlayerActions
     {
         private @PlayerInputs m_Wrapper;
@@ -398,6 +420,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Reload => m_Wrapper.m_Player_Reload;
         public InputAction @Arm => m_Wrapper.m_Player_Arm;
+        public InputAction @Boom => m_Wrapper.m_Player_Boom;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -440,6 +463,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Arm.started += instance.OnArm;
             @Arm.performed += instance.OnArm;
             @Arm.canceled += instance.OnArm;
+            @Boom.started += instance.OnBoom;
+            @Boom.performed += instance.OnBoom;
+            @Boom.canceled += instance.OnBoom;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -477,6 +503,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Arm.started -= instance.OnArm;
             @Arm.performed -= instance.OnArm;
             @Arm.canceled -= instance.OnArm;
+            @Boom.started -= instance.OnBoom;
+            @Boom.performed -= instance.OnBoom;
+            @Boom.canceled -= instance.OnBoom;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -507,5 +536,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
         void OnArm(InputAction.CallbackContext context);
+        void OnBoom(InputAction.CallbackContext context);
     }
 }
