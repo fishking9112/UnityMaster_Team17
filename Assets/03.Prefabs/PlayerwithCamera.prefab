@@ -157,6 +157,37 @@ Transform:
   - {fileID: 4026107875096122622}
   m_Father: {fileID: 1160735517453278617}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &611990181081053210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1967637081236153840}
+  m_Layer: 6
+  m_Name: bulletStartPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1967637081236153840
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611990181081053210}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -88, y: -88.7, z: 1.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7579833628324585426}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &711758577734913946
 GameObject:
   m_ObjectHideFlags: 0
@@ -1115,8 +1146,8 @@ MonoBehaviour:
     m_InputAxisName: Mouse X
     m_InputAxisValue: 0
     m_InvertInput: 0
-    m_MinValue: 8.942818
-    m_MaxValue: 108.9428
+    m_MinValue: -560
+    m_MaxValue: 560
     m_Wrap: 0
     m_Recentering:
       m_enabled: 0
@@ -2137,7 +2168,7 @@ Transform:
   m_GameObject: {fileID: 5571531047093836197}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.7, z: 0}
+  m_LocalPosition: {x: 0, y: 3.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2479,6 +2510,7 @@ Transform:
   m_Children:
   - {fileID: 7729600601933052478}
   - {fileID: 8531173678914099514}
+  - {fileID: 1967637081236153840}
   m_Father: {fileID: 4414684016584652885}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6309572462595340626
@@ -2607,7 +2639,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2697955641031631413}
@@ -2639,6 +2671,8 @@ MonoBehaviour:
     lb_LandingParameterName: Landing
     lb_AscendParameterName: Ascend
     lb_DashParameterName: Dash
+    lb_XParameterName: X
+    lb_YParameterName: Y
     ub_ArmedParameterName: '@Armed'
     ub_UnArmedParameterName: '@UnArmed'
     ub_AttackParameterName: '@Attack'
@@ -2653,6 +2687,7 @@ MonoBehaviour:
   spine: {fileID: 8398143119705090702}
   armRight: {fileID: 7579833628324585426}
   vector: {x: 90, y: 90, z: 90}
+  bulletFiringPos: {fileID: 0}
 --- !u!143 &8216679211258663707
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2722,6 +2757,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 183
   targetObj: {fileID: 1324353226588375588}
+  bulletStartPos: {fileID: 1967637081236153840}
 --- !u!1 &7093244118994000043
 GameObject:
   m_ObjectHideFlags: 0
@@ -3220,7 +3256,7 @@ Transform:
   m_GameObject: {fileID: 7872399792699714303}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 1.7, z: 0}
+  m_LocalPosition: {x: 3, y: 3.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
