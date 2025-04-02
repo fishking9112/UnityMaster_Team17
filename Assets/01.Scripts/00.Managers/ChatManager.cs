@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using TMPro;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 
 public class ChatManager : MonoSingleton<ChatManager>
@@ -12,11 +14,16 @@ public class ChatManager : MonoSingleton<ChatManager>
     public float typingSpeed;
     public float clearSpeed;
 
+    private bool _isChatting;
+
+    private IEnumerator displayCoroutine; 
+
     protected override void Awake()
     {
         base.Awake();
 
         _chatText = GameObject.Find("Text_Chat").GetComponent<TextMeshProUGUI>();
+        _isChatting = false;
     }
 
     private void Start()
@@ -30,10 +37,17 @@ public class ChatManager : MonoSingleton<ChatManager>
     /// <param name="id"> 출력할 chat의 id </param>
     public void UpdateChatText(int id)
     {
+        if (_isChatting)
+        {
+            StopAllCoroutines();
+            _chatText.text = string.Empty;
+        }
+
         ChatInfo chatInfo = chatData.chatInfoList.Find(info => info.id == id);
         _chat = chatInfo.content.Split("@");
 
-        StartCoroutine(DisplayChat());
+        displayCoroutine = DisplayChat();
+        StartCoroutine(displayCoroutine);
     }
 
 
@@ -42,6 +56,8 @@ public class ChatManager : MonoSingleton<ChatManager>
     /// </summary>
     IEnumerator DisplayChat()
     {
+        _isChatting = true;
+
         char speeker = _chat[0][_chat[0].Length - 1];
 
         for (int i = 0; i < _chat.Length - 1; i++)
@@ -58,6 +74,8 @@ public class ChatManager : MonoSingleton<ChatManager>
 
         yield return new WaitForSeconds(clearSpeed);
         _chatText.text = string.Empty;
+
+        _isChatting = false;
     }
 
     /// <summary>
