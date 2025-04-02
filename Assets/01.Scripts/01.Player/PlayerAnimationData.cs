@@ -45,6 +45,7 @@ public class PlayerAnimationData
     [SerializeField] private string ub_AttackParameterName = "@Attack";
     [SerializeField] private string ub_AimParameterName = "Aim";
     [SerializeField] private string ub_ShootParameterName = "Shoot";
+    [SerializeField] private string ub_GrenadeParameterName = "Grenade";
     [SerializeField] private string ub_ReloadParameterName = "Reload";
 
 
@@ -53,6 +54,7 @@ public class PlayerAnimationData
     public int UB_AttackParameterHash { get; private set; }
     public int UB_AimParameterHash { get; private set; }
     public int UB_ShootParameterHash { get; private set; }
+    public int UB_GrenadeParameterHash { get; private set; }
     public int UB_ReloadParameterHash { get; private set; }
 
     public void Initialize()
@@ -80,6 +82,7 @@ public class PlayerAnimationData
         UB_AttackParameterHash = Animator.StringToHash(ub_AttackParameterName);
         UB_AimParameterHash = Animator.StringToHash(ub_AimParameterName);
         UB_ShootParameterHash = Animator.StringToHash(ub_ShootParameterName);
+        UB_GrenadeParameterHash = Animator.StringToHash(ub_GrenadeParameterName);
         UB_ReloadParameterHash = Animator.StringToHash(ub_ReloadParameterName);
     }
 }

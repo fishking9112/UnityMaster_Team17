@@ -27,11 +27,15 @@ public class Player : MonoBehaviour, IDamageable
 
     public Transform spine;
     public Transform armRight;
-    public Vector3 vector;
+    public Vector3 vectorRot;
+    public Vector3 vectorPos;
 
     public PlayerLBStateMachine LBStateMachine;
     public PlayerUBStateMachine UBStateMachine;
 
+
+    //추가 
+    //public Transform aimCamPivot; // 삭제
     private void Awake()
     {
         AnimationData.Initialize();
