@@ -94,4 +94,8 @@ public class BossBaseState : IState
         }
         return false;
     }
+
+    public void LateUpdate()
+    {
+    }
 }
