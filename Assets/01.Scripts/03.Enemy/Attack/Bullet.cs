@@ -47,7 +47,11 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponentInParent<Player>())
+        if(other.gameObject.layer == 9)
+        {
+            return;
+        }
+        else if (other.gameObject.GetComponentInParent<Player>())
         {
             GameObject par = Instantiate(PlayerHitParticle);
             SoundManager.Instance.PlayerSFX("Player_Damage_SFX", transform.position);
