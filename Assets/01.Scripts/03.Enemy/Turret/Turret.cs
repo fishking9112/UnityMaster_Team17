@@ -65,7 +65,6 @@ public class Turret : MonoBehaviour, IDamageable
     {
         while (DeadHeadBone.transform.eulerAngles.x < 300)
         {
-            Debug.Log(DeadHeadBone.transform.eulerAngles);
             DeadHeadBone.transform.localEulerAngles += new Vector3(1, 0, 0) * 30 * Time.deltaTime;
             yield return null;
         }
