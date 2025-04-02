@@ -26,7 +26,7 @@ MonoBehaviour:
     type: 0
     requiredCount: 0
     curCount: 0
-    questState: 0
+    questState: 1
   - id: 1
     name: "\uB85C\uBD07 \uCC98\uCE58"
     description: "\uC804\uBC29\uC758 \uB85C\uBD07\uC744 3\uB9C8\uB9AC \uCC98\uCE58\uD558\uC138\uC694."
@@ -34,8 +34,8 @@ MonoBehaviour:
     scale: {x: 12, y: 3, z: 3}
     type: 3
     requiredCount: 3
-    curCount: 0
-    questState: 0
+    curCount: 2
+    questState: 1
   - id: 2
     name: "\uD130\uB81B \uCC98\uCE58"
     description: "\uBB38\uC55E\uC758 \uD130\uB81B\uC744 \uCC98\uCE58\uD558\uC138\uC694."
@@ -43,8 +43,8 @@ MonoBehaviour:
     scale: {x: 3, y: 3, z: 12}
     type: 3
     requiredCount: 2
-    curCount: 0
-    questState: 0
+    curCount: 2
+    questState: 2
   - id: 3
     name: "\uC720\uD0C4 \uC0AC\uC6A9"
     description: "\uC720\uD0C4\uC744 2\uAC1C \uC0AC\uC6A9\uD574\uBCF4\uC138\uC694."
@@ -53,7 +53,7 @@ MonoBehaviour:
     type: 2
     requiredCount: 2
     curCount: 0
-    questState: 0
+    questState: 1
   - id: 4
     name: "\uC218\uB9AC \uD0A4\uD2B8 \uC0AC\uC6A9"
     description: "\uC218\uB9AC \uD0A4\uD2B8\uB97C 1\uAC1C \uC0AC\uC6A9\uD574\uBCF4\uC138\uC694."
@@ -62,7 +62,7 @@ MonoBehaviour:
     type: 1
     requiredCount: 1
     curCount: 0
-    questState: 0
+    questState: 1
   - id: 5
     name: "\uBAA8\uC758 \uC804\uD22C"
     description: "\uBAA8\uB4E0 \uC801\uC744 \uCC98\uCE58\uD558\uC138\uC694."
@@ -70,7 +70,7 @@ MonoBehaviour:
     scale: {x: 3, y: 3, z: 12}
     type: 3
     requiredCount: 16
-    curCount: 0
+    curCount: 1
     questState: 0
   - id: 6
     name: "\uBCF4\uC2A4\uC804"
