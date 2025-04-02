@@ -30,6 +30,11 @@ public class BossChaseState : BossBaseState
 
         stateMachine.Boss.agent.SetDestination(GameManager.Instance.player.transform.position);
 
+        if (stateMachine.Boss.HP <= 0)
+        {
+            stateMachine.ChangeState(stateMachine.DeadState);
+        }
+
         //범위 밖이면 인식을 못한다
         if (IsInChasingRange() == -1) stateMachine.ChangeState(stateMachine.IdleState);
         //근거리 공격

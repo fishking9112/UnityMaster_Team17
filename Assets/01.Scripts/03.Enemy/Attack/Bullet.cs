@@ -11,6 +11,9 @@ public class Bullet : MonoBehaviour
 
     Vector3 Tartget = new Vector3();
     public GameObject Particle;
+    public GameObject PlayerHitParticle;
+    public GameObject EnemyHitParticle;
+    public GameObject RobotHitParticle;
 
     public void SettingDamage(float damage, Vector3 _tartget)
     {
@@ -20,6 +23,8 @@ public class Bullet : MonoBehaviour
         Tartget = _tartget;
 
         coroutine = StartCoroutine(ShootToTarget());
+        GetComponent<TrailRenderer>().Clear();
+        
         Invoke("DestroyThisObject", 5f);
     }
 
@@ -42,9 +47,25 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy")) return;
-        //무언가에 맞았을 때
-        if (!(other.gameObject.GetComponentInParent<Player>() || other.gameObject.GetComponentInParent<Enemy>() || other.gameObject.GetComponent<Enemy>()))
+        if (other.gameObject.GetComponentInParent<Player>())
+        {
+            GameObject par = Instantiate(PlayerHitParticle);
+            par.transform.position = transform.position;
+            par.transform.rotation = transform.rotation;
+        }
+        else if (other.gameObject.GetComponentInParent<Enemy>())
+        {
+            GameObject par = Instantiate(EnemyHitParticle);
+            par.transform.position = transform.position;
+            par.transform.rotation = transform.rotation;
+        }
+        else if (other.gameObject.layer == 8)
+        {
+            GameObject par = Instantiate(RobotHitParticle);
+            par.transform.position = transform.position;
+            par.transform.rotation = transform.rotation;
+        }
+        else
         {
             //적,플레이어가 아닌 이상 튀기는 파티클과 함께 삭제
             GameObject par = Instantiate(Particle);
