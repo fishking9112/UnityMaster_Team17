@@ -189,9 +189,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b3b2d54319a0a34baf37c983d94fa69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textQuestDes: {fileID: 6250241921860019795}
-  _textQuestCount: {fileID: 327712954582302069}
-  _textQuestMaxCount: {fileID: 7705091450809646779}
+  textQuestDes: {fileID: 6250241921860019795}
+  textQuestCount: {fileID: 327712954582302069}
+  textQuestMaxCount: {fileID: 7705091450809646779}
 --- !u!1 &2704737172988338580
 GameObject:
   m_ObjectHideFlags: 0

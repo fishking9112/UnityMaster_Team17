@@ -25,6 +25,7 @@ public struct QuestInfo
     public float requiredCount;
 
     public float curCount;
+    public QuestState questState;
 }
 
 [CreateAssetMenu(fileName = "QuestData", menuName = "Scriptable Object/New QuestData")]
