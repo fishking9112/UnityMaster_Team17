@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class Bullet : MonoBehaviour
 {
     public float Damage;
-    float Speed = 20;
+    float Speed = 40;
     Coroutine coroutine;
 
     Vector3 Tartget = new Vector3();

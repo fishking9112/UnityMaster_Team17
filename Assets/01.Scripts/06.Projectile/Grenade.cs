@@ -46,7 +46,7 @@ public class Grenade : MonoBehaviour
 
         foreach (var col in colliders)
         {
-            if (col.CompareTag("Grenade_Target"))
+            if (col.gameObject.layer == 8 || col.gameObject.layer == 6)
             {
                 enemyColliders.Add(col);
             }
@@ -62,7 +62,7 @@ public class Grenade : MonoBehaviour
 
             if (Physics.Raycast(transform.position, direction, out hit, explosionRange))
             {
-                if (hit.collider.gameObject.CompareTag("Grenade_Target"))
+                if (hit.collider.gameObject.layer == 8 || hit.collider.gameObject.layer == 6)
                 {
                     hit.collider.GetComponentInParent<IDamageable>().GetDamage(30f);
                 }

@@ -12,49 +12,36 @@ public class PlayerUseItem : MonoBehaviour
     private void Start()
     {
         playerCondition = GetComponent<PlayerCondition>();
-        //AddUseGrenadeCallback();
         AddUseRepairKitCallback();
     }
-
-    //private void AddUseGrenadeCallback()
-    //{
-    //    GameManager.Instance.player.Input.playerActions.Grenade.started += OnUseGrenadeStared;
-    //}
 
     private void AddUseRepairKitCallback()
     {
         GameManager.Instance.player.Input.playerActions.RepairKit.started += OnUseRepairKitStared;
     }
 
-    /// <summary>
-    /// 'G' 키를 누르면 유탄 발사
-    /// </summary>
-    public void OnUseGrenadeStared(InputAction.CallbackContext context)
+    public void ShootRocket()
     {
-        if(playerCondition.CurGrenadeCount > 0)
+        if (playerCondition.CurGrenadeCount > 0)
         {
             Debug.Log("유탄 발사");
 
             playerCondition.SubGrenade(1);
             OnGrenadeUsed?.Invoke();
 
-            // 유탄 발사 
-            ShootRocket();
+            //로켓을 왼속에서 발싸
+            GameObject Rocket = BulletManager.Instance.SpawnRocket();
+            Rocket.transform.position = GameManager.Instance.player.TargetingHandler.bulletStartPos.position;
+            Rocket.transform.rotation = Quaternion.LookRotation((GameManager.Instance.player.TargetingHandler.bulletTargetPos - GameManager.Instance.player.TargetingHandler.bulletStartPos.position).normalized);
+            Rocket.GetComponent<Grenade>().SettingDamage(3,
+                GameManager.Instance.player.TargetingHandler.bulletTargetPos - GameManager.Instance.player.TargetingHandler.bulletStartPos.position);
         }
         else
         {
             Debug.Log("유탄이 부족합니다.");
             // 실패음 같은 거 나오면 좋을듯.
         }
-    }
-    public void ShootRocket()
-    {
-        //로켓을 왼속에서 발싸
-        GameObject Rocket = BulletManager.Instance.SpawnRocket();
-        Rocket.transform.position = GameManager.Instance.player.TargetingHandler.bulletStartPos.position;
-        Rocket.transform.rotation = Quaternion.LookRotation((GameManager.Instance.player.TargetingHandler.bulletTargetPos - GameManager.Instance.player.TargetingHandler.bulletStartPos.position).normalized);
-        Rocket.GetComponent<Grenade>().SettingDamage(3,
-            GameManager.Instance.player.TargetingHandler.bulletTargetPos - GameManager.Instance.player.TargetingHandler.bulletStartPos.position);
+
     }
 
     /// <summary>
@@ -64,7 +51,7 @@ public class PlayerUseItem : MonoBehaviour
     {
         if (playerCondition.CurRepairKitCount > 0)
         {
-            SoundManager.Instance.PlayerSFX("RepairKit_Use_SFX",GameManager.Instance.player.transform.position);
+            SoundManager.Instance.PlayerSFX("RepairKit_Use_SFX", GameManager.Instance.player.transform.position);
 
             Debug.Log("수리 키트 사용");
 
