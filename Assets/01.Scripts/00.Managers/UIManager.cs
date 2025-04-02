@@ -30,7 +30,9 @@ public class UIManager : MonoSingleton<UIManager>
 
 
         //Quest 기본값을 꺼놓고 , 특수 상황에만 켜준다.
-        uiQuest_Canvas.gameObject.SetActive(false);
+        //uiQuest_Canvas.gameObject.SetActive(false);
+        //임시로 다 켜고 작업합시다
+        uiQuest_Canvas.gameObject.SetActive(true);
     }
 
 
