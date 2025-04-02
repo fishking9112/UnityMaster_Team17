@@ -2,6 +2,8 @@ public class ItemObject : InteractableObject
 {
     public ItemData data;
 
+    public float respawnTiem;
+
     public override string GetNameText()
     {
         return data.itemName;
@@ -26,6 +28,14 @@ public class ItemObject : InteractableObject
                 GameManager.Instance.player.Condition.AddRepairKit(data.value);
                 break;
         }
-        Destroy(this.gameObject);
+        
+        gameObject.SetActive(false);
+
+        Invoke("RespawnItem", respawnTiem);
+    }
+
+    private void RespawnItem()
+    {
+        gameObject.SetActive(true);
     }
 }
