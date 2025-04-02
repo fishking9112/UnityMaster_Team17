@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 3405283872114509024}
-  HP: 100
+  HP: 5
   Partscollider: []
 --- !u!1001 &3320097370190076276
 PrefabInstance:

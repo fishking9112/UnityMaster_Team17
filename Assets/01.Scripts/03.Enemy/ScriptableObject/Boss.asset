@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69d041b2c1c35d84f89619d80987286e, type: 3}
   m_Name: Boss
   m_EditorClassIdentifier: 
-  NormalSpeed: 3
+  NormalSpeed: 2
   RunSpeed: 1
   RotationDamping: 2
   EnemySightAngle: 90
   PlayerChasingRange: 1000
   AttackRange: 50
   RemainAttackRange: 700
-  Hp: 100
-  Damage: 5
+  Hp: 200
+  Damage: 2
   AttackRate: 1

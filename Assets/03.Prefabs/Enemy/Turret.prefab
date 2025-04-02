@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TurretShootPosition: {fileID: 8254928196982512462}
-  HP: 50
-  Damage: 5
+  HP: 10
+  Damage: 2
   DeadHeadBone: {fileID: 4079431464879722277}
   TurnHeadPosition: {fileID: 6694869083971505393}
   ChasingMaxRange: 500
