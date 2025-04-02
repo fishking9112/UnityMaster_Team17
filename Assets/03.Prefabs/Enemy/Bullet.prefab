@@ -102,6 +102,9 @@ MonoBehaviour:
   Damage: 10
   Particle: {fileID: 9175267853947953107, guid: 3bfbce7849dd6a544848f2e0d58f3aec,
     type: 3}
+  PlayerHitParticle: {fileID: 100002, guid: fc7f8379080d0a844ad699b91bfd56f0, type: 3}
+  EnemyHitParticle: {fileID: 100002, guid: 3b1513bcb86426b4795879be6a128ed7, type: 3}
+  RobotHitParticle: {fileID: 100002, guid: 00fedc70b62a31e448e8ccc298257b56, type: 3}
 --- !u!54 &9144704552538752322
 Rigidbody:
   m_ObjectHideFlags: 0
