@@ -95,6 +95,8 @@ public class QuestManager : MonoSingleton<QuestManager>
         Debug.Log("퀘스트 완료");
 
         OnQuestCleared?.Invoke(id); // 퀘스트 클리어 시 이벤트 발생 - 한만진
+
+        UIManager.Instance.ClearQuest(id);
     }
 
     /// <summary>

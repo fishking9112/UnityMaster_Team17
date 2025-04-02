@@ -10,6 +10,7 @@ public class QuestController : MonoBehaviour
     [SerializeField]
     private GameObject questPannel;
 
+
     private void Start()
     {
         //Resources 폴더를 사용 안해서 패스 !
@@ -38,37 +39,48 @@ public class QuestController : MonoBehaviour
                 Debug.Log($"AddQuest : + {questinfo.name}");
                 GameObject newQuestUI = GameObject.Instantiate(questUI, questPannel.transform);
                 QuestUIController questUIController = newQuestUI.GetComponent<QuestUIController>();
-                
-                switch(questinfo.type)
+                questUIController.curInfo = questinfo;
+                questUIController.questID = questinfo.id;
+
+                questUIController.TextQuestDes.color = Color.white;
+                questUIController.TextQuestCount.color = Color.white;
+                questUIController.TextQuestMaxCount.color = Color.white;
+
+
+                switch (questinfo.type)
                 {
                     case QuestType.PLAYER_MOVE:
                         questUIController.TextQuestDes.text = questinfo.description;
+
+                        questUIController.TextQuestCount.gameObject.SetActive(false);
+                        questUIController.TextQuestMaxCount.gameObject.SetActive(false);
+
                         break;
                     case QuestType.USE_REPAIRKIT:
                         questUIController.TextQuestDes.text = questinfo.description;
 
-                        questUIController.TextQuestCout.gameObject.SetActive(true);
+                        questUIController.TextQuestCount.gameObject.SetActive(true);
                         questUIController.TextQuestMaxCount.gameObject.SetActive(true);
 
-                        questUIController.TextQuestCout.text = questinfo.curCount.ToString();
+                        questUIController.TextQuestCount.text = questinfo.curCount.ToString();
                         questUIController.TextQuestMaxCount.text = questinfo.requiredCount.ToString();
                         break;
                     case QuestType.USE_GRENADE:
                         questUIController.TextQuestDes.text = questinfo.description;
 
-                        questUIController.TextQuestCout.gameObject.SetActive(true);
+                        questUIController.TextQuestCount.gameObject.SetActive(true);
                         questUIController.TextQuestMaxCount.gameObject.SetActive(true);
 
-                        questUIController.TextQuestCout.text = questinfo.curCount.ToString();
+                        questUIController.TextQuestCount.text = questinfo.curCount.ToString();
                         questUIController.TextQuestMaxCount.text = questinfo.requiredCount.ToString();
                         break;
                     case QuestType.KILL_ENEMY:
                         questUIController.TextQuestDes.text = questinfo.description;
 
-                        questUIController.TextQuestCout.gameObject.SetActive(true);
+                        questUIController.TextQuestCount.gameObject.SetActive(true);
                         questUIController.TextQuestMaxCount.gameObject.SetActive(true);
 
-                        questUIController.TextQuestCout.text = questinfo.curCount.ToString();
+                        questUIController.TextQuestCount.text = questinfo.curCount.ToString();
                         questUIController.TextQuestMaxCount.text = questinfo.requiredCount.ToString();
                         break;
                 }
@@ -85,12 +97,21 @@ public class QuestController : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void ClearQuest(int questID)
     {
-        //test
-        if(Input.GetKeyDown(KeyCode.Space))
+        // 자식 목록
+        QuestUIController[] questUIControllers = GetComponentsInChildren<QuestUIController>();
+
+        //그중에 quest id 검색
+
+        for(int i = 0; i < questUIControllers.Length; i++)
         {
-            GameObject newQuestUI = GameObject.Instantiate(questUI, questPannel.transform);
+            if (questUIControllers[i].questID == questID)
+            {
+                // 맞는애 상태 변경
+                questUIControllers[i].ClearQuest();
+            }
         }
+
     }
 }
