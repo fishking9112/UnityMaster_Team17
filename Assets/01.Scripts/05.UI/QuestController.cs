@@ -49,30 +49,27 @@ public class QuestController : MonoBehaviour
 
                         questUIController.TextQuestCout.gameObject.SetActive(true);
                         questUIController.TextQuestMaxCount.gameObject.SetActive(true);
-                        //임시
-                        int Count = 0;
-                        questUIController.TextQuestCout.text = Count.ToString();
-                        questUIController.TextQuestMaxCount.text = questinfo.requiredUseCount.ToString();
+
+                        questUIController.TextQuestCout.text = questinfo.curCount.ToString();
+                        questUIController.TextQuestMaxCount.text = questinfo.requiredCount.ToString();
                         break;
                     case QuestType.USE_GRENADE:
                         questUIController.TextQuestDes.text = questinfo.description;
 
                         questUIController.TextQuestCout.gameObject.SetActive(true);
                         questUIController.TextQuestMaxCount.gameObject.SetActive(true);
-                        //임시
-                        int Count_2 = 0;
-                        questUIController.TextQuestCout.text = Count_2.ToString();
-                        questUIController.TextQuestMaxCount.text = questinfo.requiredUseCount.ToString();
+
+                        questUIController.TextQuestCout.text = questinfo.curCount.ToString();
+                        questUIController.TextQuestMaxCount.text = questinfo.requiredCount.ToString();
                         break;
                     case QuestType.KILL_ENEMY:
                         questUIController.TextQuestDes.text = questinfo.description;
 
                         questUIController.TextQuestCout.gameObject.SetActive(true);
                         questUIController.TextQuestMaxCount.gameObject.SetActive(true);
-                        //임시
-                        int Count_3 = 0;
-                        questUIController.TextQuestCout.text = Count_3.ToString();
-                        questUIController.TextQuestMaxCount.text = questinfo.requiredKillEnemyCount.ToString();
+
+                        questUIController.TextQuestCout.text = questinfo.curCount.ToString();
+                        questUIController.TextQuestMaxCount.text = questinfo.requiredCount.ToString();
                         break;
                 }
                 
