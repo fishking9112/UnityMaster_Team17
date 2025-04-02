@@ -12,14 +12,14 @@ public class PlayerUseItem : MonoBehaviour
     private void Start()
     {
         playerCondition = GetComponent<PlayerCondition>();
-        AddUseGrenadeCallback();
+        //AddUseGrenadeCallback();
         AddUseRepairKitCallback();
     }
 
-    private void AddUseGrenadeCallback()
-    {
-        GameManager.Instance.player.Input.playerActions.Grenade.started += OnUseGrenadeStared;
-    }
+    //private void AddUseGrenadeCallback()
+    //{
+    //    GameManager.Instance.player.Input.playerActions.Grenade.started += OnUseGrenadeStared;
+    //}
 
     private void AddUseRepairKitCallback()
     {
@@ -41,9 +41,10 @@ public class PlayerUseItem : MonoBehaviour
         else
         {
             Debug.Log("유탄이 부족합니다.");
+            // 실패음 같은 거 나오면 좋을듯.
         }
     }
-    void ShootRocket()
+    public void ShootRocket()
     {
         //로켓을 왼속에서 발싸
         GameObject Rocket = BulletManager.Instance.SpawnRocket();

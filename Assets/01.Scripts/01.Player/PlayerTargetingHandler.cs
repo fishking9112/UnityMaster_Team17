@@ -20,8 +20,7 @@ public class PlayerTargetingHandler : MonoBehaviour
         }
         else
         {
-            bulletTargetPos = cam.ViewportToScreenPoint(new Vector3(0.5f, 0.5f, 0f));
-            bulletTargetPos.z = 100f;
+            bulletTargetPos = cam.transform.position + cam.transform.forward * 100f;
         }
 
         targetObj.transform.position = bulletTargetPos;

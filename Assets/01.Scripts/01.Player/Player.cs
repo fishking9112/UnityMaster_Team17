@@ -20,6 +20,7 @@ public class Player : MonoBehaviour, IDamageable
     public PlayerBoundHandler BoundHandler { get; private set; }
     public Image crosshair;
     public PlayerTargetingHandler TargetingHandler { get; private set; }
+    public PlayerUseItem playerUseItem { get; private set; }
 
     public Coroutine controllerSizingCoroutine { get; private set; }
     [field: SerializeField] public CinemachineVirtualCamera AimVCam { get; private set; }
@@ -49,6 +50,7 @@ public class Player : MonoBehaviour, IDamageable
         Rigidbody = GetComponent<Rigidbody>();
         BoundHandler = GetComponent<PlayerBoundHandler>();
         TargetingHandler = GetComponent<PlayerTargetingHandler>();
+        playerUseItem = GetComponent<PlayerUseItem>();
 
         LBStateMachine = new PlayerLBStateMachine(this);
         UBStateMachine = new PlayerUBStateMachine(this);

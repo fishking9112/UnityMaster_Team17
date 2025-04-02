@@ -2622,6 +2622,7 @@ GameObject:
   - component: {fileID: 2472603693544229413}
   - component: {fileID: 2169868055290661400}
   - component: {fileID: 8701431903218646511}
+  - component: {fileID: 323542273968476342}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -2757,8 +2758,21 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 183
+  bulletTargetPos: {x: 0, y: 0, z: 0}
   targetObj: {fileID: 1324353226588375588}
   bulletStartPos: {fileID: 1967637081236153840}
+--- !u!114 &323542273968476342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6999320000809505701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86a0d691fd0e4514f95d0b83fa654427, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7093244118994000043
 GameObject:
   m_ObjectHideFlags: 0

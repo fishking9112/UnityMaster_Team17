@@ -42,11 +42,13 @@ public class PlayerUB_GrenadeState : PlayerUB_AttackState
             {
                 wasShot = true;
                 //유탄 발사
+                LBStateMachine.player.playerUseItem.ShootRocket();
             }
             else if (next.IsTag("Grenade") && next.normalizedTime >= 1f / 3f)
             {
                 wasShot = true;
                 //유탄 발사
+                LBStateMachine.player.playerUseItem.ShootRocket();
             }
         }
         else
