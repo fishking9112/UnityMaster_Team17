@@ -2,16 +2,12 @@ using UnityEngine;
 
 public class QuestMove : QuestBase
 {
-    private float _curMovedDistance;
-
-    private Vector3 _startPlayerPosition;
-    private Transform _curPlayerTransform;
+    private Vector3 _targetPosition;
+    private Transform _playerTransform;
 
     protected override void Update()
     {
         base.Update();
-
-        UpdatePlayerMovement();
     }
 
     /// <summary>
@@ -19,32 +15,18 @@ public class QuestMove : QuestBase
     /// </summary>
     protected override void QuestInit()
     {
-        // player는 이후에 게임 매니저에서 받아오도록 수정 예정
-        _curMovedDistance = 0f;
-        _startPlayerPosition = GameObject.Find("Player").transform.position;
-        _curPlayerTransform = GameObject.Find("Player").transform;
+        _targetPosition = GameObject.Find("QuestMove_Target").transform.position;
+        _playerTransform = GameManager.Instance.player.transform;
     }
 
     /// <summary>
-    /// 플레이어가 얼마나 이동했는 지 체크
-    /// </summary>
-    private void UpdatePlayerMovement()
-    {
-        if (questState == QuestState.ONGOING)
-        {
-            _curMovedDistance = Vector3.Distance(_startPlayerPosition, _curPlayerTransform.position);
-            Debug.Log(_curMovedDistance);
-        }
-    }
-
-    /// <summary>
-    /// 플레이어의 위치가 퀘스트를 시작했을 때 부터 일정거리 이상 멀어지면 퀘스트 클리어
+    /// 플레이어가 타겟 위치에 도착하면 퀘스트 클리어
     /// </summary>
     protected override void QuestGoal()
     {
         if (questState == QuestState.ONGOING)
         {
-            if (_curMovedDistance >= questInfo.requiredDistance)
+            if ((_targetPosition-_playerTransform.position).magnitude < 1)
             {
                 questManager.QuestClear(questInfo.id);
             }
