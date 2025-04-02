@@ -110,26 +110,8 @@ public class PlayerUB_AttackState : PlayerUB_BaseState
     {
         base.LateUpdate();
 
-        //spine.transform.forward = Camera.main.transform.forward; // 실수
-        //spine.rotation.SetLookRotation(Camera.main.transform.forward);
-
-        //spine.rotation = Quaternion.Euler(Camera.main.transform.forward);
-        //spineWorldRot = spine.rotation;
-
-        //spine.rotation = Quaternion.LookRotation(quaternion * Camera.main.transform.forward);
-
-        //Quaternion temp = Quaternion.LookRotation(Camera.main.transform.forward);
-        //Quaternion temp2 = Quaternion.Inverse(spine.parent.rotation) * temp;
-        //spine.localRotation = temp2;
-
-        //spine.LookAt(spine.position + Camera.main.transform.forward);
-
-        //spine.up = Camera.main.transform.forward;
-
-        //spine.rotation = (Quaternion.Euler(UBStateMachine.player.vector));
-
-        Quaternion baseRotation = Quaternion.Euler(180, 90, 90); // 예시 - 본의 기본 방향에 따라 다름
-        Quaternion targetRotation = Quaternion.LookRotation(Camera.main.transform.forward);
+        Quaternion baseRotation = Quaternion.Euler(180, 90, 90); // 본이 정면을 바라볼 수 있게하는 방향
+        Quaternion targetRotation = Quaternion.LookRotation(Camera.main.transform.forward); // 목표 방향
 
         // 기본 회전을 고려하여 최종 회전 계산
         spine.rotation = targetRotation * baseRotation;
