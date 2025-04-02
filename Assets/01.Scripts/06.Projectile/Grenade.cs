@@ -11,7 +11,7 @@ public class Grenade : MonoBehaviour
     private GameObject curParticle;
 
     public float Damage;
-    float Speed = 10;
+    float Speed = 25;
     Coroutine coroutine;
     Vector3 Tartget = new Vector3();
 

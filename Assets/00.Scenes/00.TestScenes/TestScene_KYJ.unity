@@ -426,11 +426,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerwithCamera
       objectReference: {fileID: 0}
-    - target: {fileID: 5038480179556705379, guid: b1487351b7566bd49bf2884c05c48b1b,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.4
-      objectReference: {fileID: 0}
     - target: {fileID: 5168119546860579821, guid: b1487351b7566bd49bf2884c05c48b1b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -480,11 +475,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8546679604991062338, guid: b1487351b7566bd49bf2884c05c48b1b,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
