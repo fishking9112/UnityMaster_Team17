@@ -38,6 +38,8 @@ public class QuestManager : MonoSingleton<QuestManager>
             questObject.transform.localScale = info.scale;
             questObject.AddComponent<BoxCollider>();
             questObject.GetComponent<BoxCollider>().isTrigger = true;
+
+            questObject.layer = 9;
         }
     }
 

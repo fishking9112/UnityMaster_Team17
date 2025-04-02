@@ -14,7 +14,7 @@ public enum QuestType
 }
 
 [Serializable]
-public struct QuestInfo
+public class QuestInfo
 {
     public int id;
     public string name;

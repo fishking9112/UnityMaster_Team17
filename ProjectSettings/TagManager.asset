@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SF_Door
   - Grenade_Target
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Player
   - Interactable
   - Enemy
-  - 
+  - Quest
   - 
   - 
   - 

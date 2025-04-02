@@ -23,7 +23,6 @@ public class QuestUIController : MonoBehaviour
         TextQuestDes.color = Color.gray;
         TextQuestCount.color = Color.gray;
         TextQuestMaxCount.color = Color.gray;
-
     }
 
 }
