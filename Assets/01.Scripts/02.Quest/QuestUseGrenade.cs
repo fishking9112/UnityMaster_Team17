@@ -1,13 +1,11 @@
 public class QuestUseGrenade : QuestBase
 {
-    private int _curUseGrenadeCount;
-
     /// <summary>
     /// 퀘스트 요구사항 초기화 및 이벤트 구독
     /// </summary>
     protected override void QuestInit()
     {
-        _curUseGrenadeCount = 0;
+        questInfo.curCount = 0;
         //GameManager.Instance.player.OnGrenadeUsed += UseGrenadeCount;
 
     }
@@ -19,7 +17,7 @@ public class QuestUseGrenade : QuestBase
     {
         if (questState == QuestState.ONGOING)
         {
-            if (_curUseGrenadeCount >= questInfo.requiredUseCount)
+            if (questInfo.curCount >= questInfo.requiredCount)
             {
                 questManager.QuestClear(questInfo.id);
                 //GameManager.Instance.player.OnGrenadeUsed -= UseGrenadeCount;
@@ -29,6 +27,6 @@ public class QuestUseGrenade : QuestBase
 
     private void UseGrenadeCount()
     {
-        _curUseGrenadeCount++;
+        questInfo.curCount++;
     }
 }

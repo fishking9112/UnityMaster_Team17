@@ -22,15 +22,9 @@ public struct QuestInfo
     public Vector3 position;
     public Vector3 scale;
     public QuestType type;
+    public float requiredCount;
 
-    // PLAYER_MOVE type일 때 사용
-    public float requiredDistance;
-
-    // KILL_ENEMY type일 때 사용
-    public int requiredKillEnemyCount;
-
-    // USE_xxx type일 때 사용
-    public int requiredUseCount;
+    public float curCount;
 }
 
 [CreateAssetMenu(fileName = "QuestData", menuName = "Scriptable Object/New QuestData")]
@@ -82,23 +76,8 @@ public class QuestData : SheetDataReaderBase
                 case "type":
                     _questInfo.type = (QuestType)Enum.Parse(typeof(QuestType), cell.value);
                     break;
-                case "requiredDistance":
-                    if(_questInfo.type == QuestType.PLAYER_MOVE)
-                    {
-                        _questInfo.requiredDistance = float.Parse(cell.value);
-                    }
-                    break;
-                case "requiredKillEnemyCount":
-                    if(_questInfo.type == QuestType.KILL_ENEMY)
-                    {
-                        _questInfo.requiredKillEnemyCount = int.Parse(cell.value);
-                    }
-                    break;
-                case "requiredUseCount":
-                    if(_questInfo.type == QuestType.USE_REPAIRKIT || _questInfo.type == QuestType.USE_GRENADE)
-                    {
-                        _questInfo.requiredUseCount = int.Parse(cell.value);
-                    }
+                case "requiredCount":
+                    _questInfo.requiredCount = float.Parse(cell.value);
                     break;
             }
         }
