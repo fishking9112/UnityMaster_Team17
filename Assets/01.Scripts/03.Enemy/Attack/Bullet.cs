@@ -20,6 +20,8 @@ public class Bullet : MonoBehaviour
         Tartget = _tartget;
 
         coroutine = StartCoroutine(ShootToTarget());
+        GetComponent<TrailRenderer>().Clear();
+        
         Invoke("DestroyThisObject", 5f);
     }
 
