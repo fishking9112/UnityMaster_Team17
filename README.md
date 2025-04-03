@@ -68,25 +68,27 @@
 
 
 ### 🚶 플레이어 상하체 분리 FSM
-<div align="center">
   
 |다이어 그램|
 |---|
-|![제목 없는 다이어그램 drawio (1)](https://github.com/user-attachments/assets/08de4312-917d-4658-9c73-04199cf3eaa8)|
+|<img src="https://github.com/user-attachments/assets/08de4312-917d-4658-9c73-04199cf3eaa8" width="700"/>|
 |장점: 움직임(하체)과 행동(상체)에서 각각 상태를 가질 수 있음.|
 |단점: 관리의 복잡함. (StateMachine 간 통신) ex_조준 모드시 게걸음|
 
 |레이어|
 |---|
-|![1  1  FSM - 레이어1](https://github.com/user-attachments/assets/ed92cfe4-cb15-41a6-8013-ae80cd48a4ec)|
+|<img src="https://github.com/user-attachments/assets/ed92cfe4-cb15-41a6-8013-ae80cd48a4ec" width="700"/>|
 |상체 하체 레이어를 분리|
 
 |마스킹|
 |---|
-|![4  1  FSM - 마스킹2](https://github.com/user-attachments/assets/6f0a3f3b-0289-490d-8aee-eac0f95a0575)|
+|<img src="https://github.com/user-attachments/assets/6f0a3f3b-0289-490d-8aee-eac0f95a0575" width="700"/>|
 |마스킹을 통해 원하는 부위의 애니메이션만 출력|
 
-</div>
+|FSM를 활용한 애니메이션 마스킹 적용|
+|---|
+|![11-_online-video-cutter com_-_1_](https://github.com/user-attachments/assets/1e9d79d4-45a5-4279-b017-7a3a5c51df5a)|
+
 ---
 
 ### 📊 데이터 연동 – Google Sheet To Unity
@@ -99,13 +101,35 @@
 **Scriptable Object 활용**
 Google Sheet의 데이터를 Scriptable Object로 만들어서 관리합니다. 커스텀 에디터로 만든 버튼을 눌러 데이터를 불러올 수 있습니다.
 
-<div align="center">
-
 |Scriptable Object|
 |---|
-|![image](https://github.com/user-attachments/assets/726c19d0-802a-429c-8558-02d0eb853d1b)|
+|<img src="https://github.com/user-attachments/assets/726c19d0-802a-429c-8558-02d0eb853d1b" width="500"/>|
 
-</div>
+---
+
+### 💥 OBB 충돌처리
+
+**OBB 충돌처리를 통해 보스 몬스터의 부위 파괴를 구현했습니다.**
+
+|OBB Collider|부위 파괴|
+|---|---|
+|![unnamed](https://github.com/user-attachments/assets/b7818240-4d3a-4b13-a5bf-615324632da8)|![unnamed](https://github.com/user-attachments/assets/e89491f5-f542-440f-af35-07a5139602c8)|
+
+---
+
+### 🗺 AI Navigation 몬스터
+
+**AI Navigation을 활용하여 적 몬스터가 자동으로 플레이어를 감지하고 공격하는 패턴을 구현했습니다.**
+
+객체가 플레이어를 인식하는 로직은 크게 3가지가 있습니다.
+
+${\textsf{\color{red}1. 플레이어와의 거리를 확인하는 로직}}$ </br>
+${\textsf{\color{blue}2. 플레이어가 시야각 내에 존재하며 거리를 확인하는 로직}}$ </br>
+${\textsf{\color{yellow}3. 플레이어에게 Ray를 쏴 객체의 시야에 플레이어가 존재하는가를 확인하는 로직}}$ </br>
+
+|AI 몬스터 감지 로직 이미지|플레이어 감지|
+|---|---|
+|<img src="https://github.com/user-attachments/assets/c42043c9-bf0b-41b5-9c26-dacf40d0e4ee" width="400"/>|<img src="https://github.com/user-attachments/assets/65fa59a5-7e78-4bcf-ac73-ba5300903c8a" width="500"/>|
 
 ---
 
