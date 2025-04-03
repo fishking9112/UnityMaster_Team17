@@ -67,23 +67,45 @@
 ## 🔧 사용 기술 스택  
 
 
-**1.플레이어 상하체 분리 FSM **
+### 🚶 플레이어 상하체 분리 FSM
+<div align="center">
+  
+|다이어 그램|
+|---|
+|![제목 없는 다이어그램 drawio (1)](https://github.com/user-attachments/assets/08de4312-917d-4658-9c73-04199cf3eaa8)|
+|장점: 움직임(하체)과 행동(상체)에서 각각 상태를 가질 수 있음.|
+|단점: 관리의 복잡함. (StateMachine 간 통신) ex_조준 모드시 게걸음|
 
-다이어그램
-![제목 없는 다이어그램 drawio (1)](https://github.com/user-attachments/assets/08de4312-917d-4658-9c73-04199cf3eaa8)
+|레이어|
+|---|
+|![1  1  FSM - 레이어1](https://github.com/user-attachments/assets/ed92cfe4-cb15-41a6-8013-ae80cd48a4ec)|
+|상체 하체 레이어를 분리|
 
-장점: 움직임(하체)과 행동(상체)에서 각각 상태를 가질 수 있음.
+|마스킹|
+|---|
+|![4  1  FSM - 마스킹2](https://github.com/user-attachments/assets/6f0a3f3b-0289-490d-8aee-eac0f95a0575)|
+|마스킹을 통해 원하는 부위의 애니메이션만 출력|
 
-단점: 관리의 복잡함.(StateMachine 간 통신) 예) 조준 모드시 게걸음
+</div>
+---
 
+### 📊 데이터 연동 – Google Sheet To Unity
 
-레이어: 상체 하체 레이어를 분리
-![1  1  FSM - 레이어1](https://github.com/user-attachments/assets/ed92cfe4-cb15-41a6-8013-ae80cd48a4ec)
+해당 프로젝트에서는 Google Sheet To Unity를 활용하여 퀘스트와 대화 데이터를 관리합니다.
 
+**Google Sheet 데이터 테이블**
+- 대화 데이터 [(보기)](https://docs.google.com/spreadsheets/d/1v_nkmbO8MzXts1qLHKEclOda4oLwR9PBHfJRSuYwYRE/edit?gid=0#gid=0)
 
-마스킹:마스킹을 통해 원하는 부위의 애니메이션만 출력
-![4  1  FSM - 마스킹2](https://github.com/user-attachments/assets/6f0a3f3b-0289-490d-8aee-eac0f95a0575)
+**Scriptable Object 활용**
+Google Sheet의 데이터를 Scriptable Object로 만들어서 관리합니다. 커스텀 에디터로 만든 버튼을 눌러 데이터를 불러올 수 있습니다.
 
+<div align="center">
+
+|Scriptable Object|
+|---|
+|![image](https://github.com/user-attachments/assets/726c19d0-802a-429c-8558-02d0eb853d1b)|
+
+</div>
 
 ---
 
